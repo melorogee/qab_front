@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>安企帮管理后台</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1567074_13fxk5vm59o.css">
+    
+  </head>
+  <body>
+    <style>
+    #upload-container, #upload-list{}
+    .btn-delete { float: right; margin-left: 10px; }
+    .btn-retry { float: right; }
+    /* #upload-container{cursor: pointer; border-radius: 15px; background: #EEEFFF; height: 200px;} */
+    #upload-list{border: 1px solid #EEE; border-radius: 5px; margin-top: 10px; padding: 10px 20px;}
+    #upload-container>span{widows: 100%; text-align: center; color: gray; display: block; padding-top: 15%;}
+    .upload-item{margin-top: 5px; padding-bottom: 5px; border-bottom: 1px dashed gray;}
+    .percentage{height: 5px; background: green;}
+    .btn-delete, .btn-retry{cursor: pointer; color: gray;}
+    .btn-delete:hover{color: orange;}
+    .btn-retry:hover{color: green;}
+    </style>
+    <noscript>
+      <strong>We're sorry but admin doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <footer style="position: fixed; bottom: 0; left: 0; z-index: 999; width: 100%; background-color: #292c34; color: #fff; font-size: 14px; line-height: 40px; text-align: center;">版权所有Copyright@2019 长兴正大安全技术咨询有限公司  <a href="http://www.beian.miit.gov.cn" style="color: #fff;">浙ICP备19050773号</a></footer>
+    <!-- built files will be auto injected -->
+    <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script>
+    <script src="https://cdn.bootcss.com/webuploader/0.1.1/webuploader.js"></script>
+    <script>
+      function setEvent(that){
+        let fileName = '';
+        $('#upload-container').click(function(event) {
+            $("#picker").find('input').click();
+        });
+        var GUID = WebUploader.Base.guid();//一个GUID
+        var uploader = WebUploader.create({
+            auto: true,// 选完文件后，是否自动上传。
+            dnd: '#upload-container',
+            multiple: true, // 选择多个
+            // swf文件路径
+            swf: 'http://cdn.staticfile.org/webuploader/0.1.5/Uploader.swf',
+            // 文件接收服务端。
+            server: 'http://www.cxzdjs.cn/manage/oss/upload/file/upload',
+            formData:{
+            guid : GUID
+            },
+            duplicate :true,
+            // 选择文件的按钮。可选。
+            // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+            pick: '#picker',
+            chunked : true, // 分片处理
+            chunkSize : 10 * 1024 * 1024, // 每片10M,
+            chunkRetry : false,// 如果失败，则不重试
+            threads : 5,// 上传并发数。允许同时最大上传进程数。
+            // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+            resize: false
+        });
+        window.uploader = uploader;
+        uploader.on('fileQueued', function(file) {
+            // 选中文件时要做的事情，比如在页面中显示选中的文件并添加到文件列表，获取文件的大小，文件类型等
+            console.log("fileQueued1: "+file.ext) // 获取文件的后缀
+            console.log("fileQueued2: "+file.size) // 获取文件的大小
+            console.log("fileQueued3: "+file.name);
+            fileName = file.name;
+            var html = '<div class="upload-item"><span>文件名：'+file.name+'</span><span data-file_id="'+file.id+'" class="btn-delete">删除</span><span data-file_id="'+file.id+'" class="btn-retry">重试</span><div class="percentage '+file.id+'" style="width: 0%;"></div></div>';
+            $('#upload-list').append(html);
+        });
+
+        uploader.on('uploadProgress', function(file, percentage) {
+            console.log(percentage * 100 + '%');
+            var width = $('.upload-item').width();
+            $('.'+file.id).width(width*percentage);
+        });
+
+        uploader.on('uploadSuccess', function(file) {
+            //上传成功，需要合并文件
+            $.post('http://www.cxzdjs.cn/manage/oss/upload/file/merge', { guid: GUID, fileName: file.name }, function (response) {
+                if(response.code == 200){
+                  console.log(fileName)
+                  that.onSuccess(response.data, fileName)
+                    console.log("uploadSuccess: "+file.id+"传输成功: "+response.data.url);
+                    
+                }
+            });
+        });
+
+        uploader.on('uploadError', function(file) {
+            console.log(file);
+            console.log(file.id+'upload error')
+        });
+
+        $('#upload-list').on('click', '.upload-item .btn-delete', function() {
+            // 从文件队列中删除某个文件id
+            file_id = $(this).data('file_id');
+            // uploader.removeFile(file_id); // 标记文件状态为已取消
+            // uploader.removeFile(uploader.getFiles()[0], true); // 从queue中删除
+            $('.webuploader-element-invisible')[0].value = '';
+            $(this).parent().remove()
+            that.importListRemove($(this).parent().index());
+            // $(this).parent().remove();
+        });
+
+        $('#upload-list').on('click', '.btn-retry', function() {
+            that.importListRemove($(this).parent().index());
+            uploader.retry($(this).data('file_id'));
+        });
+
+        uploader.on('uploadComplete', function(file) {
+            // console.log("uploadComplete: "+uploader.getFiles());
+        });
+      }
+    </script>
+  </body>
+</html>

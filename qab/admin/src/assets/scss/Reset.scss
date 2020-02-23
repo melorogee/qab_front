@@ -1,0 +1,14 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    color: #333;
+    font-size: 14px;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+li { list-style: none; }
+a { text-decoration: none; }
+table {
+    border-collapse:collapse; 
+    border-spacing:0; 
+}
+
+.el-dropdown-menu__item { min-width: 100px; }

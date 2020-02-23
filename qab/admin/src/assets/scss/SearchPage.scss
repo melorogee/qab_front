@@ -1,0 +1,98 @@
+
+.searchPage {
+    height: 100%;
+    @at-root #{&}__mainButtons {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #fafafa;
+        @include clearfix();
+        @at-root #{&}--left { float: left; }
+        @at-root #{&}--right { float: right; }
+        .el-button--success{
+            background-color: #3ddc97;
+            border-color: #3ddc97;
+        }
+    }
+    @at-root #{&}__searchForm {
+        margin-top: 10px;
+        & > * + * { margin-left: 10px;}
+        @include clearfix();
+        @at-root #{&}__item{
+            float: left;
+        }
+    }
+    @at-root #{&}__download {
+        strong { color: #999; font-weight: normal; }
+        i { margin-right: 5px; }
+    }
+    @at-root &#{&}--hasSearchForm #{&}__table { height: calc(100% - 84px); }
+    @at-root &#{&}--hasPagination #{&}__table { height: calc(100% - 84px); }
+    @at-root &#{&}--hasPagination#{&}--hasSearchForm #{&}__table { height: calc(100% - 126px); }
+    @at-root #{&}__table {
+        height: calc(100% - 42px);
+        // height: calc(100% - 126px); // 主功能按钮 32px + 筛选 32px + 删选-外边距 10px + 表格-外边距 10px + 分页 32px + 分页-外边距 10px = (32+10)*3 = 126px
+        margin-top: 15px;
+        & th {
+            background-color: #f5f7fa;
+        }
+        i { color: #1790ff; cursor: pointer; }
+        i + i { margin-left: 10px; }
+    }
+    @at-root #{&}__pagination {
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+.cards {
+    overflow: auto;
+    height: calc(100% - 52px);
+    margin-top: 20px;
+    padding: 20px 0;
+    border: 1px solid #ddd; border-width: 1px 0;
+    @at-root #{&}__item {
+        position: relative;
+        float: left;
+        width: 32%;
+        margin-right: 2%;  margin-bottom: 20px;
+        padding: 20px 25px 20px 100px;
+        border: 1px solid #ddd;
+        &:nth-child(3n) { margin-right: 0; }
+        &::before {
+            content: "\e78b";
+            position: absolute; top:15px; left: 10px;
+            color: #d0dde7;
+            font-size: 70px;
+            font-family: element-icons!important;
+        }
+        .el-icon-edit {
+            position: absolute; top: 0; right: 0;
+            cursor: pointer;
+        }
+    }
+    @at-root #{&}__name {
+        font-size: 18px;
+        @include ellipsis();
+        &:hover {
+            color: #409EFF;
+            cursor: pointer;
+        }
+    }
+    @at-root #{&}__options {
+        position: relative;
+        color: #999;
+        font-size: 14px;
+    }
+
+}
+
+.defaultTable {
+    width: 100%;
+    border: 1px solid #ddd; border-width: 1px 1px 0 0;
+    th, td {
+        border: 1px solid #ddd; border-width: 0 0 1px 1px;
+        font-weight: normal;
+        padding: 10px;
+    }
+    th {background-color: #f5f7fa; text-align: left; width: 150px;}
+    td { min-width: 150px;}
+}

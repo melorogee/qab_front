@@ -1,0 +1,35 @@
+[
+    {"url": "/Home", "name": "首页", "icon": "home", "children": []}, 
+    {"url": "/WebSite", "name": "官网管理", "icon": "website", "children": [
+        {"url": "/WebSite/Banner", "name": "banner管理"},
+        {"url": "/WebSite/Activity", "name": "活动管理"},
+        {"url": "/WebSite/Download", "name": "下载中心管理"}
+    ]}, 
+    {"url": "/Train", "name": "培训库管理", "icon": "train", "children": [
+        {"url": "/Train/Materials", "name": "培训资料"},
+        {"url": "/Train/Legal", "name": "法规条文"}
+    ]}, 
+    {"url": "/Question", "name": "题库管理", "icon": "question", "children": [
+        {"url": "/Question/Exam", "name": "考试题库"},
+        {"url": "/Question/Setting", "name": "组卷规则配置"}
+    ]}, 
+    {"url": "/Basic", "name": "基础数据配置", "icon": "basic", "children": [
+        {"url": "/Basic/Setting", "name": "教育培训配置"},
+        {"url": "/Basic/Certificate", "name": "证书管理"}
+    ]}, 
+    {"url": "/Order", "name": "订单管理", "icon": "order", "children": [
+        {"url": "/Order/Inquiry", "name": "问诊订单"},
+        {"url": "/Order/Call", "name": "约叫订单"}
+    ]}, 
+    {"url": "/Finance", "name": "财务管理", "icon": "finance", "children": [
+        {"url": "/Finance/Bill", "name": "开票管理"}
+    ]}, 
+    {"url": "/User", "name": "用户管理", "icon": "user", "children": [
+        {"url": "/User/New", "name": "新注册用户"},
+        {"url": "/User/Has", "name": "已注册用户"}
+    ]}, 
+    {"url": "/System", "name": "系统管理", "icon": "system", "children": [
+        {"url": "/System/Account", "name": "账号管理"},
+        {"url": "/System/Log", "name": "操作日志"}
+    ]}
+]

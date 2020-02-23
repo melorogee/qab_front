@@ -1,0 +1,140 @@
+.submitForm {
+    width: 100%; height: 100%;
+    @at-root #{&}__title { padding: 0 5px; font-size: 18px; line-height: 24px; }
+    @at-root #{&}__msg { padding: 0 5px; color: #999; font-size: 12px; line-height: 22px; }
+    .el-form {
+        overflow-y: auto;
+        height: calc(100% - 98px);
+        margin-top: 10px;
+        border: 1px solid #ddd; border-width: 1px 0;
+        &.hiddenBorder {
+            border: none;
+        }
+        @include clearfix();
+    }
+    @at-root #{&}__item {
+        float: left;
+        width: 33%;
+        .el-form-item__content { min-height: 33px; }
+        margin: 0 !important;
+        padding: 8px;
+        .el-input, .el-select {
+            width: 100%;
+        }
+        @at-root #{&}--row2 { width: 66%; }
+        @at-root #{&}--row3 { width: 99%; }
+        .el-form-item__label::after { content: ':';}
+    }
+    .el-dialog &__item {
+        float: none; width: 100%; padding: 10px 0;
+        .el-select, .el-cascader { width: 100%; }
+    }
+    @at-root #{&}__buttons {
+        margin-top: 10px;
+    }
+    @at-root #{&}__selectAndInput {
+        position: relative;
+        float: left;
+        width: 33%; margin-right: 0.33%;
+        padding-bottom: 10px;
+        padding-right: 50px;
+        @include clearfix();
+        .el-select .el-input { width: 150px; }
+        .submitForm__minus {
+            position: absolute; top: 0; right: 0;
+            width: 50px;
+            color: #F56C6C;
+            font-size: 24px;
+            text-align: center;
+            i { cursor: pointer; }
+        }
+    }
+    @at-root #{&}__selectAndInputAdd {
+        float: left;
+        width: 33%;
+        border: 1px dashed #ddd;
+        border-radius: 6px;
+        color: #666;
+        text-align: center;
+        cursor: pointer;
+        i { margin-right: 10px;}
+    }
+    .el-form-item__label-wrap { float: none; }
+    .el-upload, .el-textarea { padding-top: 10px; }
+    .el-upload, .el-upload-dragger, .el-cascader {
+        width: 100%;
+    }
+    .el-upload-list__item { margin-top: 0;}
+    .el-transfer { width: 720px; margin: 0 auto; }
+    .el-transfer-panel {
+        width: 300px;
+    }
+
+}
+
+.serviceItemsList {
+    .serviceItemsList-item {
+        & + .serviceItemsList-item { margin-top: 15px;}
+        @include clearfix();
+    }
+    .serviceItemsList-name {
+        float: left;
+        width: 50%;
+    }
+    .serviceItemsList-line {
+        float: left;
+        width: 40px; height: 32px;
+        line-height: 32px;
+        text-align: center;
+    }
+    .serviceItemsList-price {
+        float: left;
+        width: 30%;
+        .el-select {
+            width: 90px;
+        }
+        .el-input-group__append, .el-input-group__prepend { background-color: #fff;}
+    }
+    .el-button { margin-left: 20px; }
+}
+
+.settingForm {
+    margin-top: 20px;
+    padding: 10px;
+    .settingForm-item {
+        display: table;
+        width: 100%;
+        padding: 20px 0;
+        border-bottom: 1px solid #ddd;
+        & > div { display: table-cell;}
+    }
+    .settingForm-label {
+        width: 100px;
+        color: #999;
+    }
+    .settingForm-buttons {
+        width: 80px;
+    }
+    .settingForm-ok {color: #0386fe;}
+}
+
+.menu-wrap {
+    overflow-y: auto;
+    height: 250px;
+}
+.menu-item {
+    padding: 5px;
+    font-size: 14px;
+}
+
+.inputUpload {
+    .el-input-group__append {
+        position: relative;
+        input {
+            position: absolute; top: 0; right: 0;
+            width: 67px; height: 32px;
+            opacity: 0;
+            cursor: pointer;
+        }
+    }
+}

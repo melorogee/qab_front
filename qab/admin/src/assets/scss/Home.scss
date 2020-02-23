@@ -1,0 +1,111 @@
+.todo {
+    position: relative;
+    padding-right: 360px;
+    & > div + div {
+        position: absolute; top: 0;
+        width: 160px; height: 160px;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0,0,0,.05);
+        font-weight: bold; font-size: 18px;
+        text-align: center;
+    }
+    @at-root #{&}__item {
+        height: 160px;
+        padding: 10px;
+        background-color: #fff;
+        h3 {
+            border-bottom: 1px solid #ddd;
+            font-size: 16px; line-height: 40px;
+            span {
+                display: inline-block;
+                position: relative; top: -2px;
+                margin-left: 10px;
+                padding: 0 5px;
+                background-color: #ff495c;
+                border-radius: 8px;
+                color: #fff;
+                font-size: 12px; line-height: 1.5;
+            }
+        }
+    }
+    @at-root #{&}__lists {
+        @include clearfix();
+        @at-root #{&}__item {
+            float: left;
+            width: 25%; height: 100px;
+            text-align: center;
+            & > * { display: block; }
+            @at-root #{&}--number {
+                padding: 20px 0 10px;
+                color: #0386fe;
+                font-size: 28px;
+            }
+            @at-root #{&}--name {
+                color: #999;
+                font-style: normal;
+                font-size: 18px;
+            }
+        }
+    }
+    @at-root #{&}__add {
+        right: 180px;
+        &::before {
+            content: "\e6e3";
+            display: block;
+            padding: 40px 0 10px;
+            color: #52dfa1;
+            font-size: 50px;
+            font-family: element-icons !important;
+        }
+    }
+    @at-root #{&}__upload {
+        right: 0;
+        &::before {
+            content: "\e7c3";
+            display: block;
+            padding: 40px 0 10px;
+            color: #46237a;
+            font-size: 50px;
+            font-family: element-icons !important;
+        }
+    }
+
+}
+
+.news {
+    height: calc(100% - 170px);
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    h3 { margin-bottom: 10px; line-height: 30px; }
+    @at-root #{&}__auto {
+        overflow-y: auto;
+        height: calc(100% - 40px);
+        padding-right: 15px;
+    }
+    @at-root #{&}__item {
+        position: relative;
+        height: 100px;
+        padding: 10px 80px;
+        border-bottom: 1px solid #ddd;
+    }
+    @at-root #{&}__img {
+        position: absolute; top: 10px; left: 0;
+    }
+    @at-root #{&}__title {
+        font-weight: bold;
+        font-size: 18px; line-height: 35px;
+    }
+    @at-root #{&}__detail {
+        color: #999;
+        font-size: 14px; line-height: 35px;
+    }
+    @at-root #{&}__button {
+        position: absolute; top: 29px; right: 0;
+    }
+    @at-root #{&}__add {
+        padding: 10px 0;
+        text-align: center;
+        cursor: pointer;
+    }
+}
