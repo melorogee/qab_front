@@ -9,6 +9,8 @@ import Basic from './basic'
 import Finance from './finance'
 import User from './user'
 import System from './system'
+import Employee from './employee'
+
 
 Vue.use(VueRouter)
 const routes = [
@@ -25,7 +27,8 @@ const routes = [
       Order, // 订单模块 2
       Finance, // 财务模块 1
       User, // 用户模块 2
-      System // 系统模块 2
+      System, // 系统模块 2,
+      Employee
     ]
   },
   { path: '*', redirect: '/404' },

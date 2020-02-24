@@ -128,4 +128,5 @@ const table = {
     operat10: { slot: 'operat', label: '操作', width: 100 },
     operat16: { slot: 'operat', label: '操作', width: 160 }
 };
+
 export default { form, table }
