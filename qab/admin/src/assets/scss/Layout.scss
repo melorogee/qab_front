@@ -278,6 +278,16 @@ body { padding-bottom: 40px; min-height: 600px; }
         width: calc(50% - 10px);
     }
 }
+.report__chart1 {
+    margin-top: 20px;
+    @include clearfix();
+    > div {
+        position: relative;
+        padding: 30px;
+        background-color: #fff;
+        width: calc(100% - 10px);
+    }
+}
 
 .report__left {
     float: left;
@@ -286,6 +296,10 @@ body { padding-bottom: 40px; min-height: 600px; }
 .report__right {
     float: right;
     width: calc(50% - 10px);
+}
+.report__whole {
+    float: left;
+    width: calc(100% - 10px);
 }
 .report__title {
     font-size: 18px; line-height: 40px;

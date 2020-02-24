@@ -18,6 +18,12 @@ export default {
     component: () => import('@/components/Content'),
     children: [
         { path: '/Employee/EmployeeMgn', name: 'employeeMgn', component: () => import('@/views/employee/employeeMgn'), meta: { title: '员工管理' } },
-
+        {
+            path: '/Employee/EmployeeAdd', name: 'employeeAdd', component: () => import('@/components/SubmitForm'),
+            meta: {
+                title: '新增', parentTitle: '员工', msg: 'form', isBack: true, backName: 'Has', isHide: true,
+                form: ['empolyeeName', 'dept', 'positionEmploy', 'time'], isRequired: 'all', api: 'employeeAdd'
+            }
+        },
     ]
 }

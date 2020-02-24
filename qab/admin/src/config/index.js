@@ -71,6 +71,13 @@ const form = {
     businessLicenseUrl: { type: 'input', label: '上传营业执照', prop: 'importList', action: 'http://www.cxzdjs.cn/manage/upload/image' },
     certificateUrl: { type: 'inputUpload', label: '上传资质证书', prop: 'certificateUrl', action: 'http://www.cxzdjs.cn/manage/upload/image' },
     file: { type: 'file', label: '导入文件', prop: 'file', action: 'https://jsonplaceholder.typicode.com/posts/', row: 3 },
+    empolyeeName: { type: 'input', label: '员工姓名', prop: 'empolyeeName', row: 1 },
+    dept: { type: 'input', label: '部门', prop: 'dept', row: 1 },
+    time: { type: 'input', label: '入场时间', prop: 'time', row: 1 },
+    positionEmploy: { type: 'select', label: '职位或岗位', prop: 'positionEmploy', row: 1,list:'questionTypeList' },
+
+
+
 };
 /**
  * 参数说明 { key: <Object> }

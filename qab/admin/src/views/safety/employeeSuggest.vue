@@ -1,28 +1,24 @@
 <template>
     <div>
-        <SearchPage ref="SearchPage" :searchForm="searchForm" :table="table" :api="'empList'">
-            <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="employeeAdd">新增</el-button>
+        <SearchPage ref="SearchPage" :table="table" :api="'empList'">
+            <el-button type="success" slot="mainButtons--left" icon="el-icon-download" @click="importData">导出EXCEL</el-button>
 
         </SearchPage>
     </div>
 </template>
 <script>
 export default {
-    name: 'EmployeeMgn',
+    name: 'employeeSuggest',
     data() {
         return {
-            searchForm: [
-                {
-                    type: 'input', label: '关键字', prop: 'keyword',
-                }
-            ],
+
             table: [
-                { prop: 'empNo', label: '序号' , width: 130 },
-                { prop: 'empName', label: '员工姓名', width: 170  },
-                { prop: 'dept', label: '部门', width: 170 },
-                { prop: 'position', label: '岗位/职位', width: 170 },
-                { slot: 'time', label: '入场时间' , width: 170 },
-                { slot: 'operat', label: '操作', width: 170 }
+                { prop: 'no', label: '序号' , width: 170 },
+                { prop: 'safety', label: '员工姓名', width: 170  },
+                { prop: 'level', label: '建议', width: 270 },
+                { prop: 'method', label: '状态', width: 170 },
+
+
             ]
         }
     },
