@@ -21,8 +21,10 @@ export default {
         {
             path: '/Employee/EmployeeAdd', name: 'employeeAdd', component: () => import('@/components/SubmitForm'),
             meta: {
-                title: '新增', parentTitle: '员工', msg: 'form', isBack: true, backName: 'Has', isHide: true,
-                form: ['empolyeeName', 'dept', 'positionEmploy', 'time'], isRequired: 'all', api: 'employeeAdd'
+                title: '新增', parentTitle: '员工', msg: 'form', isBack: true, backName: 'employeeMgn', isHide: true,
+                form: ['empolyeeName', 'dept', 'positionEmploy',
+                    // 'hiredate',
+                    'employPhone'], isRequired: 'all', api: 'employeeAdd'
             }
         },
     ]

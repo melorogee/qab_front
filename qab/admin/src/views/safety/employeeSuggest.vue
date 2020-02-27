@@ -1,7 +1,8 @@
 <template>
     <div>
-        <SearchPage ref="SearchPage" :table="table" :api="'empList'">
-            <el-button type="success" slot="mainButtons--left" icon="el-icon-download" @click="importData">导出EXCEL</el-button>
+        <SearchPage ref="SearchPage" :table="table" :api="'employeeSuggest'">
+            <el-button type="success" slot="mainButtons--left" icon="el-icon-download"   @click="importData" >导出EXCEL</el-button>
+            <template slot="status" slot-scope="scope">{{map[scope.row.status]}}</template>
 
         </SearchPage>
     </div>
@@ -11,12 +12,16 @@ export default {
     name: 'employeeSuggest',
     data() {
         return {
-
+            map: {
+                0:'未处理',
+                1:'采纳',
+                2:'未采纳'
+            },
             table: [
-                { prop: 'no', label: '序号' , width: 170 },
-                { prop: 'safety', label: '员工姓名', width: 170  },
-                { prop: 'level', label: '建议', width: 270 },
-                { prop: 'method', label: '状态', width: 170 },
+                {  label: '序号' , width: 170,type:'index' },
+                { prop: 'name', label: '员工姓名', width: 170  },
+                { prop: 'content', label: '建议', width: 270 },
+                { slot: 'status', label: '状态', width: 170 },
 
 
             ]
@@ -40,6 +45,8 @@ export default {
         employeeAdd() { // 行业新增
             this.$router.push({name: 'employeeAdd'});
         },
+        importData() { window.open(this.$api.employeeSuggestExport); }
+
     }
 }
 </script>

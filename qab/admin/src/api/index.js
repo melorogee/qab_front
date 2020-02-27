@@ -7,5 +7,7 @@ import * as system from './system'
 import * as website from './website'
 import * as order from './order'
 import * as finance from './finance'
+import * as employee from './employee'
+import * as safety from './safety'
 
-export default Object.assign(common, users, train, basic, question, system, website, order, finance)
+export default Object.assign(common, users, train, basic, question, system, website, order, finance,employee,safety)

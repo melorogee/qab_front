@@ -1,6 +1,6 @@
 <template>
     <div>
-        <SearchPage ref="SearchPage" :table="table" :api="'empList'">
+        <SearchPage ref="SearchPage" :table="table" :api="'orderService'">
             <el-button type="success" slot="mainButtons--left" icon="el-icon-download" @click="importData">导出EXCEL</el-button>
 
         </SearchPage>
@@ -13,20 +13,20 @@ export default {
         return {
 
             table: [
-                { prop: 'no', label: '序号' , width: 70 },
-                { prop: 'no1', label: '服务编号', width: 70  },
-                { prop: 'desc', label: '隐患大类', width: 70 },
-                { prop: 'method', label: '隐患分类', width: 70 },
-                { slot: 'location', label: '隐患小类' , width: 70 },
-                { slot: 'time', label: '隐患级别' , width: 70 },
-                { slot: 'createBy', label: '可能造成的事故类型' , width: 70 },
-                { slot: 'pic', label: '地点' , width: 70 },
-                { slot: 'duty', label: '发现时间' , width: 70 },
-                { slot: 'duty1', label: '录入人' , width: 70 },
-                { slot: 'duty2', label: '隐患图片' , width: 70 },
-                { slot: 'duty3', label: '整改建议' , width: 70 },
-                { slot: 'duty4', label: '隐患状态' , width: 70 },
-                { slot: 'duty5', label: '责任人' , width: 70 },
+                { type: 'index', label: '序号' , width: 70 },
+                { prop: 'orderNo', label: '服务编号', width: 70  },
+                { prop: 'bigClass', label: '隐患大类', width: 70 },
+                { prop: 'classz', label: '隐患分类', width: 70 },
+                { slot: 'smallClass', label: '隐患小类' , width: 70 },
+                { slot: 'level', label: '隐患级别' , width: 70 },
+                { slot: 'accidentType', label: '可能造成的事故类型' , width: 70 },
+                { slot: 'location', label: '地点' , width: 70 },
+                { slot: 'createTime', label: '发现时间' , width: 70 },
+                { slot: 'createByName', label: '录入人' , width: 70 },
+                { slot: 'imgCount', label: '隐患图片' , width: 70 },
+                { slot: 'suggest', label: '整改建议' , width: 70 },
+                { slot: 'status', label: '隐患状态' , width: 70 },
+                { slot: 'responsible', label: '责任人' , width: 70 },
 
             ]
         }
@@ -49,6 +49,9 @@ export default {
         employeeAdd() { // 行业新增
             this.$router.push({name: 'employeeAdd'});
         },
+
+        importData() { window.open(this.$api.orderServiceExport); }
+
     }
 }
 </script>

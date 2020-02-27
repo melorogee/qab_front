@@ -42,10 +42,10 @@
                         </template>
                     </el-table-column>
                     <el-table-column v-if="item.type == 'index'" :key="index" :label="item.label" :width="item.width">
-                        <template>
-                            <span v-if="index < 9">00{{index+1}}</span>
-                            <span v-else-if="8 < index < 99">0{{index+1}}</span>
-                            <span v-else>{{index+1}}</span>
+                        <template slot-scope="scope">
+                            <span v-if="scope.$index < 9">00{{scope.$index+1}}</span>
+                            <span v-else-if="8 < scope.$index < 99">0{{scope.$index+1}}</span>
+                            <span v-else>{{scope.$index+1}}</span>
                         </template>
                     </el-table-column>
                     <el-table-column v-if="item.type == 'area'" :key="index" :label="item.label" :width="item.width">

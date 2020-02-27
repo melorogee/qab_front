@@ -9,5 +9,7 @@ export const industryPositionList = data => { return instance({ url: `/position/
 
 export const upload = data => { return instance({ url: `/oss/upload/form/upload/`, method: 'POST', data }) }
 export const courseList = () => { return instance({ url: `/course/required/course/type/list`, method: 'GET'}) }
+export const questionPositionList = () => { return instance({ url: `/employeeUser/positionTypeList`, method: 'GET'}) }
+
 
 // export const upload = data => { return instance({ url: `http://www.cxzdjs.cn:8087/manage/oss/upload/form/upload/`, method: 'POST', data }) }
