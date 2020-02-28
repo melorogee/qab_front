@@ -21,15 +21,15 @@ export default {
         addData() {
             this.$router.push({name: 'MaterialsAdd'});
         },
-        importData() {
-            this.$router.push({name: 'MaterialsImport'});
-        },
+
         delData(scope) {
             this.$api.materialsDelete({idxs: scope.row.idx}).then(() => {
                 this.$message.success('删除成功');
                 this.SearchPageInit();
             })
-        }
+        },
+        importData() { window.open(this.$api.exportArchives); }
+
     }
 }
 </script>

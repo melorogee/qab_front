@@ -8,4 +8,6 @@ const msg = { 'form': '*为必填项，保存即可', 'import': '填写表单后
 const statusList = [ { idx: 1, name: '未审核' }, { idx: 3, name: '审核拒绝' } ]
 const zjList = [ {idx: 1, name: '专家'}, {idx: 2, name: '特殊作业人员'}]
 const orderStatusMap = { 0:'未支付', 1:'支付中', 2:'支付完成', 3:'支付失败', 4:'已完成'};
-export default { type, positionTypeList, educationType20, educationTypes, questionType, questionTypeList, msg, statusList, zjList,orderStatusMap }
+const planTypeMap =  { 1:'年度培训计划', 2:'日常培训计划'};
+
+export default { type, positionTypeList, educationType20, educationTypes, questionType, questionTypeList, msg, statusList, zjList,orderStatusMap ,planTypeMap}

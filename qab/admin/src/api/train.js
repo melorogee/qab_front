@@ -14,3 +14,14 @@ export const statutesImport = data => { return instance({ url: `/statutes/import
 
 //培训档案
 export const archivesList = data => { return instance({ url: `/training/record/list`, method: 'GET', params: data }) }
+export const exportArchives = '/manage/training/record/export'
+//培训计划
+export const planList = data => { return instance({ url: `/training/arrange/list`, method: 'GET', params: data }) }
+export const planAdd  = data => { return instance({ url: `/training/arrange/save`, method: 'POST', data }) }
+export const planDelete = data => { return instance({ url: `/training/arrange/delete`, method: 'GET', params: data }) }
+export const viewData  = data => { return instance({ url: `/training/arrange/detail`, method: 'GET',  params: data }) }
+//考试报名
+export const trainexamList = data => { return instance({ url: `/examination/enroll/list`, method: 'GET', params: data }) }
+export const examApply  = data => { return instance({ url: `/examination/enroll/import`, method: 'POST', data }) }
+
+

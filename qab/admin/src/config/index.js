@@ -76,7 +76,9 @@ const form = {
     hiredate: { type: 'el-date-picker', label: '入场时间', prop: 'hiredate', row: 1 },
     positionEmploy: { type: 'select', label: '职位或岗位', prop: 'positionTypeId', row: 1,api: 'questionPositionList' },
     employPhone: { type: 'input', label: '电话', prop: 'phone', row: 1},
-
+    planTitle:{ type: 'input', label: '标题', prop: 'title', row: 1},
+    planType:{ type: 'select', label: '类型', prop: 'type', row: 1,api:'planTypeMap'},
+    planContent:{ type: 'input', label: '内容', prop: 'content', row: 3},
 
 
 };

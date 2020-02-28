@@ -27,6 +27,7 @@ Vue.component('Form', () => import('@/components/Form.vue'));
 Vue.config.productionTip = false
 
 
+
 new Vue({
   router,
   // store,

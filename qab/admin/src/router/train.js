@@ -17,6 +17,32 @@ export default {
     meta: { title: '培训管理', icon: 'iconread' },
     component: () => import('@/components/Content'),
     children: [
+        { path: '/Train/Plan', name: 'Plan', component: () => import('@/views/train/Plan'), meta: { title: '培训计划' } },
+        { path: '/Train/PlanAdd', name: 'PlanAdd', component: () => import('@/views/train/PlanAdd'),
+            meta: {
+                title: '新增培训计划',  isHide: true,
+            }
+         },
+        { path: '/Train/PlanView', name: 'PlanView', component: () => import('@/views/train/PlanView'),
+            meta: {
+                title: '培训计划详情',  isHide: true,
+            }
+        },
+        { path: '/Train/ExamList', name: 'ExamList', component: () => import('@/views/train/ExamList'), meta: { title: '培训考试报名' } },
+        { path: '/Train/ExamApply', name: 'ExamApply', component: () => import('@/views/train/ExamApply'),
+            meta: {
+                title: '考试报名',  isHide: true,
+            }
+        },
+        // {
+        //     path: '/Train/PlanAdd', name: 'PlanAdd', component: () => import('@/components/SubmitForm'),
+        //     meta: {
+        //         title: '新增培训计划', msg: 'form', isBack: true, backName: 'Plan', isHide: true,
+        //         form: ['planTitle', 'planType', 'planContent'], isRequired: 'all', api: 'employeeAdd'
+        //     }
+        // },
+
+
         { path: '/Train/Archives', name: 'Archives', component: () => import('@/views/train/Archives'), meta: { title: '培训档案' } },
         { path: '/WebSite/Activity', name: 'Activity', component: () => import('@/views/website/Activity'), meta: { title: '自选课资料' } },
         {
