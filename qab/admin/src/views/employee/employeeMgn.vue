@@ -25,7 +25,7 @@ export default {
                 { prop: 'name', label: '员工姓名', width: 200  },
                 { prop: 'departmentName', label: '部门', width: 200 },
                 { prop: 'positionName', label: '岗位/职位', width: 200 },
-                { slot: 'hiredate', label: '入场时间' , width: 200 },
+                { prop: 'hiredate', label: '入场时间' , width: 200 },
                 { slot: 'operat', label: '操作', width: 130 }
             ]
         }

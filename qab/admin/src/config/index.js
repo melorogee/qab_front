@@ -73,7 +73,7 @@ const form = {
     file: { type: 'file', label: '导入文件', prop: 'file', action: 'https://jsonplaceholder.typicode.com/posts/', row: 3 },
     empolyeeName: { type: 'input', label: '员工姓名', prop: 'name', row: 1 },
     dept: { type: 'input', label: '部门', prop: 'departmentName', row: 1 },
-    hiredate: { type: 'el-date-picker', label: '入场时间', prop: 'hiredate', row: 1 },
+    hiredate: { type: 'date', label: '入场时间', prop: 'hiredate', row: 1 },
     positionEmploy: { type: 'select', label: '职位或岗位', prop: 'positionTypeId', row: 1,api: 'questionPositionList' },
     employPhone: { type: 'input', label: '电话', prop: 'phone', row: 1},
     planTitle:{ type: 'input', label: '标题', prop: 'title', row: 1},

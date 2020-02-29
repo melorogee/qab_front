@@ -99,6 +99,11 @@
             <!-- <el-input v-if="item.type == 'uEdit'" type="textarea" placeholder="请输入内容" v-model="queryForm[item.prop]" maxlength="200" show-word-limit /> -->
             <vue-editor v-if="item.type == 'uEdit'" v-model="queryForm[item.prop]" :editorToolbar="customToolbar"></vue-editor>
             <el-input v-if="item.type == 'textarea'" type="textarea" :placeholder="`请输入${item.label}`" v-model="queryForm[item.prop]" maxlength="200" show-word-limit />
+            <el-date-picker v-if="item.type == 'date'"  type="datetime"
+                            placeholder="选择日期"
+                            value-format="yyyy-MM-dd hh:mm:ss"
+                            format="yyyy-MM-dd hh:mm:ss" v-model="queryForm[item.prop]" maxlength="200" />
+
         </el-form-item>
     </el-form>
 </template>
