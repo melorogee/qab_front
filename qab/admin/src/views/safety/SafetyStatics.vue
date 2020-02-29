@@ -19,27 +19,32 @@
                 <div class="report__time">
                 </div>
                 <div class="report__box">
-                    <ve-bar :data="barData"
-                                  :settings="chartSettings"
-                    ></ve-bar>
+<!--                    <ve-bar :data="barData"-->
+<!--                                  :settings="chartSettings"-->
+<!--                    ></ve-bar>-->
+
+                    <ve-histogram :data="barData"
+                                  :settings="histogramChartSettings"
+                    ></ve-histogram>
                 </div>
             </div>
         </div>
     </div>
 </template>
 <script>
-    import VeBar from 'v-charts/lib/bar.common'
-export default {
+    import Vue from 'vue'
+    import VCharts from 'v-charts'
+    Vue.use(VCharts)
+    export default {
     data() {
         return { 
             value2: 'time',
-
-            chartSettings: {
-                metrics:['企业自查','订单服务','员工上报'],
-                // yAxisName: ['企业自查','订单服务','员工上报'],
-                // xAxisName: ['date']
+            histogramChartSettings: {
+                metrics: ['企业自查','订单服务','员工上报'],
+                dimension: ['date'],
 
             },
+           
             barData: {
                 columns: ['date', '企业自查', '订单服务', '员工上报'],
                 rows: []
@@ -56,7 +61,7 @@ export default {
         }
     },
     components: {
-         VeBar
+
     },
     created() {
         this.getSourceOfIncome();
