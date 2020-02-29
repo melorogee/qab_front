@@ -36,6 +36,9 @@ export default {
 
             chartSettings: {
                 metrics:['企业自查','订单服务','员工上报'],
+                // yAxisName: ['企业自查','订单服务','员工上报'],
+                // xAxisName: ['date']
+
             },
             barData: {
                 columns: ['date', '企业自查', '订单服务', '员工上报'],

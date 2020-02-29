@@ -3,13 +3,16 @@
         <SearchPage ref="expert" :searchForm="expertSearchForm" :table="expertTable" :api="'templateList'">
             <el-button type="success" slot="mainButtons--left" icon="el-icon-upload" @click="expertImport">导入</el-button>
             <template slot="operat" slot-scope="scope">
+                <i class="el-icon-download"  @click="download(scope)"></i>
+
                 <i class="el-icon-upload" @click="expertImport2(scope)"></i>
                 <i class="el-icon-delete" @click="expertDelete(scope)"></i>
+
             </template>
         </SearchPage>
 
         <el-dialog title="导入" :visible.sync="expertImportDialog" width="30%">
-            <Form v-if="expertImportDialog" ref="expertImportForm" :form="['industryId', 'educationType1', 'file']" :isRequired="'all'" :labelWidth="'100px'" />
+            <Form v-if="expertImportDialog" ref="expertImportForm" :form="['industryId', 'file']" :isRequired="'all'" :labelWidth="'100px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="expertImportDialog = false">取消</el-button>
                 <el-button type="primary" @click="expertImportSubmit">保存</el-button>
@@ -32,7 +35,7 @@ export default {
     data() {
         return {
             expertSearchForm: ['industryId'],
-            expertTable: ['template', 'industryName', 'educationType', 'createTime', 'operat'],
+            expertTable: ['template', 'industryName',  'createTime', { slot: 'operat', label: '操作' , width: 100 } ],
             expertAddDialog: false,
             expertEditDialog: false,
             expertImportDialog2: false,
@@ -50,6 +53,11 @@ export default {
                 this.$message.success('删除成功');
                 this.$refs.expert.getData();
             })
+        },
+
+
+        download(scope) { // 下载
+            window.open(scope.row.url);
         },
         expertImport() { // 专家导入
             this.expertImportDialog = false; this.$nextTick(()=>{ this.expertImportDialog = true; })
