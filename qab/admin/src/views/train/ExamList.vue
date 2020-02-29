@@ -6,13 +6,30 @@
             <template slot="orderStatus" slot-scope="scope">{{map1[scope.row.orderStatus]}}</template>
 
             <template slot="operat" slot-scope="scope">
-                <i class="el-icon-view" @click="viewData(scope)"></i>
-                <i class="el-icon-delete" @click="delData(scope)"></i>
+                <el-button type="success" icon="el-icon-add" v-if="scope.row.orderStatus=='0'" @click="goPay(scope.row.idx)" >立即支付</el-button>
+
             </template>
         </SearchPage>
+
+        <el-dialog
+                title="支付订单"
+                :visible.sync="dialogVisible"
+                width="30%"
+                >
+            <span>
+                    支付金额：{{`${this.tempAmount}`}}
+                     <canvas id="qrccode-canvas"></canvas>
+            </span>
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="cancel">取 消</el-button>
+                <el-button type="primary" @click="checkPay">确 定</el-button>
+              </span>
+        </el-dialog>
     </div>
 </template>
 <script>
+    var QRCode = require('qrcode')
+    var canvas = ''
 export default {
     name: 'ExamList',
     data() {
@@ -42,7 +59,10 @@ export default {
 
                 { slot: 'operat', label: '操作', width: 130 }
 
-            ]
+            ],
+            dialogVisible:false,
+            tempAmount:'',
+            payUrl:'',
         }
     },
     created() { },
@@ -68,7 +88,53 @@ export default {
                         idxs: scope.row.idx
                     }}
             );
+        },
+
+        goPay(id){
+            this.dialogVisible=true;
+            let para = { orderId:id,type:3};
+            this.$api.getPayUrl(para).then(res => {
+                this.payUrl = res.codeUrl;
+                this.tempAmount=res.amount;
+                this.tempIdx=id;
+                this.createQrc();
+            })
+        },
+
+        createQrc: function () {
+            canvas = document.getElementById('qrccode-canvas');
+            console.log(canvas)
+            QRCode.toCanvas(canvas, this.payUrl, (error) => {
+                if (error) {
+                    console.log(error)
+                } else {
+                    console.log('success')
+                }
+            })
+        },
+        cancel:function(){
+            this.dialogVisible = false,
+                this.tempAmount='0',
+                this.payUrl='0',
+                this.tempIdx=''
+        },
+
+        checkPay:function () {
+            let para = { idx:this.tempIdx};
+            this.$api.checkPay(para).then(res => {
+                if(res.orderStatus !='2'){
+                    alert("还未支付完成");
+                }else{
+                    alert("支付完成");
+                    this.dialogVisible = false;
+                    this.SearchPageInit();
+
+                }
+            })
         }
+
+
+
 
     }
 }
