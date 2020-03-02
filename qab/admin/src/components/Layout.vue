@@ -22,15 +22,33 @@
         </header>
         <div class="container">
             <div class="snbl">
-                <el-menu :default-active="$route.path" :unique-opened="true" :collapse="!type" router>
+                <el-menu :default-active="$route.path"  :unique-opened="true" :collapse="!type" router>
                     <!-- <el-menu-item index="/Home"><i class="el-icon-menu"></i><router-link to="/Home">首页</router-link></el-menu-item> -->
-                    <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path">
-                        <template slot="title">
+                    <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path" v-show="(right!=100 && ( main.path!='/Safety' && main.path!='/Employee'))
+                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee'))">
+
+                        <template slot="title"   >
                             <i :class="`iconfont ${main.meta.icon}`"></i>
                             <span>{{main.meta.title}}</span>
                         </template>
-                        <template v-if="main.children">
-                            <el-menu-item v-for="(sub, subIndex) in main.children" v-show="!sub.meta.isHide" :key="subIndex" :index="sub.path" :class="{'is-active': $route.path.indexOf(sub.path) > -1}">
+                        <template v-if="main.children" >
+                            <el-menu-item v-for="(sub, subIndex) in main.children" v-show="!sub.meta.isHide
+                            && (
+                                    (
+                                        right!=100 && (main.path =='/Train' && (sub.path=='/WebSite/Activity' || sub.path=='/Train/Materials')) || main.path != '/Train'
+                                    )
+                                    ||
+                                    (
+                                        right == 100 && (main.path =='/Train' && (sub.path=='/Train/Plan' || sub.path=='/Train/ExamList' || sub.path=='/Train/Archives') || main.path != '/Train' )
+                                    )
+
+                               )
+                            &&
+                                (
+                                    (right == 100 && (main.path =='/System' && (sub.path=='/System/AccountSetting') || main.path != '/System' )) || right != 100
+                                )
+                            "
+                                          :key="subIndex" :index="sub.path" :class="{'is-active': $route.path.indexOf(sub.path) > -1}">
                                 <router-link :to="sub.path">{{sub.meta.title}}</router-link>
                             </el-menu-item>
                         </template>
@@ -54,7 +72,8 @@ export default {
             type: true,
             defaultActive: '',
             nav: [],
-            userName: ''
+            userName: '',
+            right:''
         }
     },
     created() {
@@ -62,15 +81,19 @@ export default {
         // arr.splice(0,1);
         this.nav = arr;
         this.setUserName();
+
         window.setUserName = this.setUserName;
     },
     methods: {
         setUserName() {
             this.userName = sessionStorage.getItem('userName')
+            this.right = sessionStorage.getItem('right')
         },
         logout() {
             sessionStorage.setItem('userName', '')
             sessionStorage.setItem('phone', '')
+            sessionStorage.setItem('right', '')
+
             this.$router.push({ name: 'Login' });
         },
         command(type) {

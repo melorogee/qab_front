@@ -37,7 +37,14 @@ export default {
             this.$api.login(para).then(res => {
                 sessionStorage.setItem('userName', res.userName)
                 sessionStorage.setItem('phone', res.phone)
-                this.$router.push({ name: 'Template' });
+                sessionStorage.setItem('right', res.type)
+
+                // this.$router.addRoutes()
+                if(res.type == 100){
+                    this.$router.push({ name: 'Plan' });
+                }else{
+                    this.$router.push({ name: 'Template' });
+                }
             })
         },
         getPw() {

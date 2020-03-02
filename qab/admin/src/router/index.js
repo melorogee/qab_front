@@ -28,9 +28,10 @@ const routes = [
       Order, // 订单模块 2
       Finance, // 财务模块 1
       User, // 用户模块 2
-      System, // 系统模块 2,
       Employee,
-        Safety
+        Safety,
+      System, // 系统模块 2,
+
     ]
   },
   { path: '*', redirect: '/404' },
