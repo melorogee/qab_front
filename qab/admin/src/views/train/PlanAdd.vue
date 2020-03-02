@@ -1,24 +1,32 @@
 <template>
-
-    <div>
-        <el-container>
-            <el-main>
-
-                <el-input v-model="title" width="30%" placeholder="请输入培训计划标题" class="login__id"></el-input>
-                <el-select v-model="type" placeholder="请选择"  style="margin-top: 30px" >
-                    <el-option
-                            v-for="item in options"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value">
-                    </el-option>
-                </el-select>
-                <div id="websiteEditorElem"
-                     style="margin-top: 70px;height:300px;background: #ffffff;"></div>
-                <el-button type="success"  icon="el-icon-add"  @click="addData" style="margin-top: 30px"  >发布</el-button>
-
-            </el-main>
-        </el-container>
+    <div class="submitForm">
+        <div class="applyParent">
+            <div class="LineFeedScroll">
+            <div class="customForm">
+                <h3 class="submitForm__title">培训计划</h3>
+                <p class="submitForm__msg" style="margin-bottom: 20px;">填写表单后选择要上传的文件，保存即可</p>
+                <div class="LineFeedForm">
+                    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                        <el-form-item label="标题：" prop="title">
+                            <el-input v-model="ruleForm.title" placeholder="请输入培训计划标题" class="login__id"></el-input>
+                        </el-form-item>
+                        <el-form-item label="类型：" prop="type">
+                            <el-select v-model="ruleForm.type" placeholder="请选择类型">
+                                <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                                </el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-form>
+                    <div id="websiteEditorElem" style="padding-right:10px;margin-top: 10px;height:330px;background: #ffffff;"></div>
+                    <el-button type="primary" size="large" style="margin-top:30px;width:100px" @click="addData">发布</el-button>
+                </div>              
+            </div>
+        </div>
+        </div>
     </div>
 </template>
 <script>
@@ -28,8 +36,6 @@
         name: 'PlanAdd',
         data() {
             return {
-                title: '',
-                type: '',
                 editor: null,
                 editorContent: '',
                 options: [{
@@ -39,6 +45,18 @@
                     value: '2',
                     label: '日常培训计划'
                 }],
+                ruleForm: {
+                    title: '',
+                    type: '',
+                },
+                rules: {
+                    title: [
+                        { required: true, message: '请输入人数', trigger: 'blur' },
+                    ],
+                    type: [
+                        { required: true, message: '请选择培训类型', trigger: 'change' }
+                    ],
+                },
             }
         },
         created() {
@@ -60,8 +78,11 @@
         },
         methods: {
             addData() {
-
-                let para = { content:this.phoneEditor.txt.html(), title:this.title,type:this.type};
+                // let oDiv = document.createElement('div');
+                // oDiv.innerHTML = this.phoneEditor.txt.html();
+                // alert( this.phoneEditor.txt.html())
+                // let text = oDiv.innerText;
+                let para = { content:this.phoneEditor.txt.html(), title:this.ruleForm.title,type:this.ruleForm.type};
                 this.$api.planAdd(para).then(() => {
                     this.$message.success('添加成功');
                     this.$router.push({name: 'Plan'});

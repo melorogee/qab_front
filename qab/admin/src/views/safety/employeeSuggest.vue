@@ -19,9 +19,9 @@ export default {
             },
             table: [
                 {  label: '序号' , width: 170,type:'index' },
-                { prop: 'name', label: '员工姓名', width: 170  },
-                { prop: 'content', label: '建议', width: 270 },
-                { slot: 'status', label: '状态', width: 170 },
+                { prop: 'name', label: '员工姓名' },
+                { prop: 'content', label: '建议'},
+                { slot: 'status', label: '状态' },
 
 
             ]

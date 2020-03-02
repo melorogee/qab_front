@@ -13,20 +13,20 @@ export default {
         return {
 
             table: [
-                { type: 'index', label: '序号' , width: 70 },
-                { prop: 'orderNo', label: '服务编号', width: 70  },
-                { prop: 'bigClass', label: '隐患大类', width: 70 },
-                { prop: 'classz', label: '隐患分类', width: 70 },
-                { slot: 'smallClass', label: '隐患小类' , width: 70 },
-                { slot: 'level', label: '隐患级别' , width: 70 },
-                { slot: 'accidentType', label: '可能造成的事故类型' , width: 70 },
-                { slot: 'location', label: '地点' , width: 70 },
-                { slot: 'createTime', label: '发现时间' , width: 70 },
-                { slot: 'createByName', label: '录入人' , width: 70 },
-                { slot: 'imgCount', label: '隐患图片' , width: 70 },
-                { slot: 'suggest', label: '整改建议' , width: 70 },
-                { slot: 'status', label: '隐患状态' , width: 70 },
-                { slot: 'responsible', label: '责任人' , width: 70 },
+                { type: 'index', label: '序号'   },
+                { prop: 'orderNo', label: '服务编号'  },
+                { prop: 'bigClass', label: '隐患大类', },
+                { prop: 'classz', label: '隐患分类'},
+                { prop: 'smallClass', label: '隐患小类'  },
+                { prop: 'level', label: '隐患级别'  },
+                { prop: 'accidentType', label: '可能造成的事故类型'},
+                { prop: 'location', label: '地点'  },
+                { prop: 'createTime', label: '发现时间'  },
+                { prop: 'createByName', label: '录入人' },
+                { prop: 'imgCount', label: '隐患图片'  },
+                { prop: 'suggest', label: '整改建议' },
+                { prop: 'status', label: '隐患状态'  },
+                { prop: 'responsible', label: '责任人' },
 
             ]
         }

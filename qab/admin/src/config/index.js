@@ -92,6 +92,7 @@ const form = {
  * @slot<String> 插槽
  */
 const table = {
+    selection: { type: 'selection', width: 70 },
     // 培训档案
     index: { type: 'index', label: '序号', width: 70 },
     archives: { prop: 'name', label: '员工姓名' },
@@ -127,7 +128,7 @@ const table = {
     educationTypes: { type: 'educationTypes', label: '教育类型', width: 300 },
     positionTypeName: { prop: 'positionTypeName', label: '作业人员', width: 100 },
     classHour: { prop: 'classHour', label: '课时', after: '分钟', width: 100 },
-    createTime: { prop: 'createTime', label: '上传时间', width: 140 },
+    createTime: { prop: 'createTime', label: '上传时间' },
     questionType: { prop: 'questionType', label: '题型', map: 'questionType', width: 60 },
     questionTitle: { prop: 'questionTitle', label: '题目' },
     options: { slot: 'options', label: '选项', width: 300 },

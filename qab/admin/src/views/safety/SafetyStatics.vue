@@ -44,7 +44,7 @@
                 dimension: ['date'],
 
             },
-           
+
             barData: {
                 columns: ['date', '企业自查', '订单服务', '员工上报'],
                 rows: []

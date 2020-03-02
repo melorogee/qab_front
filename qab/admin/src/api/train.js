@@ -25,6 +25,8 @@ export const trainexamList = data => { return instance({ url: `/examination/enro
 export const examApply  = data => { return instance({ url: `/examination/enroll/import`, method: 'POST', data }) }
 export const getPayUrl  = data => { return instance({ url: `/pay/create`, method: 'GET', params: data }) }
 export const checkPay  = data => { return instance({ url: `/order/examination/enroll/detail`, method: 'GET', params: data }) }
+export const template  = data => { return instance({ url: `/examination/enroll/template/download/list`, method: 'GET', params: data }) }
+
 
 
 

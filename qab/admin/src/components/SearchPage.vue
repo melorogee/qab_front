@@ -34,7 +34,7 @@
             </div>
         </div><!-- // search Form -->
         <div class="searchPage__table">
-            <el-table :data="tableData" :height="`100%`">
+            <el-table :data="tableData" :height="`100%`" @selection-change="handleSelectionChange">
                 <template v-for="(item, index) in tableProp">
                     <el-table-column v-if="item.prop" :key="index" :label="item.label" :width="item.width" :show-overflow-tooltip="true">
                         <template slot-scope="scope">
@@ -53,6 +53,7 @@
                             {{scope.row.provinceName}} {{scope.row.cityName}} {{scope.row.districtName}}
                         </template>
                     </el-table-column>
+                    <el-table-column v-if="item.type == 'selection'" type="selection" :key="index" :width="item.width"></el-table-column>
                     <el-table-column v-if="item.type == 'examinationPaperRulesPercentList'" :key="index" :label="item.label" :width="item.width">
                         <template slot-scope="scope">
                             <span v-for="(item, index) in scope.row.examinationPaperRulesPercentList" :key="index">{{index > 0 ? ' | ' : ''}}{{item.libraryName}}{{item.percent+'%'}}</span>
@@ -184,6 +185,9 @@ export default {
                     
                 }
             }
+        },
+        handleSelectionChange(val) {
+            this.$emit('multSelection',val)
         },
         async getData() { // 获取列表数据
             let para = {};

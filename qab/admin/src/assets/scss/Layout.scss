@@ -114,13 +114,13 @@ body { padding-bottom: 40px; min-height: 600px; }
     }
     .el-page-header__left--hide .el-page-header__left { display: none; }
     .el-page-header__content{
-        font-size: 22px;
+        font-size: 24px;
         color: #303133;
         font-weight: bold;
     }
     & > div:last-child {
         height: 100%;
-        padding: 15px;
+        padding: 30px;
         margin-top: 5px;
         background-color: #fff;
         border-radius: 2px;
@@ -344,5 +344,253 @@ body { padding-bottom: 40px; min-height: 600px; }
             color: #333;
             text-decoration: none;
         }
+    }
+}
+
+.payContent{
+    text-align: center;
+    .payTitle{
+        margin-top: -30px;
+        font-size: 16px;
+        color: #333;
+        .payTitleSub{
+            font-size: 12px;
+            color: #666;
+            margin: 10px 0 16px 0;
+        }
+    }
+    .payPrice{
+        text-align: center;
+    }
+    .qrccodeBox{
+        #qrccode-canvas{
+            width:240px !important;
+            height:240px !important;
+        }
+    }
+    .payPrice{
+        color:#409EFF;
+        font-size: 16px;
+    }
+    .payFooter{
+        margin-top: 20px;
+        span{
+            display: inline-block;
+            margin: 0 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    }
+}
+.applyParent{
+    overflow: hidden;
+    height: 100%;
+    .applyForm{
+        width: calc(100% - 350px);
+        float: left;
+        padding-right: 80px;
+        overflow: auto;
+        height: 100%;
+        .el-step__head.is-process {
+            color: #606266;
+            border-color: #606266;
+        }
+        .el-step__title.is-process {
+            border-color: #606266;
+            color: #606266;
+        }
+        .el-step__head.is-success{
+            color: #148efe;
+            border-color: #148efe;
+        }
+        .el-step__title.is-success{
+            color: #148efe;
+        }
+        .applyPrice{
+            font-size: 20px;
+            color: #777;
+            margin-bottom: 20px;
+            span{
+                font-size: 30px;
+                color: #f5a623;
+            }
+        }
+        .applyDetail{
+            padding:14px 24px;
+            background: #f2f4f7;
+            border: 1px solid #e6e7e9;
+            margin-bottom: 30px;
+            .title{
+                font-size: 16px;
+                color: #4a4d53;
+                margin-bottom: 10px; 
+            }
+            div{
+                font-size: 14px;
+                color: #969696;
+                margin-bottom: 6px;
+                span{
+                    color: #4a4d53;
+                }
+            }
+        }
+        .applyBtn{
+            button{
+                width: 100px;
+                font-size: 14px;
+                margin-right: 10px;
+            }
+            .el-button--warning{
+                color: #FFF;
+                background-color: #f5a623;
+                border-color: #f5a623;
+            }
+        }
+        
+    }
+    .applyInfo{
+        width: 340px;
+        float: right;
+        border-left: 1px dashed #ddd;
+        padding-left: 30px;
+        .infoTitle{
+            font-size: 20px;
+            padding: 10px 0 20px 10px;
+            border-bottom: 1px solid #f5f5f5;
+            color: #303133;
+            font-weight: bold;
+        }
+        .infoDetail{
+            padding:10px;
+            .title{
+                color: #999; 
+                font-size: 14px;
+                border-bottom: 1px solid #f5f5f5;
+                line-height: 26px;
+            }
+            .content{
+                padding-top: 10px;
+                margin-bottom: 40px;
+                div{
+                    margin-bottom: 4px;
+                    color: #999; 
+                    font-size: 14px;
+                }
+            }
+            .infoDownload{
+                overflow: hidden;
+                margin-top: 20px;
+                i{
+                    float: left;
+                    color: #50e3c2;
+                    font-size: 46px;
+                    margin-right: 10px;
+                }
+                span{
+                    font-size: 18px;
+                    color: #333;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .planAddForm{
+        
+    }
+}
+
+.LineFeedScroll{
+    height: 100%;
+    overflow: auto;
+}
+
+.customForm{
+    float: none;
+    width: 100%;
+    padding: 10px 0;
+    .el-form{
+        border-top: none !important;
+        border-bottom: none !important;
+        padding-right: 14%;
+        .el-form-item__label{
+            width: 200px !important;
+        }
+        .el-form-item__content{
+            margin-left: 200px !important;
+            .fileParent{
+                position: relative;
+                span{
+                    position: absolute;
+                    right: 10px;
+                    top: 6px;
+                    border-left: 1px solid #ddd;
+                    line-height: 20px;
+                    padding-left: 10px;
+                    z-index: 0;
+                }
+                .fileInput{
+                    position: absolute;
+                    width: 70px;
+                    right: 0;
+                    top: 0px;
+                    z-index: 2;
+                    height: 30px;
+                    cursor: pointer;
+                    overflow: hidden;
+                    input{
+                        height: 28px;
+                        cursor: pointer;
+                        opacity: 0;
+                        float: right;
+                    }
+                }
+            }
+            .el-input.is-disabled .el-input__inner{
+                background-color: #fff;
+                color: #606266;
+                border: 1px solid #DCDFE6;
+                cursor: default;
+            }
+            .el-select{
+                width: 100%;
+            }
+            .el-date-editor{
+                width: 100%;
+            }
+        }
+    }
+    .LineFeedForm{
+        .el-form{
+            padding-right: 10px !important;
+            .el-form-item{
+                width:65%;
+                float: left;
+                &:last-child{
+                    width: 35%;
+                    padding-left:20px;
+                }
+                .el-form-item__label{
+                    width: 100% !important;
+                    text-align: left;
+                }
+                .el-form-item__content{
+                    margin-left: 0 !important;
+                }
+            }
+        }
+        .w-e-text-container{
+            z-index: 0 !important;
+        }
+    }
+    .planBody{
+        padding: 5px;
+        color: #333;
+        font-size: 16px;
+    }
+}
+.wrapText{
+    span{
+        cursor: pointer;
+        color: #409EFF;
     }
 }

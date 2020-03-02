@@ -12,15 +12,15 @@ export default {
     data() {
         return {
             table: [
-                {  label: '序号' , width: 130, type:'index' },
-                { prop: 'description', label: '隐患', width: 130  },
-                { prop: 'level', label: '隐患级别', width: 130 },
-                { prop: 'suggest', label: '整改措施', width: 130 },
-                { slot: 'location', label: '地点' , width: 130 },
-                { slot: 'time', label: '发现时间' , width: 130 },
-                { slot: 'createByName', label: '录入人' , width: 130 },
-                { slot: 'imgCount', label: '隐患图片' , width: 130 },
-                { slot: 'responsible', label: '责任人' , width: 130 },
+                {  label: '序号' , type:'index' },
+                { prop: 'description', label: '隐患'},
+                { prop: 'level', label: '隐患级别' },
+                { prop: 'suggest', label: '整改措施' },
+                { prop: 'location', label: '地点' },
+                { prop: 'time', label: '发现时间'  },
+                { prop: 'createByName', label: '录入人'},
+                { prop: 'imgCount', label: '隐患图片' },
+                { prop: 'responsible', label: '责任人'  },
             ]
         }
     },

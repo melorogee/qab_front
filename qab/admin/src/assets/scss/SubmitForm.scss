@@ -1,7 +1,7 @@
 .submitForm {
     width: 100%; height: 100%;
     @at-root #{&}__title { padding: 0 5px; font-size: 18px; line-height: 24px; }
-    @at-root #{&}__msg { padding: 0 5px; color: #999; font-size: 12px; line-height: 22px; }
+    @at-root #{&}__msg { padding: 0 5px; color: #999; font-size: 16px; line-height: 22px; margin-top: 5px; }
     .el-form {
         overflow-y: auto;
         height: calc(100% - 98px);

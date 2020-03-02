@@ -20,60 +20,52 @@ export default {
         { path: '/Train/Plan', name: 'Plan', component: () => import('@/views/train/Plan'), meta: { title: '培训计划' } },
         { path: '/Train/PlanAdd', name: 'PlanAdd', component: () => import('@/views/train/PlanAdd'),
             meta: {
-                title: '新增培训计划',  isHide: true,
+                title: '发布计划', parentTitle: '培训计划', isBack: true, backName: 'Plan', isHide: true,
             }
          },
         { path: '/Train/PlanView', name: 'PlanView', component: () => import('@/views/train/PlanView'),
             meta: {
-                title: '培训计划详情',  isHide: true,
+                title: '计划详情', parentTitle: '培训计划', isBack: true, backName: 'Plan', isHide: true,
             }
         },
         { path: '/Train/ExamList', name: 'ExamList', component: () => import('@/views/train/ExamList'), meta: { title: '培训考试报名' } },
-        { path: '/Train/ExamApply', name: 'ExamApply', component: () => import('@/views/train/ExamApply'),
+        {   
+            path: '/Train/ExamApply', name: 'ExamApply', component: () => import('@/views/train/ExamApply'),
             meta: {
-                title: '考试报名',  isHide: true,
+                title: '考试报名', parentTitle: '培训考试报名', isBack: true, backName: 'ExamList', isHide: true,
             }
         },
+        { path: '/Train/Archives', name: 'Archives', component: () => import('@/views/train/Archives'), meta: { title: '培训档案' } },
+        // { path: '/WebSite/Activity', name: 'Activity', component: () => import('@/views/website/Activity'), meta: { title: '自选课资料' } },
         // {
-        //     path: '/Train/PlanAdd', name: 'PlanAdd', component: () => import('@/components/SubmitForm'),
+        //     path: '/WebSite/Activity/CaseAdd', name: 'CaseAdd', component: () => import('@/components/SubmitForm'),
         //     meta: {
-        //         title: '新增培训计划', msg: 'form', isBack: true, backName: 'Plan', isHide: true,
-        //         form: ['planTitle', 'planType', 'planContent'], isRequired: 'all', api: 'employeeAdd'
+        //         title: '添加', parentTitle: '自选课资料', msg: 'form', isBack: true, backName: 'Activity', isHide: true,
+        //         form: ['title', 'classHour', 'icon', 'introduce', 'educationType', 'content'], isRequired: 'all', api: 'caseSave'
         //     }
         // },
-
-
-        { path: '/Train/Archives', name: 'Archives', component: () => import('@/views/train/Archives'), meta: { title: '培训档案' } },
-        { path: '/WebSite/Activity', name: 'Activity', component: () => import('@/views/website/Activity'), meta: { title: '自选课资料' } },
-        {
-            path: '/WebSite/Activity/CaseAdd', name: 'CaseAdd', component: () => import('@/components/SubmitForm'),
-            meta: {
-                title: '添加', parentTitle: '自选课资料', msg: 'form', isBack: true, backName: 'Activity', isHide: true,
-                form: ['title', 'classHour', 'icon', 'introduce', 'educationType', 'content'], isRequired: 'all', api: 'caseSave'
-            }
-        },
-        {
-            path: '/WebSite/Activity/CaseEdit', name: 'CaseEdit', component: () => import('@/components/SubmitForm'),
-            meta: {
-                title: '编辑', parentTitle: '自选课资料', msg: 'form', isBack: true, backName: 'Activity', isHide: true,
-                form: ['title', 'classHour', 'icon', 'introduce', 'educationType', 'content'], isRequired: 'all', api: 'caseUpdate'
-            }
-        },
-        { path: '/Train/Materials', name: 'Materials', component: () => import('@/views/train/Materials'), meta: { title: '必选课资料' } },
-        {
-            path: '/Train/Materials/Add', name: 'MaterialsAdd', component: () => import('@/components/SubmitForm'),
-            meta: {
-                title: '添加', parentTitle: '必选课资料', msg: 'form', isBack: true, backName: 'Materials', isHide: true,
-                form: ['name', 'courseTypeId', 'educationType2.0', 'classHour', 'content'], isRequired: 'all', api: 'materialsSave'
-            }
-        },
-        {
-            path: '/Train/Materials/Import', name: 'MaterialsImport', component: () => import('@/components/SubmitForm'),
-            meta: {
-                title: '批量导入', parentTitle: '必选课资料', msg: 'import', isBack: true, backName: 'Materials', isHide: true,
-                form: ['courseTypeId', 'educationType2.0', 'classHour', 'importList'], isRequired: 'all', api: 'materialsImport'
-            }
-        },
+        // {
+        //     path: '/WebSite/Activity/CaseEdit', name: 'CaseEdit', component: () => import('@/components/SubmitForm'),
+        //     meta: {
+        //         title: '编辑', parentTitle: '自选课资料', msg: 'form', isBack: true, backName: 'Activity', isHide: true,
+        //         form: ['title', 'classHour', 'icon', 'introduce', 'educationType', 'content'], isRequired: 'all', api: 'caseUpdate'
+        //     }
+        // },
+        // { path: '/Train/Materials', name: 'Materials', component: () => import('@/views/train/Materials'), meta: { title: '必选课资料' } },
+        // {
+        //     path: '/Train/Materials/Add', name: 'MaterialsAdd', component: () => import('@/components/SubmitForm'),
+        //     meta: {
+        //         title: '添加', parentTitle: '必选课资料', msg: 'form', isBack: true, backName: 'Materials', isHide: true,
+        //         form: ['name', 'courseTypeId', 'educationType2.0', 'classHour', 'content'], isRequired: 'all', api: 'materialsSave'
+        //     }
+        // },
+        // {
+        //     path: '/Train/Materials/Import', name: 'MaterialsImport', component: () => import('@/components/SubmitForm'),
+        //     meta: {
+        //         title: '批量导入', parentTitle: '必选课资料', msg: 'import', isBack: true, backName: 'Materials', isHide: true,
+        //         form: ['courseTypeId', 'educationType2.0', 'classHour', 'importList'], isRequired: 'all', api: 'materialsImport'
+        //     }
+        // },
         // { path: '/Train/Statutes', name: 'Statutes', component: () => import('@/views/train/Statutes'), meta: { title: '法规条文' } },
         // {
         //     path: '/Train/Statutes/Add', name: 'StatutesAdd', component: () => import('@/components/SubmitForm'),
