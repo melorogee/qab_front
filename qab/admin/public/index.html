@@ -83,9 +83,9 @@
             $.post('http://www.cxzdjs.cn/manage/oss/upload/file/merge', { guid: GUID, fileName: file.name }, function (response) {
                 if(response.code == 200){
                   console.log(fileName)
-                  that.onSuccess(response.data, fileName)
+                  that.onSuccess(response.data, file.name)
                     console.log("uploadSuccess: "+file.id+"传输成功: "+response.data.url);
-                    
+
                 }
             });
         });

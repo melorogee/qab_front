@@ -52,7 +52,9 @@ const form = {
     educationType1_dis: { type: 'select', label: '教育类型', prop: 'educationType', disabled: true, list: 'positionTypeList' },
     educationTypes: { type: 'select', label: '教育类型', prop: 'educationTypes', multiple: true, list: 'positionTypeList' },
     'educationType2.0': { type: 'select', label: '教育类型', prop: 'educationType', list: 'educationType20' },
-    courseTypeId: { type: 'select', label: '选择课程', prop: 'courseTypeId', dataKey: { value: 'id', label: 'name' }, api: 'courseList' },
+    'educationType3.0': { type: 'selectS', label: '教育类型', prop: 'educationTypes',multiple:true, list: 'educationType20', tempData: 'educationType1'},
+
+    courseTypeId: { type: 'select', label: '选择课程', prop: 'courseTypeId',  api: 'courseList' },
     positionTypeId: { type: 'select', label: '岗位类型', prop: 'positionTypeId', api: 'industryPositionList', apiPara: ['industryId'] },
     name: { type: 'input', label: '资料名称', prop: 'name', row: 2},
     classHour: { type: 'input', label: '课时设置', prop: 'classHour',  append: '分钟/个', validator: 'Number', max: 3 },

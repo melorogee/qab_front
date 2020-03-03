@@ -10,6 +10,18 @@
                     :label="(item.valuePrefix ? item.valuePrefix : '') + option[item.dataKey ? item.dataKey.label : 'name'] + (item.valueSuffix ? item.valueSuffix : '')"
                     :value="option[item.dataKey ? item.dataKey.value : 'idx']"></el-option>
             </el-select>
+
+            <el-select v-if="item.type == 'selectS' && item.list"  v-model="queryForm[item.tempData]" :disabled="item.list.length == 0||item.disabled" :multiple="item.multiple" :collapse-tags="item.multiple" clearable :maxlength="60" :placeholder="`请选择${item.label}`" @change="selectChanges(item)">
+                <el-option v-for="(option, index) in item.list"
+                           :key="index"
+                           :label="(item.valuePrefix ? item.valuePrefix : '') + option[item.dataKey ? item.dataKey.label : 'name'] + (item.valueSuffix ? item.valueSuffix : '')"
+                           :value="option[item.dataKey ? item.dataKey.value : 'idx']"></el-option>
+            </el-select>
+
+
+
+
+
             <template v-if="item.type == 'examinationPaperRulesPercentList'">
                 <div class="submitForm__selectAndInput"
                     v-for="(listItem,index) in queryForm.examinationPaperRulesPercentList" :key="index">
@@ -146,6 +158,7 @@ export default {
                 'upload': '请上传',
                 'inputUpload': '请上传',
                 'file': '请上传',
+                'selectS': '请选择',
             },
             options: [],
             required: [],
@@ -218,6 +231,7 @@ export default {
                         {required: true, message: `${this.map[item.type]}${item.label}`, trigger: 'change'}
                     ])
                 }
+                console.log(this.rules)
             }
             if(this.setValue == null){
                 // this.initForm();
@@ -238,11 +252,13 @@ export default {
             
         },
         pushOptions(target, props) {
+
             let obj = {};
-            for(let key of props){
-                obj[key] = ''
-            }
-            target.push(obj)
+                for (let key of props) {
+                    obj[key] = ''
+                }
+                target.push(obj)
+
         },
         removeOptions(target, index) {
             target.splice(index, 1);
@@ -318,6 +334,12 @@ export default {
             this.queryForm[prop] = file.target.files[0];
             this.fileName = file.target.files[0].name
         },
+
+        selectChanges(item){
+            this.targetList(item);
+            var temp = this.queryForm[item.tempData].join(',')
+            this.queryForm[item.prop] = temp;
+        }
     }
 }
 </script>

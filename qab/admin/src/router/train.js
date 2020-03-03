@@ -63,7 +63,7 @@ export default {
             path: '/Train/Materials/Import', name: 'MaterialsImport', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '批量导入', parentTitle: '必选课资料', msg: 'import', isBack: true, backName: 'Materials', isHide: true,
-                form: ['courseTypeId', 'educationType2.0', 'classHour', 'importList'], isRequired: 'all', api: 'materialsImport'
+                form: ['courseTypeId', 'educationType3.0', 'classHour', 'importList'], isRequired: 'all', api: 'materialsImport'
             }
         },
         // { path: '/Train/Statutes', name: 'Statutes', component: () => import('@/views/train/Statutes'), meta: { title: '法规条文' } },
