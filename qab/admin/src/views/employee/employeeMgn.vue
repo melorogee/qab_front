@@ -19,14 +19,16 @@ export default {
                 }
             ],
             table: [
-                { label: '序号' , width: 170 ,
+                { label: '序号' ,
                     type:"index",
                 },
-                { prop: 'name', label: '员工姓名', width: 200  },
-                { prop: 'departmentName', label: '部门', width: 200 },
-                { prop: 'positionName', label: '岗位/职位', width: 200 },
-                { prop: 'hiredate', label: '入场时间' , width: 200 },
-                { slot: 'operat', label: '操作', width: 130 }
+                { prop: 'name', label: '员工姓名'},
+                { prop: 'departmentName', label: '部门'},
+                { prop: 'positionName', label: '岗位/职位' },
+                { prop: 'hiredate', label: '入职时间'  },
+                { prop: 'phone', label: '手机号码' },
+
+                { slot: 'operat', label: '操作' }
             ]
         }
     },

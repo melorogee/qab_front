@@ -23,6 +23,17 @@
                     </template>
                 </SearchPage>
             </el-tab-pane>
+            <el-tab-pane label="机构">
+                <SearchPage ref="orgUser"  :table="orgTable" :setValue="{status: 2}" :api="'orgList'">
+                    <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="orgAdd">新增</el-button>
+                    <template slot="orgOperat" slot-scope="scope">
+                        <el-button type="text" @click="orgDetail(scope)">详情</el-button>
+                        <!-- <el-button type="text" @click="expertUserReview(scope.row, 2)">通过</el-button>
+                        <el-button type="text" @click="expertUserReview(scope.row, 1)">拒绝</el-button> -->
+                        <el-button type="text" @click="orgDelete(scope)">删除</el-button>
+                    </template>
+                </SearchPage>
+            </el-tab-pane>
             <el-tab-pane label="监管部门">
                 <SearchPage ref="superviseUser" :searchForm="superviseUserSearchForm" :table="superviseUserTable" :setValue="{status: 2}" :api="'superviseUserList'">
                     <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="superviseUserAdd">新增</el-button>
@@ -73,6 +84,18 @@
         </el-dialog>
 
 
+        <el-dialog title="查看详情" :visible.sync="orgUserDialog" width="60%">
+            <table class="defaultTable">
+                <tr><th>机构名称</th><td>{{orgUserRow.name}}</td><th>联系人</th><td>{{orgUserRow.contact}}</td></tr>
+                <tr><th>联系方式</th><td>{{orgUserRow.phone}}</td><th>机构类别</th><td>{{orgUserRow.category}}</td></tr>
+                <tr><th>业务范围</th><td>{{orgUserRow.businessScope}}</td><th>机构地址</th><td>{{orgUserRow.fullAddr}}</td></tr>
+            </table>
+            <!-- <span slot="footer" class="dialog-footer">
+                <el-button type="danger" @click="expertUserReview(expertUserRow, 1)">拒绝通过</el-button>
+                <el-button type="success" @click="expertUserReview(expertUserRow, 2)">审核通过</el-button>
+            </span> -->
+        </el-dialog>
+
     </div>
 </template>
 <script>
@@ -89,11 +112,25 @@ export default {
             enterpriseUserDialog: false,
             enterpriseUserRow: {},
             expertUserDialog: false,
+            orgUserDialog: false,
+
             expertUserRow: {},
+            orgUserRow: {},
             imgDialog: false,
             img: '',
             expertUserDialogToReview: false,
-            expertUserDialogToReviewValue: {}
+            expertUserDialogToReviewValue: {},
+            orgTable: [
+                { prop: 'name', label: '机构名称' },
+                { prop: 'contact', label: '联系人' },
+                { prop: 'phone', label: '联系方式' },
+                { prop: 'category', label: '机构类别' },
+                { prop: 'businessScope', label: '业务范围'},
+                { prop: 'fullAddr', label: '机构地址' },
+                { prop: 'createTime', label: '注册提交时间' },
+
+                { slot: 'orgOperat', label: '操作', width: 130 }
+            ],
         }
     },
     created() {
@@ -106,6 +143,9 @@ export default {
         },
         expertUserAdd() { // 行业新增
             this.$router.push({name: 'expertUserCAdd'});
+        },
+        orgAdd() { // 行业新增
+            this.$router.push({name: 'orgAdd'});
         },
         superviseUserAdd() { // 行业新增
             this.$router.push({name: 'superviseUserCAdd'});
@@ -144,6 +184,16 @@ export default {
                 this.expertUserDialog = true;
             });
         },
+
+        orgDetail(scope) {
+            let para = { idx: scope.row.idx };
+            this.$api.orgDetail(para).then(res => {
+                this.orgUserRow = res;
+                this.orgUserDialog = true;
+            });
+        },
+
+
         enterpriseUserReview(row, status) {
             this.$confirm(status == 1 ? '是否确认拒绝用户的注册申请?' : '是否确认通过用户的注册申请', '提示', {
                 confirmButtonText: '确定',
@@ -205,6 +255,13 @@ export default {
                 this.$message.success('删除成功');
                 this.$refs.superviseUser.getData();
             })     
+        },
+        orgDelete(scope) {
+            let para = { idxs: scope.row.idx };
+            this.$api.orgDelete(para).then(() => {
+                this.$message.success('删除成功');
+                this.$refs.orgUser.getData();
+            })
         },
         showImg(img) {
             this.img = img;

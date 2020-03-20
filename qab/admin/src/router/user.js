@@ -63,5 +63,14 @@ export default {
                 form: ['superviseUser', 'phone', 'districtCode', 'department', 'fullAddr'], isRequired: 'all', api: 'superviseUserEdit'
             }
         },
+        {
+            path: '/User/Has/orgAdd', name: 'orgAdd', component: () => import('@/components/SubmitForm'),
+            meta: {
+                title: '新增', parentTitle: '机构', msg: 'form', isBack: true, backName: 'Has', isHide: true,
+                form: ['orgName', 'orgContact', 'orgContactNum', 'orgType', 'orgBusiness', 'orgAddress','districtCode'], isRequired: 'all', api: 'orgAdd'
+            }
+        },
+
+
     ]
 }

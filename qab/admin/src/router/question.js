@@ -38,14 +38,14 @@ export default {
             path: '/Question/Setting/Add', name: 'QuestionSettingAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '添加', parentTitle: '组卷规则配置', msg: 'form', isBack: true, backName: 'QuestionSetting', isHide: true,
-                form: ['industryId', 'positionTypeId', 'educationType2.0', 'examinationPaperRulesPercentList'], isRequired: 'all', api: 'settingSave'
+                form: ['industryId', 'positionTypeId', 'educationType4.0', 'examinationPaperRulesPercentList'], isRequired: 'all', api: 'settingSave'
             }
         },
         {
             path: '/Question/Setting/Edit', name: 'QuestionSettingEdit', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '编辑', parentTitle: '组卷规则配置', msg: 'form', isBack: true, backName: 'QuestionSetting', isHide: true,
-                form: ['industryId', 'positionTypeId', 'educationType2.0', 'examinationPaperRulesPercentList',], isRequired: 'all', api: 'settingUpdate'
+                form: ['industryId', 'positionTypeId', 'educationType4.0', 'examinationPaperRulesPercentList',], isRequired: 'all', api: 'settingUpdate'
             }
         }
     ]

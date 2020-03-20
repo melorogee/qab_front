@@ -20,3 +20,10 @@ export const superviseUserReview = data => { return instance({ url: `/superviseU
 export const superviseUserDelete = data => { return instance({ url: `/superviseUser/delete`, method: 'POST', data }) }
 
 export const userSpecialList = data => { return instance({ url: `/expert/type/expert/special/list`, method: 'GET', params: data }) }
+export const orgList = data => { return instance({ url: `/organUser/list`, method: 'GET', params: data }) }
+export const orgAdd = data => { return instance({ url: `/organUser/save`, method: 'POST', data }) }
+export const orgDelete = data => { return instance({ url: `/organUser/delete`, method: 'GET', params: data }) }
+export const orgDetail = data => { return instance({ url: `/organUser/detail`, method: 'GET', params: data }) }
+
+
+

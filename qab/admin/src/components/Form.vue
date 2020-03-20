@@ -84,6 +84,14 @@
                     </template>
                 </el-input>
             </div>
+            <div class="inputUpload" v-if="item.type == 'inputUploadPic'">
+                <el-input v-model.trim="queryForm[item.prop]" :readonly="true" :placeholder="`请上传${item.label}`">
+                    <template slot="append">
+                        <span>上传</span>
+                        <input type="file" name="file" id="file" @change="(file) => { inputUploadPic(file, item.prop) }">
+                    </template>
+                </el-input>
+            </div>
             <div class="inputUpload" v-if="item.type == 'file'">
                 <el-input v-model.trim="fileName" :readonly="true" :placeholder="`请上传${item.label}`">
                     <template slot="append">
@@ -231,7 +239,7 @@ export default {
                         {required: true, message: `${this.map[item.type]}${item.label}`, trigger: 'change'}
                     ])
                 }
-                console.log(this.rules)
+                // console.log(this.rules)
             }
             if(this.setValue == null){
                 // this.initForm();
@@ -329,6 +337,19 @@ export default {
             this.$api.upload(dataForm).then(res => {
                  this.queryForm[prop] = res.url;
             })
+        },
+        inputUploadPic(file, prop){
+            if(file.target.files[0].name.indexOf('.png')>0 || file.target.files[0].name.indexOf('.jpg')>0
+                || file.target.files[0].name.indexOf('.gif')>0 || file.target.files[0].name.indexOf('.jepg')>0){
+                let dataForm = new FormData();
+                dataForm.append('file', file.target.files[0])
+                this.$api.upload(dataForm).then(res => {
+                    this.queryForm[prop] = res.url;
+                })
+            }else{
+                this.$message.error("请上传图片格式")
+            }
+
         },
         fileUpload(file, prop){
             this.queryForm[prop] = file.target.files[0];

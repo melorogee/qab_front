@@ -7,6 +7,8 @@ export const caseSave = data => { return instance({ url: `/course/optional/save`
 export const caseUpdate = data => { return instance({ url: `/course/optional/update`, method: 'POST', data }) }
 export const caseDelete = data => { return instance({ url: `/course/optional/delete`, method: 'GET', params: data }) }
 export const caseDetail = data => { return instance({ url: `/course/optional/detail`, method: 'GET', params: data }) }
+export const activityImport = data => { return instance({ url: `/course/optional/import/save`, method: 'POST', data }) }
+
 
 
 export const templateList = data => { return instance({ url: `/examination/enroll/template/list`, method: 'GET', params: data }) }

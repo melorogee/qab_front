@@ -20,7 +20,7 @@
         </el-dialog>
 
         <el-dialog title="更新" :visible.sync="expertImportDialog2" width="30%">
-            <Form v-if="expertImportDialog2" ref="aa" :form="['industryId_dis', 'educationType1_dis', 'file']" :setValue="expertValue" :isRequired="'all'" :labelWidth="'100px'" />
+            <Form v-if="expertImportDialog2" ref="aa" :form="['industryId_dis', 'file']" :setValue="expertValue" :isRequired="'all'" :labelWidth="'100px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="expertImportDialog2 = false">取消</el-button>
                 <el-button type="primary" @click="expertImportSubmit2">保存</el-button>

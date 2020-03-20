@@ -1,7 +1,10 @@
 <template>
     <div>
         <SearchPage ref="unCaseSearchPage" :searchForm="caseSearchForm" :table="uncaseTable" :api="'unCaseList'">
+
             <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="caseAddData">添加</el-button>
+            <el-button type="success" slot="mainButtons--left" icon="el-icon-upload" @click="importData">批量导入</el-button>
+
             <template slot="operat" slot-scope="scope">
                 <i class="el-icon-edit" @click="caseEditData(scope)"></i>
                 <i class="el-icon-delete" @click="caseDelData(scope)"></i>
@@ -34,8 +37,10 @@ export default {
     data() {
         return {
             caseSearchForm: [],
-            uncaseTable: ['title', 'educationType', 'createTime', 'operat8'],
-            caseTable: ['title', 'industryName', 'createTime', 'operat']
+            uncaseTable: ['type', 'materials', 'educationType', 'classHour', 'createTime', 'operat8'],
+
+            // uncaseTable: ['name', 'educationType', 'createTime', 'operat8'],
+            caseTable: ['name', 'industryName', 'createTime', 'operat']
         }
     },
     created() { },
@@ -49,7 +54,7 @@ export default {
                 let setValue = {
                     idx: res.idx,
                     industryId: res.industryId,
-                    title: res.title,
+                    title: res.name,
                     icon: res.icon,
                     introduce: res.introduce,
                     educationType: res.educationType,
@@ -77,7 +82,10 @@ export default {
                 this.$message.success('删除成功');
                 this.$refs.caseSearchPage.getData();
             })
-        }
+        },
+        importData() {
+            this.$router.push({name: 'ActivityImport'});
+        },
     }
 }
 </script>

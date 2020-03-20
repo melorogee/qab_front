@@ -36,19 +36,28 @@ export default {
             }
         },
         { path: '/Train/Archives', name: 'Archives', component: () => import('@/views/train/Archives'), meta: { title: '培训档案' } },
-        { path: '/WebSite/Activity', name: 'Activity', component: () => import('@/views/website/Activity'), meta: { title: '自选课资料' } },
+        { path: '/Train/Activity', name: 'Activity', component: () => import('@/views/website/Activity'), meta: { title: '自选课资料' } },
         {
             path: '/WebSite/Activity/CaseAdd', name: 'CaseAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '添加', parentTitle: '自选课资料', msg: 'form', isBack: true, backName: 'Activity', isHide: true,
-                form: ['title', 'classHour', 'icon', 'introduce', 'educationType', 'content'], isRequired: 'all', api: 'caseSave'
+                form: ['name', 'industryId', 'educationType4.0', 'classHour', 'content'], isRequired: 'all', api: 'caseSave'
+
+                // form: ['title', 'classHour', 'icon', 'introduce', 'educationType', 'content'], isRequired: 'all', api: 'caseSave'
             }
         },
         {
             path: '/WebSite/Activity/CaseEdit', name: 'CaseEdit', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '编辑', parentTitle: '自选课资料', msg: 'form', isBack: true, backName: 'Activity', isHide: true,
-                form: ['title', 'classHour', 'icon', 'introduce', 'educationType', 'content'], isRequired: 'all', api: 'caseUpdate'
+                form: ['name', 'industryId', 'educationType4.0', 'classHour', 'content'], isRequired: 'all', api: 'caseUpdate'
+            }
+        },
+        {
+            path: '/Train/Activity/Import', name: 'ActivityImport', component: () => import('@/components/SubmitForm'),
+            meta: {
+                title: '批量导入', parentTitle: '自选课资料', msg: 'import', isBack: true, backName: 'Activity', isHide: true,
+                form: ['industryId', 'educationType4.0', 'classHour', 'importList'], isRequired: 'all', api: 'activityImport'
             }
         },
         { path: '/Train/Materials', name: 'Materials', component: () => import('@/views/train/Materials'), meta: { title: '必选课资料' } },

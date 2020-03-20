@@ -41,7 +41,7 @@ const form = {
     userName:  { type: 'input', label: '用户名', prop: 'userName' },
     loginName:  { type: 'input', label: '手机号码', prop: 'loginName' },
     title:  { type: 'input', label: '自选课标题', prop: 'title', row: 2 },
-    icon:  { type: 'inputUpload', label: '自选课图片', prop: 'icon' },
+    icon:  { type: 'inputUploadPic', label: '自选课图片', prop: 'icon' },
     introduce:  { type: 'input', label: '自选课简介', prop: 'introduce' },
     menuIdList: { type: 'menuIdList', label: '菜单权限配置', prop: 'menuIdList', multiple: true, row: 3 },
     password1:  { type: 'input', inputType: 'password', label: '设置密码', prop: 'password' },
@@ -53,7 +53,7 @@ const form = {
     educationTypes: { type: 'select', label: '教育类型', prop: 'educationTypes', multiple: true, list: 'positionTypeList' },
     'educationType2.0': { type: 'select', label: '教育类型', prop: 'educationType', list: 'educationType20' },
     'educationType3.0': { type: 'selectS', label: '教育类型', prop: 'educationTypes',multiple:true, list: 'educationType20', tempData: 'educationType1'},
-
+    'educationType4.0': { type: 'select', label: '教育类型', prop: 'educationType', list: 'educationType40' },
     courseTypeId: { type: 'select', label: '选择课程', prop: 'courseTypeId',  api: 'courseList' },
     positionTypeId: { type: 'select', label: '岗位类型', prop: 'positionTypeId', api: 'industryPositionList', apiPara: ['industryId'] },
     name: { type: 'input', label: '资料名称', prop: 'name', row: 2},
@@ -75,13 +75,19 @@ const form = {
     file: { type: 'file', label: '导入文件', prop: 'file', action: 'https://jsonplaceholder.typicode.com/posts/', row: 3 },
     empolyeeName: { type: 'input', label: '员工姓名', prop: 'name', row: 1 },
     dept: { type: 'input', label: '部门', prop: 'departmentName', row: 1 },
-    hiredate: { type: 'date', label: '入场时间', prop: 'hiredate', row: 1 },
+    hiredate: { type: 'date', label: '入职时间', prop: 'hiredate', row: 1 },
     positionEmploy: { type: 'select', label: '职位或岗位', prop: 'positionTypeId', row: 1,api: 'questionPositionList' },
     employPhone: { type: 'input', label: '电话', prop: 'phone', row: 1},
     planTitle:{ type: 'input', label: '标题', prop: 'title', row: 1},
     planType:{ type: 'select', label: '类型', prop: 'type', row: 1,api:'planTypeMap'},
     planContent:{ type: 'input', label: '内容', prop: 'content', row: 3},
-
+    employeePhone:{ type: 'input', label: '手机号码', prop: 'phone', row: 1 },
+    orgName:{ type: 'input', label: '机构名称', prop: 'name', row: 1 },
+    orgContact:{ type: 'input', label: '联系人', prop: 'contact', row: 1 },
+    orgContactNum:{ type: 'input', label: '联系方式', prop: 'phone', row: 1 },
+    orgType:{ type: 'input', label: '机构类别', prop: 'category', row: 1 },
+    orgBusiness:{ type: 'input', label: '业务范围', prop: 'businessScope', row: 1 },
+    orgAddress:{ type: 'input', label: '机构地址', prop: 'fullAddr', row: 1 },
 
 };
 /**

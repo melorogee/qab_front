@@ -23,7 +23,7 @@ export default {
             meta: {
                 title: '新增', parentTitle: '员工', msg: 'form', isBack: true, backName: 'employeeMgn', isHide: true,
                 form: ['empolyeeName', 'dept', 'positionEmploy',
-                    'hiredate'], isRequired: 'all', api: 'employeeAdd'
+                    'hiredate','employeePhone'], isRequired: 'all', api: 'employeeAdd'
             }
         },
     ]

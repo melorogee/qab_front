@@ -25,7 +25,7 @@
                 <el-menu :default-active="$route.path"  :unique-opened="true" :collapse="!type" router>
                     <!-- <el-menu-item index="/Home"><i class="el-icon-menu"></i><router-link to="/Home">首页</router-link></el-menu-item> -->
                     <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path" v-show="(right!=100 && ( main.path!='/Safety' && main.path!='/Employee'))
-                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee'))">
+                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' ))">
 
                         <template slot="title"   >
                             <i :class="`iconfont ${main.meta.icon}`"></i>
@@ -35,11 +35,11 @@
                             <el-menu-item v-for="(sub, subIndex) in main.children" v-show="!sub.meta.isHide
                             && (
                                     (
-                                        right!=100 && (main.path =='/Train' && (sub.path=='/WebSite/Activity' || sub.path=='/Train/Materials')) || main.path != '/Train'
+                                        right!=100 && (main.path =='/Train' && (sub.path=='/Train/Activity' || sub.path=='/Train/Materials')) || main.path != '/Train'
                                     )
                                     ||
                                     (
-                                        right == 100 && (main.path =='/Train' && (sub.path=='/Train/Plan' || sub.path=='/Train/ExamList' || sub.path=='/Train/Archives') || main.path != '/Train' )
+                                        right == 100 && (main.path =='/Train' && (sub.path=='/Train/Plan' || sub.path=='/Train/ExamList' || sub.path=='/Train/Archives' || sub.path=='/Train/Activity' ) || main.path != '/Train' )
                                     )
 
                                )
@@ -47,6 +47,9 @@
                                 (
                                     (right == 100 && (main.path =='/System' && (sub.path=='/System/AccountSetting') || main.path != '/System' )) || right != 100
                                 )
+
+
+
                             "
                                           :key="subIndex" :index="sub.path" :class="{'is-active': $route.path.indexOf(sub.path) > -1}">
                                 <router-link :to="sub.path">{{sub.meta.title}}</router-link>
