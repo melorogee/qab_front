@@ -9,5 +9,7 @@ import * as order from './order'
 import * as finance from './finance'
 import * as employee from './employee'
 import * as safety from './safety'
+import * as insure from './insure'
+import * as insurebx from './insurebx'
 
-export default Object.assign(common, users, train, basic, question, system, website, order, finance,employee,safety)
+export default Object.assign(common, users, train, basic, question, system, website, order, finance,employee,safety,insure,insurebx)

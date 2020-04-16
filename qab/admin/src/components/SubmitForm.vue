@@ -29,29 +29,62 @@ export default {
             this.$refs.form.$refs.queryForm.validate((valid) => {
                 if (valid) {
                     let para = {...this.$refs.form.queryForm};
-                    if(para.examinationPaperRulesPercentList){
+                    // console.log(para.examinationPaperRulesPercentList)
+                    let error = false;
+                    let tempdata =para.examinationPaperRulesPercentList
+                    if(tempdata){
                         let flag = false;
-                        for(let item of para.examinationPaperRulesPercentList){
+                        let flag2 = false;
+
+                        let total = 0.0;
+                        for(let item of tempdata){
+                            // console.log(item)
+                            // console.log(item.questionCount)
+                            let tempId = item.libraryId.split('_')[0]
+                            let tempCount = item.libraryId.split('_')[1]
+                            let tempName = item.libraryId.split('_')[2]
+
+                            item.libraryId = tempId;
+                            item.libraryName = tempName;
+
+
+                            if(item.percent>tempCount){
+                                flag2 = true;
+                                break;
+                            }
                             if(item.libraryId == '' || item.percent == ''){
                                 flag = true;
                                 break;
+                            }else{
+                                total += Number(item.percent)
                             }
                         }
                         if(flag){
                             this.$message.warning('请设置题库提取占比')
-                            return false;
+                            error = true;
+                        }else if
+                        (flag2){
+                            this.$message.warning('占比不可以题库总题数')
+                            error = true;
+                        }
+                        if(total!=100){
+                            this.$message.warning('题库提取占比不为100%')
+                            error = true;
                         }
                     }
-                    this.$api[this.$route.meta.api || this.api](para).then(() => {
-                        this.$message.success(`${this.$route.meta.title + (Object.prototype.toString.call(this.$route.meta.parentTitle) == '[object String]' ? this.$route.meta.parentTitle : this.setValue[this.$route.meta.parentTitle[0]])}成功`);
-                        let obj = {}
-                        if(this.$route.meta.backPara){
-                            for(let key of this.$route.meta.backPara){
-                                obj[key] = this.setValue[key];
+                    if(!error){
+                        this.$api[this.$route.meta.api || this.api](para).then(() => {
+                            this.$message.success(`${this.$route.meta.title + (Object.prototype.toString.call(this.$route.meta.parentTitle) == '[object String]' ? this.$route.meta.parentTitle : this.setValue[this.$route.meta.parentTitle[0]])}成功`);
+                            let obj = {}
+                            if(this.$route.meta.backPara){
+                                for(let key of this.$route.meta.backPara){
+                                    obj[key] = this.setValue[key];
+                                }
                             }
-                        }
-                        this.$router.push({ name: this.$route.meta.backName, query: {...obj}})
-                    })
+                            this.$router.push({ name: this.$route.meta.backName, query: {...obj}})
+                        })
+                    }
+
                 }
             });
         },

@@ -26,11 +26,14 @@
                 <div class="submitForm__selectAndInput"
                     v-for="(listItem,index) in queryForm.examinationPaperRulesPercentList" :key="index">
                     <el-input v-model.trim="listItem.percent" :disabled="item.disabled" clearable :placeholder="`输入数字`">
+
                         <el-select v-model="listItem.libraryId"  slot="prepend" :disabled="item.list.length == 0"  clearable :placeholder="`请选择题库`" @change="selectChange(item)">
                             <el-option v-for="(option, index) in item.list" 
                                 :key="index"
-                                :label="(item.valuePrefix ? item.valuePrefix : '') + option[item.dataKey ? item.dataKey.label : 'name'] + (item.valueSuffix ? item.valueSuffix : '')"
-                                :value="option[item.dataKey ? item.dataKey.value : 'idx']"></el-option>
+                                :label="option.libraryName"
+                                :value="option[item.dataKey ? item.dataKey.value
+                                 : 'idx']+'_'+ option.questionCount+'_'+ option.libraryName">{{option.libraryName}}</el-option>
+
                         </el-select>
                         <template slot="append">%</template>
                     </el-input>
@@ -41,7 +44,14 @@
             <template v-if="item.type == 'serviceItemsList'">
                 <div class="serviceItemsList">
                     <div class="serviceItemsList-item" v-for="(listItem, index) in queryForm.serviceItemsList" :key="index">
-                        <el-input class="serviceItemsList-name" v-model="listItem.name" :disabled="item.disabled" placeholder="请输入项目名称"></el-input>
+                        <el-input class="serviceItemsList-name" v-model="listItem.name" :disabled="listItem.disabled" placeholder="请输入项目名称" v-if="index==0"></el-input>
+
+                        <el-select class="serviceItemsList-name" v-if="index > 0" v-model="listItem.name" clearable :maxlength="60" :placeholder="`请选择${item.label}`" @change="selectChange(item)">
+                            <el-option v-for="(option, index) in item.list"
+                                       :key="index"
+                                       :label="option.name"
+                                       :value="option.name"></el-option>
+                        </el-select>
                         <span class="serviceItemsList-line">-</span>
                         <el-input class="serviceItemsList-price" v-model="listItem.price" placeholder="约叫价格">
                             <span slot="append">元/天</span>
@@ -123,6 +133,11 @@
                             placeholder="选择日期"
                             value-format="yyyy-MM-dd hh:mm:ss"
                             format="yyyy-MM-dd hh:mm:ss" v-model="queryForm[item.prop]" maxlength="200" />
+
+            <el-date-picker v-if="item.type == 'date1'"  type="datetime"
+                            placeholder="选择日期"
+                            value-format="yyyy-MM-dd"
+                            format="yyyy-MM-dd" v-model="queryForm[item.prop]" maxlength="200" />
 
         </el-form-item>
     </el-form>
@@ -240,6 +255,9 @@ export default {
                     ])
                 }
                 // console.log(this.rules)
+                if(item.type == 'serviceItemsList'){
+                    this.queryForm.serviceItemsList = [{name:'危险源辨识与风险评估',type:'',disabled:true}]
+                }
             }
             if(this.setValue == null){
                 // this.initForm();
@@ -257,7 +275,8 @@ export default {
                     }
                 }
             }
-            
+
+
         },
         pushOptions(target, props) {
 
@@ -304,6 +323,7 @@ export default {
             this.targetList(item);
         },
         targetList(item) { // 获取筛选联动列表
+            // console.log(item)
             if(item.init){
                 for(let item of item.init){
                     let index = this.form.indexOf(item);
@@ -311,7 +331,7 @@ export default {
                         this.$set(this.queryForm, this.options[index].prop, '');
                         this.optionsGetList(this.options[index]);
                     }
-                    
+
                 }
             }
         },

@@ -268,6 +268,36 @@ body { padding-bottom: 40px; min-height: 600px; }
     }
 }
 
+.report__item1 {
+    float: left;
+    position: relative;
+    width: calc(50% - 20px); height: 100px;
+    margin-right: 20px;
+    padding-left: 120px;
+    background-color: #fff;
+    &::before {
+        content: "\e798";
+        position: absolute; top: 0; left: 0;
+        width: 100px; height: 100px;
+        background-color: #F86C6B;
+        font-family: element-icons!important;
+        font-size: 40px; line-height: 100px;
+        color: #fff;
+        text-align: center;
+    }
+    &:nth-child(2)::before { content: "\e798"; background-color: #F5A623; }
+    &:nth-child(3)::before { content: "\e798"; background-color: #f4a622; }
+    &:nth-child(4)::before { content: "\e798"; background-color: #ff495c; }
+    .report__value {
+        padding-top: 25px;
+        font-size: 18px;
+    }
+    .report__label {
+        margin-top: 10px;
+        color: #999;
+        font-size: 14px;
+    }
+}
 .report__chart {
     margin-top: 20px;
     @include clearfix();

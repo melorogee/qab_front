@@ -16,6 +16,7 @@ module.exports = {
                 changOrigin:true,
                 pathRewrite:{
                     '^/manage':''
+
                 }
             }
         }

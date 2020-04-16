@@ -192,8 +192,13 @@
                     headers: {'Content-Type': 'multipart/form-data'}
                 }
                 axios.post(`/manage/examination/enroll/import`,this.formData,config).then(function(res){
-                    that.tempIdx = res.data.data.idx;
-                    that.getStep2Info();
+                    if(res.status == 200 && res.data.code == 200){
+                        that.tempIdx = res.data.data.idx;
+                        that.getStep2Info();
+                    }else{
+                        that.$message.warning(res.data.msg);
+                    }
+
                 });
             },
 
@@ -230,13 +235,13 @@
 
             createQrc: function () {
                 canvas = document.getElementById('qrccode-canvas');
-                console.log(canvas)
-                QRCode.toCanvas(canvas, this.payUrl, (error) => {
-                    if (error) {
-                        console.log(error)
-                    } else {
-                        console.log('success')
-                    }
+                QRCode.toCanvas(canvas, this.payUrl, () => {
+                    // console.log(111)
+                    // if (error) {
+                    //     console.log(error)
+                    // } else {
+                    //     console.log('success')
+                    // }
                 })
             },
 

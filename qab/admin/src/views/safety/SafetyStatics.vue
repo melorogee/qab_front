@@ -1,13 +1,13 @@
 <template>
     <div class="report">
         <div class="report__top">
-            <div class="report__item">
-                <div class="report__value">{{finance.highCount.toFixed(0)}}</div>
+            <div class="report__item1">
+                <div class="report__value">{{finance.highCount}}</div>
                 <div class="report__label">高风险隐患（个）</div>
             </div>
 
-            <div class="report__item">
-                <div class="report__value">{{finance.generalCount.toFixed(0)}}</div>
+            <div class="report__item1">
+                <div class="report__value">{{finance.generalCount}}</div>
                 <div class="report__label">一般风险隐患(个)</div>
             </div>
 
@@ -69,9 +69,14 @@
     methods: {
         getSourceOfIncome(){
             this.$api.statistics().then(res => {
-                this.finance = res;
-                // this.barData.rows.push({ 'date': this.finance.date, '企业自查': this.finance.enterpriseCount, '订单服务': this.finance.orderCount, '员工上报': this.finance.employeeCount });
-                this.barData.rows = res.list;
+                this.finance = res
+                for (let i = 0; i < res.list.length; i++) {
+                    this.barData.rows.push({ 'date': res.list[i].date, '企业自查': res.list[i].enterpriseCount, '订单服务': res.list[i].orderCount
+                        , '员工上报': res.list[i].employeeCount});
+
+                }
+                // this.barData.rows.push({ 'date': '2020-04-02', '企业自查': 2, '订单服务': 1, '员工上报': 1 });
+                // this.barData.rows = res;
             })
         }
     }

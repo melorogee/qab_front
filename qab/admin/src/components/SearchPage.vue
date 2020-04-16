@@ -34,7 +34,7 @@
             </div>
         </div><!-- // search Form -->
         <div class="searchPage__table">
-            <el-table :data="tableData" :height="`100%`" @selection-change="handleSelectionChange">
+            <el-table :data="tableData" :height="`100%`" @selection-change="handleSelectionChange" id="exportTab" >
                 <template v-for="(item, index) in tableProp">
                     <el-table-column v-if="item.prop" :key="index" :label="item.label" :width="item.width" :show-overflow-tooltip="true">
                         <template slot-scope="scope">
@@ -66,6 +66,92 @@
                             </template>
                         </template>
                     </el-table-column>
+                    <el-table-column v-if="item.type == 'educationTypes40'" :key="index" :label="item.label" :width="item.width">
+                        <template slot-scope="scope">
+                            <template v-for="(item, index) in scope.row.educationTypes.split(',')">
+                                <span :key="index">{{index > 0 ? ' | ' : ''}}{{$map.educationTypesNew[item]}}</span>
+                            </template>
+                        </template>
+                    </el-table-column>
+
+                    <el-table-column v-if="item.type == 'insureeva'" :key="index"
+                                     label="安全风险评估" :width="item.width" align="center">
+
+                        <el-table-column  :key="index" label="是否开展" >
+                                <template slot-scope="scope" v-if="scope.row.serviceRisk != null">
+                                    <span >{{scope.row.serviceRisk.launch}}</span>
+                                </template>
+                        </el-table-column>
+                        <el-table-column  :key="index" label="评估单位" :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceRisk != null">
+                                <span >{{scope.row.serviceRisk.enterprise}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column  :key="index" label="评估人资质"  :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceRisk != null">
+                                <span >{{scope.row.serviceRisk.qualification}}</span>
+                            </template>
+                        </el-table-column>
+                    </el-table-column>
+
+
+
+                    <el-table-column v-if="item.type == 'zhili'" :key="index"
+                                     label="隐患排查治理" :width="item.width" align="center">
+                        <el-table-column  :key="index" label="排查日期"  :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceSafetyHazard != null">
+                                <span >{{scope.row.serviceSafetyHazard.checkDate}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column  :key="index" label="排查人及资质"  :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceSafetyHazard != null">
+                                <span >{{scope.row.serviceSafetyHazard.qualification}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column  :key="index" label="发现隐患(条)"  :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceSafetyHazard != null">
+                                <span >{{scope.row.serviceSafetyHazard.foundCount}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column  :key="index" label="累计整改隐患(条)"  :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceSafetyHazard != null">
+                                <span >{{scope.row.serviceSafetyHazard.changedCount}}</span>
+                            </template>
+                        </el-table-column>
+                    </el-table-column>
+
+
+
+                    <el-table-column v-if="item.type == 'jypx'" :key="index"
+                                     label="教育培训" :width="item.width" align="center">
+                        <el-table-column  :key="index" label="开展日期"  :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceTraining != null">
+                                <span >{{scope.row.serviceTraining.trainingDate}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column  :key="index" label="累计培训人次"  :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceTraining != null">
+                                <span >{{scope.row.serviceTraining.trainingCount}}</span>
+                            </template>
+                        </el-table-column>
+                    </el-table-column>
+
+
+
+                    <el-table-column v-if="item.type == 'qtfw'" :key="index"
+                                     label="其他服务" :width="item.width" align="center">
+                        <el-table-column  :key="index" label="服务类型" :width="item.width" :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceOther != null">
+                                <span >{{scope.row.serviceOther.serviceType}}</span>
+                            </template>
+                        </el-table-column>
+                        <el-table-column  :key="index" label="服务日期" :width="item.width" :show-overflow-tooltip="true">
+                            <template slot-scope="scope" v-if="scope.row.serviceOther != null">
+                                <span >{{scope.row.serviceOther.serviceDate}}</span>
+                            </template>
+                        </el-table-column>
+                    </el-table-column>
+
                     <el-table-column v-if="item.slot" :key="index" :label="item.label" :width="item.width">
                         <template slot-scope="scope">
                             <slot :row="scope.row" :name="item.slot"></slot>

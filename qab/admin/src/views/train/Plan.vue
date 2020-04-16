@@ -3,7 +3,9 @@
         <SearchPage ref="SearchPage" :searchForm="searchForm" :table="table" :api="'planList'" @multSelection="getMsg">
             <el-button type="primary" slot="mainButtons--left" icon="el-icon-edit-outline"  @click="addData" >发布计划</el-button>
             <el-button slot="mainButtons--left" icon="el-icon-delete"  @click="delData('select')" >删除</el-button>
-            <template slot="typeSlot" slot-scope="scope">{{map[scope.row.type]}}</template>
+            <template slot="typeSlot" slot-scope="scope">
+               {{map[scope.row.type]}}
+            </template>
             <template slot="htmlContent" slot-scope="scope">
                 <span class="wrapText" v-if="convert(scope.row.content).length<35">{{convert(scope.row.content)}}<span @click="viewData(scope)">[查看详情]</span></span>
                 <span class="wrapText" v-else>{{convert(scope.row.content).slice(0,35)}}...<span @click="viewData(scope)">[查看详情]</span></span>

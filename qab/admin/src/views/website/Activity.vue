@@ -37,7 +37,7 @@ export default {
     data() {
         return {
             caseSearchForm: [],
-            uncaseTable: ['type', 'materials', 'educationType', 'classHour', 'createTime', 'operat8'],
+            uncaseTable: ['type', 'materials', 'educationTypenew', 'classHour', 'createTime', 'operat8'],
 
             // uncaseTable: ['name', 'educationType', 'createTime', 'operat8'],
             caseTable: ['name', 'industryName', 'createTime', 'operat']

@@ -14,7 +14,7 @@
 export default {
     path: '/Safety',
     redirect: '/Safety/SafetyStatics',
-    meta: { title: '安全隐患管理', icon: 'iconread' },
+    meta: { title: '安全隐患管理', icon: 'el-icon-s-opportunity' },
     component: () => import('@/components/Content'),
     children: [
         { path: '/Safety/SafetyStatics', name: 'safetyStatics', component: () => import('@/views/safety/SafetyStatics'), meta: { title: '安全隐患统计' } },

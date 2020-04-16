@@ -11,7 +11,8 @@ import User from './user'
 import System from './system'
 import Employee from './employee'
 import Safety from './safety'
-
+import Insure from './insure'
+import Insurebx from './insurebx'
 
 Vue.use(VueRouter)
 const routes = [
@@ -30,8 +31,9 @@ const routes = [
       User, // 用户模块 2
       Employee,
         Safety,
+      Insure,//参保企业
+      Insurebx,
       System, // 系统模块 2,
-
     ]
   },
   { path: '*', redirect: '/404' },

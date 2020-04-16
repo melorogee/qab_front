@@ -28,3 +28,8 @@ export const specialUpdate = data => { return instance({ url: `/special/operatio
 export const specialDelete = data => { return instance({ url: `/special/operation/type/delete`, method: 'GET', params: data }) }
 export const specialImport = data => { return instance({ url: `/special/operation/type/import`, method: 'POST', data }) }
 export const specialDownload = 'https://cxzdjs.oss-cn-hangzhou.aliyuncs.com/import/template/%E7%89%B9%E6%AE%8A%E4%BD%9C%E4%B8%9A%E4%BA%BA%E5%91%98%E7%B1%BB%E5%9E%8B%E6%A8%A1%E6%9D%BF.xlsx'
+
+export const queryServiceList = data => { return instance({ url: `/serviceType/list`, method: 'GET', params: data }) }
+export const serviceAdd = data => { return instance({ url: `/serviceType/add`, method: 'GET', params: data }) }
+export const serviceDelete = data => { return instance({ url: `/serviceType/delete`, method: 'POST',data }) }
+

@@ -12,6 +12,9 @@
                 <tr><th>服务费</th><td>￥{{detail.amount}}</td></tr>
                 <tr><th>订单状态</th><td>待付款</td></tr>
                 <tr><th>备注</th><td>{{detail.remark}}</td></tr>
+                <tr><th>专家签到</th><td> <img style="max-width:100px;max-height:100px" v-for="(main, mainIndex) in detail.signInImgList" :key="mainIndex" :src="main" /> </td></tr>
+                <tr><th>所在位置</th><td>{{detail.signInAddr}}</td></tr>
+
             </table>
             <el-button type="primary" @click="inquiryReminder">催款通知</el-button>
             <el-button type="danger" @click="inquiryClosed">关闭订单</el-button>
@@ -36,7 +39,8 @@ export default {
     name: 'CallDetail',
     data() {
         return {
-            detail: {}
+            detail: {},
+            test:{signInImgList:['https://img0.bdstatic.com/static/searchdetail/img/logo-2X_0c4ef02.png','https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2266738819,626045180&fm=26&gp=0.jpg']}
         }
     },
     created() {

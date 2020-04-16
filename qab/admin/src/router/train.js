@@ -57,7 +57,7 @@ export default {
             path: '/Train/Activity/Import', name: 'ActivityImport', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '批量导入', parentTitle: '自选课资料', msg: 'import', isBack: true, backName: 'Activity', isHide: true,
-                form: ['industryId', 'educationType4.0', 'classHour', 'importList'], isRequired: 'all', api: 'activityImport'
+                form: ['industryId', 'educationType5.0', 'classHour', 'importList'], isRequired: 'all', api: 'activityImport'
             }
         },
         { path: '/Train/Materials', name: 'Materials', component: () => import('@/views/train/Materials'), meta: { title: '必选课资料' } },

@@ -42,6 +42,10 @@ export default {
                 // this.$router.addRoutes()
                 if(res.type == 100){
                     this.$router.push({ name: 'Plan' });
+                }else if(res.type == 200){
+                    this.$router.push({ name: 'Insurebx' });
+                }else if(res.type == 300){
+                    this.$router.push({ name: 'Call' });
                 }else{
                     this.$router.push({ name: 'Template' });
                 }

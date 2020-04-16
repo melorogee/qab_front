@@ -53,6 +53,7 @@
                 <tr><th>行政地区</th><td>{{expertUserRow.addr}}</td><th>常住地址</th><td>{{expertUserRow.fullAddr}}</td></tr>
                 <tr><th>专家类型</th><td>{{expertUserRow.expertTypeName}}</td><th>资质证书</th><td><el-button type="primary" @click="showImg(expertUserRow.certificateUrl[0])">点击查看</el-button></td></tr>
                 <tr><th>行业类型</th><td>{{expertUserRow.industryName}}</td><th>联系电话</th><td>{{expertUserRow.phone}}</td></tr>
+                <tr><th>证书编号</th><td>{{expertUserRow.certificateNo}}</td><th>证书有效期</th><td>{{expertUserRow.certificateExpire}}</td></tr>
             </table>
             <span slot="footer" class="dialog-footer">
                 <el-button type="danger" @click="expertUserReview(expertUserRow, 1)">拒绝通过</el-button>

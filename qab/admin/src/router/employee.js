@@ -14,7 +14,7 @@
 export default {
     path: '/Employee',
     redirect: '/Employee/EmployeeMgn',
-    meta: { title: '员工管理', icon: 'iconread' },
+    meta: { title: '员工管理', icon: 'el-icon-s-custom' },
     component: () => import('@/components/Content'),
     children: [
         { path: '/Employee/EmployeeMgn', name: 'employeeMgn', component: () => import('@/views/employee/employeeMgn'), meta: { title: '员工管理' } },
@@ -23,7 +23,7 @@ export default {
             meta: {
                 title: '新增', parentTitle: '员工', msg: 'form', isBack: true, backName: 'employeeMgn', isHide: true,
                 form: ['empolyeeName', 'dept', 'positionEmploy',
-                    'hiredate','employeePhone'], isRequired: 'all', api: 'employeeAdd'
+                    'hiredate1','employeePhone'], isRequired: 'all', api: 'employeeAdd'
             }
         },
     ]

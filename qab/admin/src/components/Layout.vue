@@ -6,8 +6,8 @@
             </div>
             <h1 class="header__title">安企帮<span>管理后台</span></h1>
             <ul class="header__menus">
-                <li><a href="#">官网</a></li>
-                <li><a href="#">数据中心</a></li>
+<!--                <li><a href="#">官网</a></li>-->
+<!--                <li><a href="#">数据中心</a></li>-->
                 <li>
                     <el-dropdown @command="command">
                         <span class="el-dropdown-link">
@@ -24,8 +24,11 @@
             <div class="snbl">
                 <el-menu :default-active="$route.path"  :unique-opened="true" :collapse="!type" router>
                     <!-- <el-menu-item index="/Home"><i class="el-icon-menu"></i><router-link to="/Home">首页</router-link></el-menu-item> -->
-                    <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path" v-show="(right!=100 && ( main.path!='/Safety' && main.path!='/Employee'))
-                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' ))">
+                    <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path" v-show="
+                        (right==1 && ( main.path!='/Safety' && main.path!='/Employee' && main.path!='/Insurebx'))
+                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' ))
+                    || ( right == 300 && (main.path=='/User' || main.path=='/Order' || main.path=='/Insurebx' || main.path=='/System' ))
+                    || ( right == 200 && (main.path=='/Insurebx' || main.path=='/System'  ))">
 
                         <template slot="title"   >
                             <i :class="`iconfont ${main.meta.icon}`"></i>
@@ -45,7 +48,7 @@
                                )
                             &&
                                 (
-                                    (right == 100 && (main.path =='/System' && (sub.path=='/System/AccountSetting') || main.path != '/System' )) || right != 100
+                                    ((right == 100 || right == 200 || right == 300) && (main.path =='/System' && (sub.path=='/System/AccountSetting') || main.path != '/System' )) || (right != 100 && right != 200 && right != 300)
                                 )
 
 

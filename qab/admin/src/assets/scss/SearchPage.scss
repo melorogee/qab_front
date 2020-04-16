@@ -1,6 +1,7 @@
 
 .searchPage {
     height: 100%;
+    overflow-y: scroll;
     @at-root #{&}__mainButtons {
         padding-bottom: 10px;
         border-bottom: 1px solid #fafafa;
@@ -24,8 +25,8 @@
         strong { color: #999; font-weight: normal; }
         i { margin-right: 5px; }
     }
-    @at-root &#{&}--hasSearchForm #{&}__table { height: calc(100% - 84px); }
-    @at-root &#{&}--hasPagination #{&}__table { height: calc(100% - 84px); }
+    @at-root &#{&}--hasSearchForm #{&}__table { height: calc(100% - 100px); }
+    @at-root &#{&}--hasPagination #{&}__table { height: calc(100% - 100px); }
     @at-root &#{&}--hasPagination#{&}--hasSearchForm #{&}__table { height: calc(100% - 126px); }
     @at-root #{&}__table {
         height: calc(100% - 42px);

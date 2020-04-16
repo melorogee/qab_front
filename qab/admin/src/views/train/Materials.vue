@@ -13,7 +13,7 @@ export default {
     data() {
         return {
             searchForm: [],
-            table: ['type', 'materials', 'educationType', 'classHour', 'createTime', 'operat']
+            table: ['type', 'materials', 'educationTypenew', 'classHour', 'createTime', 'operat']
         }
     },
     created() { },
