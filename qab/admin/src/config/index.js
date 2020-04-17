@@ -102,6 +102,7 @@ const form = {
     // insureItemType: { type: 'input', label: '服务类型', prop: 'serviceTypeId', row: 1},
     // insureExpert: { type: 'select', label: '派单至专家', prop: 'expertId', row: 1, list:'superviseLevel'},
     // insureEndTime: { type: 'date1', label: '服务截止时间', prop: 'deadline', row: 1 },
+    expContacts:{ type: 'input', label: '联系人', prop: 'contacts', row: 1 },
 
 };
 /**

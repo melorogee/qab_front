@@ -36,7 +36,7 @@
             </template>
         </SearchPage>
 
-        <el-dialog title="派单" :visible.sync="disDialog" width="30%">
+        <el-dialog title="编辑" :visible.sync="disDialog" width="30%">
             <el-form :model="distributewValue"  ref="disDialog" label-width="100px" class="hiddenBorder">
 
 <!--                <el-form-item label="派单项目" prop="type">-->
@@ -85,7 +85,7 @@
 
             <span slot="footer" class="dialog-footer">
                 <el-button @click="disDialog = false">取消</el-button>
-                <el-button type="primary" @click="goDis">保存</el-button>
+                <el-button type="primary" @click="confirmEdit">保存</el-button>
             </span>
         </el-dialog>
         <el-dialog title="导入" :visible.sync="expertDialog" width="30%">
@@ -137,8 +137,9 @@ export default {
             otherTypeShow:false,
             otherList:[],
             detailId:'',
-            expertDialog:false
-
+            expertDialog:false,
+            editForm:{idx:"",enterpriseName:"",scale:"",riskLevelShow:"",signingDate:"",insuredNumber:"",
+                insuredPrice:"",insuredRate:"",premiumPrice:"",accidentList:[]}
         }
     },
     created() {
@@ -195,6 +196,24 @@ export default {
                 // }
             }
             return wbout
+        },
+
+
+        goEdit(data){
+            // 赋值
+            this.editForm = data.row,
+                this.editForm.id = data.row.idx,
+            console.log(this.editForm)
+            this.disDialog = false; this.$nextTick(()=>{ this.disDialog = true; })
+        },
+
+        confirmEdit(){
+            let para = this.editForm;
+            this.$api.confirmEdit(para).then(() => {
+                this.$message.success(`保存成功`);
+                this.disDialog = false;
+                this.SearchPageInit();
+            })
         }
 
 

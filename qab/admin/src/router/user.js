@@ -9,14 +9,14 @@ export default {
             path: '/User/New/enterpriseUserAdd', name: 'enterpriseUserAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '新增', parentTitle: '企业用户', msg: 'form', isBack: true, backName: 'New', isHide: true,
-                form: ['enterpriseUser', 'idCode', 'businessLicenseUrl', 'districtCode_user', 'fullAddr', 'industryId', 'phone', 'password'], isRequired: 'all', api: 'enterpriseUserAdd'
+                form: ['enterpriseUser', 'idCode', 'businessLicenseUrl', 'districtCode_user', 'fullAddr', 'industryId', 'contacts' , 'phone', 'password'], isRequired: 'all', api: 'enterpriseUserAdd'
             }
         },
         {
             path: '/User/New/expertUserAdd', name: 'expertUserAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '新增', parentTitle: '专家/特殊工种', msg: 'form', isBack: true, backName: 'New', isHide: true,
-                form: ['expertUser', 'id', 'certificateUrl', 'districtCode_user', 'industryId', 'type', 'qualifications', 'fullAddr', 'phone', 'password', 'serviceItemsList', 'platformFee','certificateNumber','certificateValidityPeriod'], isRequired: 'all', api: 'expertUserAdd'
+                form: ['expertUser', 'id', 'certificateUrl', 'districtCode_user', 'industryId', 'type', 'qualifications', 'fullAddr','phone', 'password', 'serviceItemsList', 'platformFee','certificateNumber','certificateValidityPeriod'], isRequired: 'all', api: 'expertUserAdd'
             }
         },
         {
@@ -39,14 +39,14 @@ export default {
             path: '/User/Has/enterpriseUserAdd', name: 'enterpriseUserCAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '新增', parentTitle: '企业用户', msg: 'form', isBack: true, backName: 'Has', isHide: true,
-                form: ['enterpriseUser', 'idCode', 'businessLicenseUrl', 'districtCode_user', 'fullAddr', 'industryId', 'phone', 'password'], isRequired: 'all', api: 'enterpriseUserAdd'
+                form: ['enterpriseUser', 'idCode', 'businessLicenseUrl', 'districtCode_user', 'fullAddr', 'industryId', 'contacts' , 'phone', 'password'], isRequired: 'all', api: 'enterpriseUserAdd'
             }
         },
         {
             path: '/User/Has/expertUserAdd', name: 'expertUserCAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '新增', parentTitle: '专家/特殊工种', msg: 'form', isBack: true, backName: 'Has', isHide: true,
-                form: ['expertUser', 'id', 'certificateUrl', 'districtCode_user', 'industryId', 'type', 'qualifications', 'fullAddr', 'phone', 'password', 'serviceItemsList', 'platformFee','certificateNumber','certificateValidityPeriod'], isRequired: 'all', api: 'expertUserAdd'
+                form: ['expertUser', 'id', 'certificateUrl', 'districtCode_user', 'industryId', 'type', 'qualifications','fullAddr', 'phone', 'password', 'serviceItemsList', 'platformFee','certificateNumber','certificateValidityPeriod'], isRequired: 'all', api: 'expertUserAdd'
             }
         },
         {

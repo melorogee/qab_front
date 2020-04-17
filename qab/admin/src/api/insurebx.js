@@ -4,7 +4,7 @@ import instance from '@/api/instance'
 //参加保险企业列表
 export const queryInsureList = data => { return instance({ url: `/insured/enterprise/list`, method: 'GET', params: data }) }
 
-export const expertList = data => { return instance({ url: `/insured/enterprise/expertUser/list`, method: 'GET', params: data }) }
+// export const bxexpertList = data => { return instance({ url: `/insured/enterprise/expertUser/list`, method: 'GET', params: data }) }
 
 export const initOtherList = data => { return instance({ url: `/insured/enterprise/other/service/type/list`, method: 'GET', params: data }) }
 
@@ -17,3 +17,6 @@ export const disDetail = data => { return instance({ url: `/insured/enterprise/o
 export const deleteInsure = data => { return instance({ url: `/insured/enterprise/delete`, method: 'GET', params: data }) }
 
 export const insureImport = data => { return instance({ url: `/insured/enterprise/import`, method: 'POST', data }) }
+
+export const confirmEdit = data => { return instance({ url: `/insured/enterprise/update`, method: 'POST', data }) }
+
