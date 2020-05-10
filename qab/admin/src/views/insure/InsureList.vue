@@ -48,7 +48,7 @@
                     </el-select>
                 </el-form-item>
 
-                <el-form-item label="服务类型" prop="serviceTypeId" v-if="otherTypeShow">
+                <el-form-item label="服务类型" prop="serviceTypeId" v-if="distributewValue.type == 4">
                     <el-select  v-model="distributewValue.serviceTypeId"  :maxlength="60" :placeholder="`请选择`" @change="selectChangeOther">
                         <el-option v-for="(option, index) in otherList"
                                    :key="index"
@@ -59,7 +59,7 @@
                     </el-select>
                 </el-form-item>
 
-                <el-form-item label="培训人数" prop="trainingNumber" v-if="trainNumShow">
+                <el-form-item label="培训人数" prop="trainingNumber" v-if="distributewValue.type == 3">
                     <el-input v-model="distributewValue.trainingNumber" placeholder="请输入培训人数"></el-input>
 
                 </el-form-item>
@@ -99,6 +99,7 @@
                     <tr><th>派单项目类型</th><td>{{typeMap[item.type]}}</td></tr>
                     <tr><th>专家名称</th><td>{{item.expertUserName}}</td></tr>
                     <tr v-if="item.type == 4"><th>服务类型</th><td>{{item.serviceTypeName}}</td></tr>
+                    <tr v-if="item.type == 3"><th>培训人数</th><td>{{item.trainingNumber}}</td></tr>
 
                     <tr><th>截止日期</th><td>{{item.deadlineDate}}</td></tr>
 
@@ -144,6 +145,8 @@
                     { prop: 'scale', label: '规模'  },
                     { prop: 'riskLevelShow', label: '风险等级' },
                     { prop: 'signingDate', label: '签约日期' },
+                    { prop: 'startDate', label: '保险有效开始日期' },
+                    { prop: 'endDate', label: '保险有效结束日期' },
                     { prop: 'insuredNumber', label: '参保人数' },
                     { prop: 'insuredPrice', label: '保险金额' },
                     { prop: 'insuredRate', label: '费率' },

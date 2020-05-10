@@ -11,7 +11,7 @@
         </SearchPage>
 
         <el-dialog title="新增特殊作业人员" :visible.sync="specialAddDialog" width="30%">
-            <Form v-if="specialAddDialog" ref="specialAddForm" :form="['special', 'industryId']" :isRequired="'all'" :labelWidth="'150px'" />
+            <Form v-if="specialAddDialog" ref="specialAddForm" :form="['special']" :isRequired="'all'" :labelWidth="'150px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="specialAddDialog = false">取消</el-button>
                 <el-button type="primary" @click="specialAddSubmit">保存</el-button>
@@ -19,7 +19,7 @@
         </el-dialog>
 
         <el-dialog title="编辑特殊作业人员" :visible.sync="specialEditDialog" width="30%">
-            <Form v-if="specialEditDialog" ref="specialEditForm" :form="['special', 'industryId']" :setValue="specialValue" :isRequired="'all'" :labelWidth="'150px'" />
+            <Form v-if="specialEditDialog" ref="specialEditForm" :form="['special']" :setValue="specialValue" :isRequired="'all'" :labelWidth="'150px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="specialEditDialog = false">取消</el-button>
                 <el-button type="primary" @click="specialEditSubmit">保存</el-button>
@@ -27,7 +27,7 @@
         </el-dialog>
 
         <el-dialog title="批量导入特殊作业人员" :visible.sync="specialImportDialog" width="30%">
-            <Form v-if="specialImportDialog" ref="specialImportForm" :form="['industryId', 'file']" :isRequired="'all'" :labelWidth="'150px'" />
+            <Form v-if="specialImportDialog" ref="specialImportForm" :form="[ 'file']" :isRequired="'all'" :labelWidth="'150px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="specialImportDialog = false">取消</el-button>
                 <el-button type="primary" @click="specialImportSubmit">保存</el-button>
@@ -41,8 +41,8 @@ export default {
     name: 'special',
     data() {
         return {
-            specialSearchForm: ['industryId'],
-            specialTable: ['special', 'industryName', 'operat'],
+            specialSearchForm: [],
+            specialTable: ['special',  'operat'],
             specialAddDialog: false,
             specialEditDialog: false,
             specialValue: {},

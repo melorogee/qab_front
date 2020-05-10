@@ -116,6 +116,22 @@
                     </el-col>
                 </el-form-item>
 
+                <el-form-item label="保险有效开始日期">
+                    <el-col :span="20">
+                        <el-date-picker
+                                type="datetime"
+                                placeholder="选择日期"
+                                value-format="yyyy-MM-dd"
+                                format="yyyy-MM-dd"
+                                v-model="submitForm.startDate1"
+                                maxlength="200"
+                        />
+                    </el-col>
+                </el-form-item>
+
+
+
+
                 <el-form-item label="参保人数" >
                     <el-col :span="20">
                         <el-input v-model="submitForm.insuredNumber1" placeholder="请输入参保人数"></el-input>
@@ -219,6 +235,8 @@
                     { prop: "scale", label: "规模" },
                     { prop: "riskLevelShow", label: "风险等级" },
                     { prop: "signingDate", label: "签约日期" },
+                    { prop: 'startDate', label: '保险有效开始日期' },
+                    { prop: 'endDate', label: '保险有效结束日期' },
                     { prop: "insuredNumber", label: "参保人数" },
                     { prop: "insuredPrice", label: "保险金额" },
                     { prop: "insuredRate", label: "费率" },
@@ -244,7 +262,9 @@
                     insuredPrice1: "",
                     insuredRate1: "",
                     premiumPrice1: "",
-                    bccidentList:[]
+                    bccidentList:[],
+                    startDate1:'',
+                    endDate1:'',
                 }
             };
         },
@@ -352,7 +372,9 @@
                 this.submitForm.insuredRate1 = data.row.insuredRate;
                 this.submitForm.premiumPrice1 = data.row.premiumPrice;
                 // this.submitForm.bccidentList = data.row.accidentList;
-                this.submitForm.startDate = data.row.startDate;
+                this.submitForm.startDate1 = data.row.startDate;
+                this.submitForm.endDate1 = data.row.endDate;
+
                 if(null !=  data.row.accidentList){
                     for(let item of data.row.accidentList) {
                         this.submitForm.bccidentList.push({"number1":item.number,"price1":item.price})
@@ -386,7 +408,9 @@
                 param.insuredPrice = this.submitForm.insuredPrice1
                 param.insuredRate = this.submitForm.insuredRate1
                 param.premiumPrice = this.submitForm.premiumPrice1
-                param.startDate = this.submitForm.startDate
+                param.startDate = this.submitForm.startDate1
+                param.endDate = this.submitForm.endDate1
+
                 param.accidentList = []
                 if(this.submitForm.bccidentList != null){
                     for(let item of this.submitForm.bccidentList) {

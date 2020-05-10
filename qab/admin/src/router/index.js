@@ -13,6 +13,7 @@ import Employee from './employee'
 import Safety from './safety'
 import Insure from './insure'
 import Insurebx from './insurebx'
+import Safetysystem from './safetysystem'
 
 Vue.use(VueRouter)
 const routes = [
@@ -33,6 +34,7 @@ const routes = [
         Safety,
       Insure,//参保企业
       Insurebx,
+        Safetysystem,
       System, // 系统模块 2,
     ]
   },

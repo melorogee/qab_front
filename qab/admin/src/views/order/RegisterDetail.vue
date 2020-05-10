@@ -33,7 +33,7 @@ export default {
         }
     },
     created() {
-        this.$api.inquiryDetail({idx: this.$route.query.idx}).then(res => {
+        this.$api.registerDetail({idx: this.$route.query.idx}).then(res => {
             this.detail = res;
         })
     },

@@ -33,7 +33,7 @@ const form = {
     idCode: { type: 'input', label: '统一社会信用编码', prop: 'idCode' },
     id: { type: 'input', label: '身份证号码', prop: 'id' },
     type: { type: 'select', label: '专家类型', prop: 'type', list: 'zjList', init: ['qualifications']},
-    qualifications: { type: 'select', label: '专家类型/特殊作业人员类型', prop: 'qualifications', api: 'userSpecialList', apiPara: ['type', 'industryId'] },
+    qualifications: { type: 'select', label: '专家类型/特殊作业人员类型', prop: 'qualifications', api: 'userSpecialList', apiPara: ['type'] },
     fullAddr: { type: 'input', label: '详细地址', prop: 'fullAddr' },
     contacts: { type: 'input', label: '企业联系人', prop: 'contacts' },
     phone: { type: 'input', label: '联系人手机号码', prop: 'phone' },

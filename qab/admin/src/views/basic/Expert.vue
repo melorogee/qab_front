@@ -11,7 +11,7 @@
         </SearchPage>
 
         <el-dialog title="新增专家" :visible.sync="expertAddDialog" width="30%">
-            <Form v-if="expertAddDialog" ref="expertAddForm" :form="['expert', 'industryId']" :isRequired="'all'" :labelWidth="'100px'" />
+            <Form v-if="expertAddDialog" ref="expertAddForm" :form="['expert']" :isRequired="'all'" :labelWidth="'100px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="expertAddDialog = false">取消</el-button>
                 <el-button type="primary" @click="expertAddSubmit">保存</el-button>
@@ -19,7 +19,7 @@
         </el-dialog>
 
         <el-dialog title="编辑专家" :visible.sync="expertEditDialog" width="30%">
-            <Form v-if="expertEditDialog" ref="expertEditForm" :form="['expert', 'industryId']" :setValue="expertValue" :isRequired="'all'" :labelWidth="'100px'" />
+            <Form v-if="expertEditDialog" ref="expertEditForm" :form="['expert']" :setValue="expertValue" :isRequired="'all'" :labelWidth="'100px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="expertEditDialog = false">取消</el-button>
                 <el-button type="primary" @click="expertEditSubmit">保存</el-button>
@@ -27,7 +27,7 @@
         </el-dialog>
 
         <el-dialog title="批量导入专家" :visible.sync="expertImportDialog" width="30%">
-            <Form v-if="expertImportDialog" ref="expertImportForm" :form="['industryId', 'file']" :isRequired="'all'" :labelWidth="'100px'" />
+            <Form v-if="expertImportDialog" ref="expertImportForm" :form="[ 'file']" :isRequired="'all'" :labelWidth="'100px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="expertImportDialog = false">取消</el-button>
                 <el-button type="primary" @click="expertImportSubmit">保存</el-button>
@@ -41,8 +41,8 @@ export default {
     name: 'Expert',
     data() {
         return {
-            expertSearchForm: ['industryId'],
-            expertTable: ['expert', 'industryName', 'operat'],
+            expertSearchForm: [],
+            expertTable: ['expert', 'operat'],
             expertAddDialog: false,
             expertEditDialog: false,
             expertValue: {},
