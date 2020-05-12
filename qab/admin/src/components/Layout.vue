@@ -25,10 +25,12 @@
                 <el-menu :default-active="$route.path"  :unique-opened="true" :collapse="!type" router>
                     <!-- <el-menu-item index="/Home"><i class="el-icon-menu"></i><router-link to="/Home">首页</router-link></el-menu-item> -->
                     <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path" v-show="
-                        (right==1 && ( main.path!='/Safety' && main.path!='/Employee' && main.path!='/Insurebx'))
-                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' ))
+                        (right==1 && ( main.path!='/Safety' && main.path!='/Employee' && main.path!='/Insurebx' ))
+                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' || main.path=='/Safetysystem'))
                     || ( right == 300 && (main.path=='/User' || main.path=='/Order' || main.path=='/Insurebx' || main.path=='/System' ))
-                    || ( right == 200 && (main.path=='/Insurebx' || main.path=='/System'  ))">
+                    || ( right == 400 && (main.path=='/Safetysystem' ))
+                    || ( right == 200 && (main.path=='/Insurebx' || main.path=='/System'  ))"
+                    >
 
                         <template slot="title"   >
                             <i :class="`iconfont ${main.meta.icon}`"></i>
@@ -48,9 +50,24 @@
                                )
                             &&
                                 (
-                                    ((right == 100 || right == 200 || right == 300) && (main.path =='/System' && (sub.path=='/System/AccountSetting') || main.path != '/System' )) || (right != 100 && right != 200 && right != 300)
+                                    ((right == 100 || right == 200 || right == 300) && (main.path =='/System' && (sub.path=='/System/AccountSetting') || main.path != '/System' ))
+                                    || (right != 100 && right != 200 && right != 300)
                                 )
-
+                             &&
+                                (
+                                    ((right == 100 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic2') || main.path != '/Safetysystem' ))
+                                    || (right != 100 )
+                                )
+                             &&
+                                (
+                                    ((right == 400 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic') || main.path != '/Safetysystem' ))
+                                    || (right != 400 )
+                                )
+                             &&
+                                (
+                                    ((right == 1 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic') || main.path != '/Safetysystem' ))
+                                    || (right != 1 )
+                                )
 
 
                             "

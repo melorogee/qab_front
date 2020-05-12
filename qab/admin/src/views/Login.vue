@@ -38,6 +38,7 @@ export default {
                 sessionStorage.setItem('userName', res.userName)
                 sessionStorage.setItem('phone', res.phone)
                 sessionStorage.setItem('right', res.type)
+                sessionStorage.setItem('userId', res.idx)
 
                 // this.$router.addRoutes()
                 if(res.type == 100){
@@ -46,6 +47,8 @@ export default {
                     this.$router.push({ name: 'Insurebx' });
                 }else if(res.type == 300){
                     this.$router.push({ name: 'Call' });
+                }else if(res.type == 400){
+                    this.$router.push({ name: 'Threepic' });
                 }else{
                     this.$router.push({ name: 'Template' });
                 }

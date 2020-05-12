@@ -17,8 +17,8 @@ export default {
     meta: { title: '安全风险管控体系', icon: 'iconread' },
     component: () => import('@/components/Content'),
     children: [
-        { path: '/Safetysystem/Threepic', name: 'Threepic', component: () => import('@/views/safetysystem/threepic'), meta: { title: '三图企业' } },
-        { path: '/Safetysystem/Threepic2', name: 'Threepic2', component: () => import('@/views/safetysystem/threepic2'), meta: { title: '三图监管' } },
+        { path: '/Safetysystem/Threepic', name: 'Threepic', component: () => import('@/views/safetysystem/threepic'), meta: { title: '三图' } },
+        { path: '/Safetysystem/Threepic2', name: 'Threepic2', component: () => import('@/views/safetysystem/threepic2'), meta: { title: '三图' } },
 
     ]
 }
