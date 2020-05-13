@@ -27,7 +27,7 @@
                     <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path" v-show="
                         (right==1 && ( main.path!='/Safety' && main.path!='/Employee' && main.path!='/Insurebx' ))
                     || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' || main.path=='/Safetysystem'))
-                    || ( right == 300 && (main.path=='/User' || main.path=='/Order' || main.path=='/Insurebx' || main.path=='/System' ))
+                    || ( right == 300 && (main.path=='/User' || main.path=='/Order' || main.path=='/Insurebx' || main.path=='/System' || main.path=='/Safetysystem'))
                     || ( right == 400 && (main.path=='/Safetysystem' ))
                     || ( right == 200 && (main.path=='/Insurebx' || main.path=='/System'  ))"
                     >
@@ -68,7 +68,11 @@
                                     ((right == 1 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic') || main.path != '/Safetysystem' ))
                                     || (right != 1 )
                                 )
-
+                            &&
+                                (
+                                    ((right == 300 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic') || main.path != '/Safetysystem' ))
+                                    || (right != 300 )
+                                )
 
                             "
                                           :key="subIndex" :index="sub.path" :class="{'is-active': $route.path.indexOf(sub.path) > -1}">

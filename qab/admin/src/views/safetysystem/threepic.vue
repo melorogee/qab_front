@@ -107,35 +107,62 @@
 
 
 
-    <el-dialog title="详情" :visible.sync="disDialogDetail" width="100%">
+    <el-dialog title="详情" :visible.sync="disDialogDetail" width="80%" top="30px">
       <el-form ref="disDialogDetail" label-width="100px" class="hiddenBorder">
         <div style="display:flex;">
           <div class="box" >
             <!--          action="/manage/enterprise/three/img/upload/fourColor"-->
             <div>安全风险四色分布图（分总平图、车间图）</div>
-              <img v-if="fourColorUrl" :src="fourColorUrl" class="avatar" />
+              <img v-if="fourColorUrl" :src="fourColorUrl" class="avatar" style="display: block;margin: 0 auto;margin-bottom: 10px"/>
+            <el-button  icon="el-icon-zoom-in" circle @click="imgBig(fourColorUrl,'安全风险四色分布图（分总平图、车间图）')"></el-button>
 
           </div>
 
           <div class="box">
             <div>消防设施分布及疏散图</div>
-              <img v-if="fireFightingUrl" :src="fireFightingUrl" class="avatar" />
+              <img v-if="fireFightingUrl" :src="fireFightingUrl" class="avatar" style="display: block;margin: 0 auto;margin-bottom: 10px"/>
+            <el-button  icon="el-icon-zoom-in" circle @click="imgBig(fireFightingUrl,'消防设施分布及疏散图')"></el-button>
+
+          </div>
+        </div>
+
+        <div  class="box" >
+          <!--          action="/manage/enterprise/three/img/upload/fourColor"-->
+          <div style="margin-bottom: 15px">岗位风险告知图
+<!--            <el-button type="primary" @click="goUploadPosition()" plain>上传</el-button>-->
           </div>
 
+          <div style="width: 100%;overflow: hidden;">
+            <div   v-for="(item, index) in postionList" :key="index" style="min-width: 24%;float:left;margin-bottom: 20px">
+                      <span >
+                           <img style="display:block;margin: 0 auto;"  :src="item.url" class="avatar">
+                            <div>{{item.name}}</div>
+                          <el-button  icon="el-icon-zoom-in" circle @click="imgBig(item.url,item.name)"></el-button>
+                            <el-button size="mini" type="danger" @click="delPosition(item.idx)" plain>删除</el-button>
 
-          <div class="box">
-            <div>消防设施分布及疏散图</div>
-            <div class="box" v-for="(item, index) in postionList" :key="index">
-                <img  :src="item.url" class="avatar" @click="imgBig(item.url,'item.name')">
-                <label>{{item.name}}</label>
+                      </span>
+
             </div>
-
           </div>
         </div>
       </el-form>
 
       <span slot="footer" class="dialog-footer">
                 <el-button @click="disDialogDetail = false">取消</el-button>
+        <!--                <el-button type="primary" @click="goDis">保存</el-button>-->
+            </span>
+    </el-dialog>
+
+
+    <el-dialog title="放大" :visible.sync="disDialogPic" width="70%">
+      <div>
+        <div class="imgBox" v-if="imgurl != ''">
+          <img :src="imgurl" alt />
+          <div>{{imgText}}</div>
+        </div>
+      </div>
+      <span slot="footer" class="dialog-footer">
+                <el-button @click="disDialogPic = false">取消</el-button>
         <!--                <el-button type="primary" @click="goDis">保存</el-button>-->
             </span>
     </el-dialog>
@@ -148,6 +175,7 @@
   name: "Threepic",
   data() {
     return {
+      disDialogPic:false,
       picType:"",
       tableData: [],
       current:0,
@@ -161,7 +189,10 @@
       disDialogDetail:false,
       tempIdDetail:"",
       fourColorUrl:"",
-      fireFightingUrl:""
+      fireFightingUrl:"",
+      imgurl:"",
+      imgtext:"",
+      imgBigShow:false
     };
   },
   created() {
@@ -182,6 +213,7 @@
         this.disDialog=false
         this.disDialogDetail=false;
         this.tempIdDetail=""
+        this.disDialogPic = false
       });
     },
 
@@ -193,7 +225,9 @@
     goDetail(id){
       this.disDialogDetail = true
       this.tempIdDetail = id
-
+      this.postionList=[]
+      this.fourColorUrl=""
+      this.fireFightingUrl=""
       this.$api.threeImgDetail({"enterpriseId":id}).then((data) => {
                   this.fourColorUrl = data.fourColorUrl
                   this.fireFightingUrl = data.fireFightingUrl
@@ -276,6 +310,20 @@
       }
 
     },
+    imgBig(url,text) {
+      this.disDialogPic =true;
+      this.imgBigShow = true;
+      this.imgurl=url;
+      this.imgText=text;
+
+    },
+    delPosition(id){
+      this.$api.positionDelete({idxs: id}).then(() => {
+        this.$message.success('删除成功');
+        this.loadData();
+
+      })
+    }
   }
 };
 </script>
@@ -287,10 +335,12 @@
     padding: 10px 20px;
     text-align: center;
     cursor: pointer;
+    font-size: 16px;
+
     box-sizing: border-box;
   }
   .box:hover {
-    border: 1px solid #d9d9d9;
+    border: 0px solid #d9d9d9;
     border-radius: 6px;
   }
   .avatar-uploader .el-upload {

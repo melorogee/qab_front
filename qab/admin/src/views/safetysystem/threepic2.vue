@@ -1,9 +1,8 @@
 <template>
   <div style="width: 100%;height: 100%;overflow-y:auto;">
     <div style="display:flex;">
-        <button @click="goUploadPosition()">上传</button>
 
-        <div class="box" @click="imgBig(fourColorUrl,'安全风险四色分布图（分总平图、车间图）')">
+        <div class="box" >
         <!--          action="/manage/enterprise/three/img/upload/fourColor"-->
           <div>安全风险四色分布图（分总平图、车间图）</div>
 
@@ -15,11 +14,14 @@
         >
           <img v-if="fourColorUrl" :src="fourColorUrl" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+
         </el-upload>
-      </div>
+            <el-button  icon="el-icon-zoom-in" circle @click="imgBig(fourColorUrl,'安全风险四色分布图（分总平图、车间图）')"></el-button>
+
+        </div>
 
 
-      <div class="box" @click="imgBig(fireFightingUrl,'消防设施分布及疏散图')">
+      <div class="box" >
           <div>消防设施分布及疏散图</div>
 
           <el-upload
@@ -30,46 +32,34 @@
         >
           <img v-if="fireFightingUrl" :src="fireFightingUrl" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-        </el-upload>
+
+          </el-upload>
+          <el-button  icon="el-icon-zoom-in" circle @click="imgBig(fireFightingUrl,'消防设施分布及疏散图')"></el-button>
+
       </div>
 
-
-        <div class="box" >
-            <!--          action="/manage/enterprise/three/img/upload/fourColor"-->
-            <div>岗位风险告知图</div>
-
-
-            <div class="box"  v-for="(item, index) in postionList" :key="index" >
-                  <span @click="imgBig(item.url,item.name)">
-                       <img  :src="item.url" class="avatar" @click="imgBig(item.url,'item.name')">
-                        <label>{{item.name}}</label>
-                      <button @click="delPosition(item.idx)">删除</button>
-                  </span>
-            </div>
-        </div>
-<!--      <div class="box" @click="imgBig(postRiskUrl,'岗位风险告知图')">-->
-<!--&lt;!&ndash;        <el-upload&ndash;&gt;-->
-<!--&lt;!&ndash;          class="avatar-uploader"&ndash;&gt;-->
-<!--&lt;!&ndash;          action="/manage/enterprise/three/img/upload/postRisk"&ndash;&gt;-->
-<!--&lt;!&ndash;          :show-file-list="false"&ndash;&gt;-->
-<!--&lt;!&ndash;          :on-success="handleAvatarSuccess3"&ndash;&gt;-->
-<!--&lt;!&ndash;        >&ndash;&gt;-->
-<!--&lt;!&ndash;          <img v-if="postRiskUrl" :src="postRiskUrl" class="avatar" />&ndash;&gt;-->
-<!--&lt;!&ndash;          <i v-else class="el-icon-plus avatar-uploader-icon"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;        </el-upload>&ndash;&gt;-->
-<!--        <el-upload-->
-<!--                action="222"-->
-<!--                :http-request="upLoadPosition"-->
-<!--                list-type="picture-card"-->
-<!--                :on-preview="handlePictureCardPreview"-->
-<!--                :on-remove="handleRemove">-->
-<!--          <i class="el-icon-plus"></i>-->
-<!--        </el-upload>-->
-<!--        <div>岗位风险告知图</div>-->
-<!--      </div>-->
     </div>
 
 
+      <div  class="box" >
+          <!--          action="/manage/enterprise/three/img/upload/fourColor"-->
+          <div style="margin-bottom: 15px">岗位风险告知图
+              <el-button type="primary" @click="goUploadPosition()" plain>上传</el-button>
+          </div>
+
+          <div style="width: 100%;overflow: hidden;">
+                <div   v-for="(item, index) in postionList" :key="index" style="min-width: 24%;float:left;margin-bottom: 20px">
+                      <span >
+                           <img style="display:block;margin: 0 auto;"  :src="item.url" class="avatar">
+                            <div>{{item.name}}</div>
+                          <el-button  icon="el-icon-zoom-in" circle @click="imgBig(item.url,item.name)"></el-button>
+                            <el-button size="mini" type="danger" @click="delPosition(item.idx)" plain>删除</el-button>
+
+                      </span>
+
+                </div>
+          </div>
+      </div>
 
 
 
@@ -180,7 +170,6 @@
       formData.append('enterpriseId',userId)
       axios.post(`/manage/enterprise/three/img/upload/fourColor`,formData).then(res => res.data)
               .then(data => {
-                console.log(data)
                 if(data.code === 200){
                   this.initData();
                 }
@@ -195,7 +184,6 @@
           formData.append('enterpriseId',userId)
           axios.post(`/manage/enterprise/three/img/upload/fireFighting`,formData).then(res => res.data)
               .then(data => {
-                  console.log(data)
                   if(data.code === 200){
                       this.initData();
                   }
@@ -257,10 +245,11 @@
   padding: 10px 20px;
   text-align: center;
   cursor: pointer;
+    font-size: 16px;
   box-sizing: border-box;
 }
 .box:hover {
-  border: 1px solid #d9d9d9;
+  border: 0px solid #d9d9d9;
   border-radius: 6px;
 }
 .avatar-uploader .el-upload {

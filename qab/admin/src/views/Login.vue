@@ -35,6 +35,8 @@ export default {
                 return false;
             }
             this.$api.login(para).then(res => {
+                sessionStorage.clear()
+
                 sessionStorage.setItem('userName', res.userName)
                 sessionStorage.setItem('phone', res.phone)
                 sessionStorage.setItem('right', res.type)
