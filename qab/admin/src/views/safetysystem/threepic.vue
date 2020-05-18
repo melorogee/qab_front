@@ -3,8 +3,17 @@
         'searchPage--hasSearchForm': false,
         'searchPage--hasPagination': true,
     }">
-    <div class="searchPage__table">
 
+    <div class="searchPage__mainButtons">
+      <div class="searchPage__mainButtons--right">
+        <el-input v-model.trim="keyword" :clearable="true" :maxlength="60" :placeholder="`请输入企业名称`">
+          <el-button slot="append" icon="el-icon-search" @click="loadData"></el-button>
+        </el-input>
+      </div>
+    </div><!-- // main buttons -->
+
+
+    <div class="searchPage__table">
     <el-table :data="tableData" style="width: 100%;height: 100%;overflow-y:auto;">
       <el-table-column prop="enterpriseName" label="企业名称" width="180"></el-table-column>
       <el-table-column label="安全风险四色分布图（分总平图、车间图）">
@@ -192,7 +201,8 @@
       fireFightingUrl:"",
       imgurl:"",
       imgtext:"",
-      imgBigShow:false
+      imgBigShow:false,
+      keyword:""
     };
   },
   created() {
@@ -202,7 +212,7 @@
 
   methods: {
     loadData() {
-      this.$api.threeImgList({"current":this.current,"size":this.size}).then((data) => {
+      this.$api.threeImgList({"current":this.current,"size":this.size,"keyword":this.keyword}).then((data) => {
         this.tableData = data.records;
         this.current =data.current;
         this.size =data.size;
@@ -260,7 +270,6 @@
       formData.append('enterpriseId',userId)
       axios.post(`/manage/enterprise/three/img/upload/fourColor`,formData).then(res => res.data)
               .then(data => {
-                console.log(data)
                 if(data.code === 200){
                   this.loadData()
                   this.disDialog=false;
@@ -276,7 +285,6 @@
       formData.append('enterpriseId',userId)
       axios.post(`/manage/enterprise/three/img/upload/fireFighting`,formData).then(res => res.data)
               .then(data => {
-                console.log(data)
                 if(data.code === 200){
                   this.loadData()
                   this.disDialog=false;

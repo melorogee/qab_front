@@ -55,24 +55,27 @@
                                 )
                              &&
                                 (
-                                    ((right == 100 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic2') || main.path != '/Safetysystem' ))
+                                    ((right == 100 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic2' || sub.path=='/Safetysystem/Onecase_company' || sub.path=='/Safetysystem/Onetable_company' || sub.path=='/Safetysystem/Onelist_company' ) || main.path != '/Safetysystem' ))
                                     || (right != 100 )
                                 )
                              &&
                                 (
-                                    ((right == 400 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic') || main.path != '/Safetysystem' ))
+                                    ((right == 400 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic' || sub.path=='/Safetysystem/Onecase_admin' || sub.path=='/Safetysystem/Onetable_admin' || sub.path=='/Safetysystem/Onelist_admin'   ) || main.path != '/Safetysystem' ))
                                     || (right != 400 )
                                 )
                              &&
                                 (
-                                    ((right == 1 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic') || main.path != '/Safetysystem' ))
+                                    ((right == 1 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic' || sub.path=='/Safetysystem/Onecase_admin' || sub.path=='/Safetysystem/Onetable_admin' || sub.path=='/Safetysystem/Onelist_admin'  ) || main.path != '/Safetysystem' ))
                                     || (right != 1 )
                                 )
                             &&
                                 (
-                                    ((right == 300 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic') || main.path != '/Safetysystem' ))
+                                    ((right == 300 ) && (main.path =='/Safetysystem' && (sub.path=='/Safetysystem/Threepic' || sub.path=='/Safetysystem/Onecase_admin' || sub.path=='/Safetysystem/Onetable_admin' || sub.path=='/Safetysystem/Onelist_admin'  ) || main.path != '/Safetysystem' ))
                                     || (right != 300 )
                                 )
+
+
+
 
                             "
                                           :key="subIndex" :index="sub.path" :class="{'is-active': $route.path.indexOf(sub.path) > -1}">

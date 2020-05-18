@@ -18,11 +18,13 @@ export default {
     },
     data() {
         return {
-            setValue: {}
+            setValue: {},
+            enterpriseId:""
         }
     },
     created() {
         this.setValue = this.$route.query.setValue ? JSON.parse(this.$route.query.setValue) : {};
+        this.enterpriseId = sessionStorage.getItem('userId')
     },
     methods: {
         submitForm() { // 提交
@@ -32,6 +34,10 @@ export default {
                     // console.log(para.examinationPaperRulesPercentList)
                     let error = false;
                     let tempdata =para.examinationPaperRulesPercentList
+                    para.enterpriseId = this.enterpriseId
+                    // console.log("######################")
+                    // console.log(para)
+                    // console.log("######################")
                     if(tempdata){
                         let flag = false;
                         let flag2 = false;

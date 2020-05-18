@@ -19,6 +19,13 @@ export default {
     children: [
         { path: '/Safetysystem/Threepic', name: 'Threepic', component: () => import('@/views/safetysystem/threepic'), meta: { title: '三图' } },
         { path: '/Safetysystem/Threepic2', name: 'Threepic2', component: () => import('@/views/safetysystem/threepic2'), meta: { title: '三图' } },
+        { path: '/Safetysystem/Onecase_company', name: 'Onecase_company', component: () => import('@/views/safetysystem/onecase_company'), meta: { title: '一案' } },
+        { path: '/Safetysystem/Onecase_admin', name: 'Onecase_admin', component: () => import('@/views/safetysystem/onecase_admin'), meta: { title: '一案' } },
+        { path: '/Safetysystem/Onetable_company', name: 'Onetable_company', component: () => import('@/views/safetysystem/onetable_company'), meta: { title: '一表' } },
+        { path: '/Safetysystem/Onetable_admin', name: 'Onetable_admin', component: () => import('@/views/safetysystem/onetable_admin'), meta: { title: '一表' } },
+        { path: '/Safetysystem/Onelist_company', name: 'Onelist_company', component: () => import('@/views/safetysystem/onelist_company'), meta: { title: '一清单' } },
+        { path: '/Safetysystem/Onelist_admin', name: 'Onelist_admin', component: () => import('@/views/safetysystem/onelist_admin'), meta: { title: '一清单' } },
+
 
     ]
 }
