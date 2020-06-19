@@ -182,7 +182,8 @@ export default {
             queryForm: {}, // 列表提交对象
             tableProp: [],
             tableData: [], // 列表数据
-            total: 0 // 总记录数
+            total: 0, // 总记录数
+            tempCompanyId:''
         }
     },
     created() {
@@ -205,7 +206,7 @@ export default {
         this.$parent.SearchPageInit = this.getData; // 给父级绑定 => 获取列表数据 方法
     },
     methods: {
-        initOptions() { // 初始化列表数据
+         initOptions() { // 初始化列表数据
             for(let item of this.options){
                 if(Object.prototype.toString.call(item.prop) == '[object String]'){
                     this.$set(this.queryForm, item.prop, item.multiple ? [] : '');
@@ -223,9 +224,15 @@ export default {
             }
             this.$set(this.queryForm, 'current', 1);
             this.$set(this.queryForm, 'size', 10);
-            this.getData();
+            console.log(this.options)
+             if(this.options != null && this.options.length >0 && this.options[0] != null && this.options[0].api == 'getEnterpriseByExpertId'){
+                 console.log("1")
+
+             }else{
+                 this.getData();
+             }
         },
-        optionsGetList(item) { // 获取筛选列表数据
+         optionsGetList(item) { // 获取筛选列表数据
             if(item.api){
                 let para = {};
                 if(item.apiPara){
@@ -244,6 +251,14 @@ export default {
                 this.$api[item.api](para).then(res => {
                     this.$set(item, 'list', res)
                     this.options = Object.assign([],this.options)
+                    // if(item.api == 'getEnterpriseByExpertId'){
+                    //     // this.$set(this.queryForm,'enterpriseId', this.options[0].list[0].idx);
+                    //     this.tempCompanyId = this.options[0].list[0].idx
+                    //     console.log(this.tempCompanyId)
+                    //
+                    // }
+                    // console.log(this.queryForm)
+
                 })
             }
         },
@@ -256,7 +271,7 @@ export default {
                 this.$set(this.queryForm, item.prop[index], value[index]);
             }
             this.targetList(item);
-            this.getData();
+             this.getData();
         },
         targetList(item) { // 获取筛选联动列表
             if(item.init){
@@ -277,11 +292,15 @@ export default {
         },
         async getData() { // 获取列表数据
             let para = {};
+            console.log(this.tempCompanyId)
             for(let key in this.queryForm){
+                // console.log(key)
                 if(this.queryForm[key] || this.queryForm[key] === 0){
                     para[key] = this.queryForm[key];
+                    // console.log(this.queryForm[key])
                 }
             }
+            // console.log(para)
             let res = await this.$api[this.api](para);
             this.total = res.total;
             this.tableData = res.records;

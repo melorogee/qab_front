@@ -22,6 +22,7 @@
 
 
 
+
             <template v-if="item.type == 'examinationPaperRulesPercentList'">
                 <div class="submitForm__selectAndInput"
                     v-for="(listItem,index) in queryForm.examinationPaperRulesPercentList" :key="index">

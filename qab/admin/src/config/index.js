@@ -91,7 +91,10 @@ const form = {
     orgName:{ type: 'input', label: '机构名称', prop: 'name', row: 1 },
     orgContact:{ type: 'input', label: '联系人', prop: 'contact', row: 1 },
     orgContactNum:{ type: 'input', label: '联系方式', prop: 'phone', row: 1 },
-    orgType:{ type: 'input', label: '机构类别', prop: 'category', row: 1 },
+     orgType:{ type: 'input', label: '机构类别', prop: 'category', row: 1 },
+    orgType1:{ type: 'select', label: '机构类型', prop: 'typeId', row: 1, api:'orgTypeList'},
+    qualificationUrl: { type: 'inputUpload', label: '上传资质证书', prop: 'qualificationUrl', action: 'http://www.cxzdjs.cn/manage/upload/image' },
+
     orgBusiness:{ type: 'textarea', label: '业务范围', prop: 'businessScope', row: 1 },
     orgAddress:{ type: 'input', label: '机构地址', prop: 'fullAddr', row: 1 },
     certificateNumber:{ type: 'input', label: '证书编号', prop: 'certificateNumber', row: 1 },
@@ -103,6 +106,7 @@ const form = {
     // insureExpert: { type: 'select', label: '派单至专家', prop: 'expertId', row: 1, list:'superviseLevel'},
     // insureEndTime: { type: 'date1', label: '服务截止时间', prop: 'deadline', row: 1 },
     expContacts:{ type: 'input', label: '联系人', prop: 'contacts', row: 1 },
+    servedCompany:{ type: 'select', label: '服务过的企业', prop: 'enterpriseId', row: 1, api: 'getEnterpriseByExpertId',init: ["enterpriseId"]},
 
 };
 /**

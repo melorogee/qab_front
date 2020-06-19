@@ -25,5 +25,10 @@ export const orgAdd = data => { return instance({ url: `/organUser/save`, method
 export const orgDelete = data => { return instance({ url: `/organUser/delete`, method: 'GET', params: data }) }
 export const orgDetail = data => { return instance({ url: `/organUser/detail`, method: 'GET', params: data }) }
 
+export const enterpriseUpdate = data => { return instance({ url: `enterpriseUser/updateById`, method: 'POST', data }) }
+
+
+export const expertUpdate = data => { return instance({ url: `expertUser/updateById`, method: 'POST', data }) }
+export const orgUpdate = data => { return instance({ url: `expertUser/updateById`, method: 'POST', data }) }
 
 

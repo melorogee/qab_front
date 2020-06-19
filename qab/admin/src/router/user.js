@@ -67,7 +67,7 @@ export default {
             path: '/User/Has/orgAdd', name: 'orgAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '新增', parentTitle: '机构', msg: 'form', isBack: true, backName: 'Has', isHide: true,
-                form: ['orgName', 'orgContact', 'orgContactNum', 'orgType', 'districtCode', 'orgAddress','orgBusiness'], isRequired: 'all', api: 'orgAdd'
+                form: ['orgName', 'orgContact', 'orgContactNum', 'orgType1','orgType', 'districtCode', 'orgAddress','orgBusiness','qualificationUrl'], isRequired: 'all', api: 'orgAdd'
             }
         },
 

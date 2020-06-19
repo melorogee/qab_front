@@ -15,4 +15,5 @@ const educationType40 = [ { idx: 1, name: '新员工培训' }, { idx: 2, name: '
 const rightAnswer =   [ { idx: 'A', name: 'A' }, { idx: 'B', name: 'B' }, { idx: 'C', name: 'C' }, { idx: 'D', name: 'D' }];
 const superviseLevel =   [ { idx: 1, name: '镇/街道' }, { idx: 2, name: '县/区' }, { idx: 3, name: '市' }, { idx: 4, name: '省' }];
 
+
 export default { superviseLevel,rightAnswer,type, educationTypesNew,positionTypeList, educationType20,educationType40, educationTypes, questionType, questionTypeList, msg, statusList, zjList,orderStatusMap ,planTypeMap}

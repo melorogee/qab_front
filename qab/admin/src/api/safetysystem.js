@@ -20,4 +20,9 @@ export const onelist = data => { return instance({ url: `/riskAssessment/list`, 
 
 export const updateById = data => { return instance({ url: `/riskAssessment/updateById`, method: 'POST', data }) }
 
+export const generateUploadQdan = data => { return instance({ url: `/riskAssessment/generateUploadQdan`, method: 'GET', params: data }) }
+export const generateUploadBiao = data => { return instance({ url: `/riskAssessment/generateUploadBiao`, method: 'GET', params: data }) }
+export const getEnterpriseByExpertId = data => { return instance({ url: `/riskAssessment/getEnterpriseByExpertId`, method: 'GET', params: data }) }
+
+
 export const exportList = '/manage/riskAssessment/export'

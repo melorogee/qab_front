@@ -27,9 +27,14 @@
     {"url": "/User", "name": "用户管理", "icon": "user", "children": [
         {"url": "/User/New", "name": "新注册用户"},
         {"url": "/User/Has", "name": "已注册用户"}
-    ]}, 
+    ]},
     {"url": "/System", "name": "系统管理", "icon": "system", "children": [
         {"url": "/System/Account", "name": "账号管理"},
         {"url": "/System/Log", "name": "操作日志"}
+    ]}
+,
+    {"url": "/Employee", "name": "员工管理", "icon": "system", "children": [
+        {"url": "/Employee/EmployeeMgn", "name": "员工管理"},
+        {"url": "/Employee/EmployeeAdd", "name": "新增员工"}
     ]}
 ]

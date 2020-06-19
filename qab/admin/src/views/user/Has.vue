@@ -6,6 +6,8 @@
                     <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="enterpriseUserAdd">新增</el-button>
                     <template slot="operat" slot-scope="scope">
                         <el-button type="text" @click="enterpriseUserDetail(scope)">详情</el-button>
+                        <el-button type="text" @click="enterpriseUserEdit(scope)">编辑</el-button>
+
                         <!-- <el-button type="text" @click="enterpriseUserReview(scope.row, 2)">通过</el-button>
                         <el-button type="text" @click="enterpriseUserReview(scope.row, 1)">拒绝</el-button> -->
                         <el-button type="text" @click="enterpriseUserDelete(scope)">删除</el-button>
@@ -17,6 +19,8 @@
                     <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="expertUserAdd">新增</el-button>
                     <template slot="operat" slot-scope="scope">
                         <el-button type="text" @click="expertUserDetail(scope)">详情</el-button>
+                        <el-button type="text" @click="expertUserEdit(scope)">编辑</el-button>
+
                         <!-- <el-button type="text" @click="expertUserReview(scope.row, 2)">通过</el-button>
                         <el-button type="text" @click="expertUserReview(scope.row, 1)">拒绝</el-button> -->
                         <el-button type="text" @click="expertUserDelete(scope)">删除</el-button>
@@ -28,6 +32,8 @@
                     <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="orgAdd">新增</el-button>
                     <template slot="orgOperat" slot-scope="scope">
                         <el-button type="text" @click="orgDetail(scope)">详情</el-button>
+                        <el-button type="text" @click="orgUserEdit(scope)">编辑</el-button>
+
                         <!-- <el-button type="text" @click="expertUserReview(scope.row, 2)">通过</el-button>
                         <el-button type="text" @click="expertUserReview(scope.row, 1)">拒绝</el-button> -->
                         <el-button type="text" @click="orgDelete(scope)">删除</el-button>
@@ -98,6 +104,35 @@
             </span> -->
         </el-dialog>
 
+
+
+        <el-dialog title="编辑" :visible.sync="editDialog" width="30%">
+            <Form v-if="editDialog" ref="userEditForm" :form="[ 'businessLicenseUrl', 'districtCode_user', 'fullAddr', 'industryId', 'contacts' ]" :setValue="userValue" :isRequired="'all'" :labelWidth="'100px'" />
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="editDialog = false">取消</el-button>
+                <el-button type="primary" @click="userEditSubmit">保存</el-button>
+            </span>
+        </el-dialog>
+
+        <el-dialog title="编辑" :visible.sync="editDialog1" width="30%">
+            <Form v-if="editDialog1" ref="userEditForm1"
+                  :form="['expertUser',  'certificateUrl', 'districtCode_user', 'fullAddr','industryId', 'type', 'qualifications', 'phone', 'certificateNumber','certificateValidityPeriod']" :setValue="userValue1" :isRequired="'all'" :labelWidth="'100px'" />
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="editDialog1 = false">取消</el-button>
+                <el-button type="primary" @click="userEditSubmit1">保存</el-button>
+            </span>
+        </el-dialog>
+
+
+        <el-dialog title="编辑" :visible.sync="editDialog2" width="30%">
+            <Form v-if="editDialog2" ref="userEditForm2"
+                  :form="['orgName', 'orgContact', 'orgContactNum', 'orgType1','orgType', 'districtCode', 'orgAddress','orgBusiness','qualificationUrl']" :setValue="userValue2" :isRequired="'all'" :labelWidth="'100px'" />
+            <span slot="footer" class="dialog-footer">
+                <el-button @click="editDialog2 = false">取消</el-button>
+                <el-button type="primary" @click="userEditSubmit2">保存</el-button>
+            </span>
+        </el-dialog>
+
     </div>
 </template>
 <script>
@@ -105,6 +140,15 @@ export default {
     name: 'Has',
     data() {
         return {
+
+            userValue:{},
+            userValue1:{},
+            userValue2:{},
+
+            editDialog:false,
+            editDialog1:false,
+            editDialog2:false,
+
             enterpriseUserSearchForm: [],
             enterpriseUserTable: ['enterpriseUser', 'industryName', 'contacts', 'phone', 'createTime', 'operat10'],
             expertUserSearchForm: [],
@@ -272,6 +316,88 @@ export default {
             this.img = img;
             this.imgDialog = true;
         },
-    }
+
+
+        enterpriseUserEdit(scope) {
+            let para = { id: scope.row.idx };
+            // this.userValue= scope.row;
+            this.$api.enterpriseUserDetail(para).then(res => {
+                this.userValue = res;
+                this.editDialog = true;
+
+            });
+        },
+
+        userEditSubmit(){
+            this.$refs.userEditForm.$refs.queryForm.validate((valid) => {
+                if (valid) {
+                    let para = {...this.$refs.userEditForm.queryForm};
+                    para.businessLicenseUrl = para.businessLicenseUrl.toString()
+
+                    this.$api.enterpriseUpdate(para).then(() => {
+                        this.$message.success(`编辑企业账户成功`);
+                        this.editDialog = false;
+                        this.$refs.enterpriseUser.getData();
+                    })
+                }
+            });
+        }  ,
+
+
+        expertUserEdit(scope) {
+            let para = { id: scope.row.idx };
+            this.$api.expertUserDetail(para).then(res => {
+                res.certificateUrl = res.certificateUrl.toString()
+                res.list = null
+                this.userValue1 = res;
+                this.editDialog1 = true;
+                this.userValue1.certificateNumber = res.certificateNo
+                this.userValue1.certificateValidityPeriod = res.certificateExpire
+            });
+        },
+
+
+        userEditSubmit1(){
+            this.$refs.userEditForm1.$refs.queryForm.validate((valid) => {
+                if (valid) {
+                    let para = {...this.$refs.userEditForm1.queryForm};
+                    // para.businessLicenseUrl = para.businessLicenseUrl.toString()
+                    this.$api.expertUpdate(para).then(() => {
+                        this.$message.success(`编辑专家/特征作业人员账户成功`);
+                        this.editDialog = false;
+                        this.$refs.enterpriseUser.getData();
+                    })
+                }
+            });
+        },
+
+
+
+        orgUserEdit(scope) {
+            let para = { idx: scope.row.idx };
+            this.$api.orgDetail(para).then(res => {
+                this.userValue2 = res;
+                this.editDialog2 = true;
+
+            });
+        },
+
+        userEditSubmit2(){
+            this.$refs.userEditForm2.$refs.queryForm.validate((valid) => {
+                if (valid) {
+                    // let para = {...this.$refs.userEditForm2.queryForm};
+                    // para.businessLicenseUrl = para.businessLicenseUrl.toString()
+                    this.$message.warning("暂不支持")
+                    // this.$api.orgUpdate(para).then(() => {
+                    //     this.$message.success(`编辑专家/特征作业人员账户成功`);
+                    //     this.editDialog = false;
+                    //     this.$refs.enterpriseUser.getData();
+                    // })
+                }
+            });
+        },
+
+
+}
 }
 </script>

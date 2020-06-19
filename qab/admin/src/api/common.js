@@ -11,6 +11,7 @@ export const upload = data => { return instance({ url: `/oss/upload/form/upload/
 export const courseList = () => { return instance({ url: `/course/required/course/type/list`, method: 'GET'}) }
 export const questionPositionList = () => { return instance({ url: `/employeeUser/positionTypeList`, method: 'GET'}) }
 export const serviceList = () => { return instance({ url: `/serviceType/selectList`, method: 'GET'}) }
+export const orgTypeList = () => { return instance({ url: `/organ/type/all/list`, method: 'GET'}) }
 
 
 
