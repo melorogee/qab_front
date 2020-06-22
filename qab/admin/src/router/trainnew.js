@@ -17,7 +17,13 @@ export default {
     meta: { title: '教育培训', icon: 'iconread' },
     component: () => import('@/components/Content'),
     children: [
-        { path: '/Trainnew/Addyear', name: 'Addyear', component: () => import('@/views/trainnew/Addyear'), meta: { title: '新增年度计划' } },
-        { path: '/Trainnew/Trainnewdetail', name: 'Trainnewdetail', component: () => import('@/views/trainnew/Trainnewdetail'), meta: { title: '培训详情' } }
+        { path: '/Trainnew/Yearplan', name: 'Yearplan', component: () => import('@/views/trainnew/Yearplan'), meta: { title: '年度计划' } },
+        { path: '/Trainnew/YearplanAdd', name: 'YearplanAdd', component: () => import('@/views/trainnew/YearplanAdd'),
+            meta: {
+                title: '新增计划', parentTitle: '年度培训计划', isBack: true, backName: 'Yearplan', isHide: true,
+            }
+        },
+        { path: '/Trainnew/Trainnewdetail', name: 'Trainnewdetail', component: () => import('@/views/trainnew/Trainnewdetail'), meta: { title: '实施培训' } },
+        { path: '/Trainnew/Examnew', name: 'Examnew', component: () => import('@/views/trainnew/Examnew'), meta: { title: '组织考试' } }
     ]
 }

@@ -87,7 +87,7 @@
 
         <el-dialog title="编辑" :visible.sync="editDialog1" width="30%">
             <Form v-if="editDialog1" ref="userEditForm1"
-                  :form="['expertUser',  'certificateUrl', 'districtCode_user', 'fullAddr','industryId', 'type', 'qualifications', 'phone', 'certificateNumber','certificateValidityPeriod']" :setValue="userValue1" :isRequired="'all'" :labelWidth="'100px'" />
+                  :form="['expertUser',  'certificateUrl', 'districtCode_user', 'fullAddr', 'type', 'qualifications', 'phone', 'certificateNumber','certificateValidityPeriod']" :setValue="userValue1" :isRequired="'all'" :labelWidth="'100px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="editDialog1 = false">取消</el-button>
                 <el-button type="primary" @click="userEditSubmit1">保存</el-button>
@@ -108,9 +108,16 @@ export default {
             editDialog:false,
             editDialog1:false,
 
-            enterpriseUserSearchForm: ['status'],
+            enterpriseUserSearchForm: ['status',
+                {
+                type: 'input', label: '关键字', prop: 'keyword',
+                 }
+            ],
             enterpriseUserTable: ['enterpriseUser', 'industryName', 'contacts', 'phone', 'createTime', 'operat16'],
-            expertUserSearchForm: ['status'],
+            expertUserSearchForm: ['status',
+                {
+                    type: 'input', label: '关键字', prop: 'keyword',
+                }],
             expertUserTable: ['expertUser', 'id', 'industryName', 'phone', 'createTime', 'operat16'],
             superviseUserSearchForm: ['status'],
             superviseUserTable: ['superviseUser', 'phone', 'industryName', 'department', 'fullAddr', 'createTime', 'operat16'],
@@ -290,10 +297,10 @@ export default {
                 if (valid) {
                     let para = {...this.$refs.userEditForm1.queryForm};
                     // para.businessLicenseUrl = para.businessLicenseUrl.toString()
-                    this.$api.expertUpdate(para).then(() => {
+                    this.$api.expertUserUpdate(para).then(() => {
                         this.$message.success(`编辑专家/特征作业人员账户成功`);
-                        this.editDialog = false;
-                        this.$refs.enterpriseUser.getData();
+                        this.editDialog1 = false;
+                        this.$refs.expertUser.getData();
                     })
                 }
             });

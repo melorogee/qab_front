@@ -28,7 +28,7 @@ export const orgDetail = data => { return instance({ url: `/organUser/detail`, m
 export const enterpriseUpdate = data => { return instance({ url: `enterpriseUser/updateById`, method: 'POST', data }) }
 
 
-export const expertUpdate = data => { return instance({ url: `expertUser/updateById`, method: 'POST', data }) }
-export const orgUpdate = data => { return instance({ url: `expertUser/updateById`, method: 'POST', data }) }
+export const expertUserUpdate = data => { return instance({ url: `expertUser/updateById`, method: 'POST', data }) }
+export const orgUserUpdate = data => { return instance({ url: `organUser/update`, method: 'POST', data }) }
 
 

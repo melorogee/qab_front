@@ -12,5 +12,6 @@ import * as safety from './safety'
 import * as insure from './insure'
 import * as insurebx from './insurebx'
 import * as safetysystem from './safetysystem'
+import * as trainnew from './trainnew'
 
-export default Object.assign(common, users, train, basic, question, system, website, order, finance,employee,safety,insure,insurebx,safetysystem)
+export default Object.assign(common, users, train, basic, question, system, website, order, finance,employee,safety,insure,insurebx,safetysystem,trainnew)

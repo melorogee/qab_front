@@ -5,9 +5,10 @@
 </template>
 <script>
 export default {
-    name: 'Addyear',
+    name: 'YearplanAdd',
     data() {
         return {
+
 
         }
     },

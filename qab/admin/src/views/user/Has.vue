@@ -28,7 +28,7 @@
                 </SearchPage>
             </el-tab-pane>
             <el-tab-pane label="机构">
-                <SearchPage ref="orgUser"  :table="orgTable" :setValue="{status: 2}" :api="'orgList'">
+                <SearchPage ref="orgUser" :searchForm="orgUserSearchForm" :table="orgTable" :setValue="{status: 2}" :api="'orgList'">
                     <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="orgAdd">新增</el-button>
                     <template slot="orgOperat" slot-scope="scope">
                         <el-button type="text" @click="orgDetail(scope)">详情</el-button>
@@ -116,7 +116,7 @@
 
         <el-dialog title="编辑" :visible.sync="editDialog1" width="30%">
             <Form v-if="editDialog1" ref="userEditForm1"
-                  :form="['expertUser',  'certificateUrl', 'districtCode_user', 'fullAddr','industryId', 'type', 'qualifications', 'phone', 'certificateNumber','certificateValidityPeriod']" :setValue="userValue1" :isRequired="'all'" :labelWidth="'100px'" />
+                  :form="['expertUser',  'certificateUrl', 'districtCode_user', 'fullAddr','type', 'qualifications', 'phone', 'certificateNumber','certificateValidityPeriod']" :setValue="userValue1" :isRequired="'all'" :labelWidth="'100px'" />
             <span slot="footer" class="dialog-footer">
                 <el-button @click="editDialog1 = false">取消</el-button>
                 <el-button type="primary" @click="userEditSubmit1">保存</el-button>
@@ -149,11 +149,20 @@ export default {
             editDialog1:false,
             editDialog2:false,
 
-            enterpriseUserSearchForm: [],
+            enterpriseUserSearchForm: [{
+                type: 'input', label: '关键字', prop: 'keyword',
+            }],
             enterpriseUserTable: ['enterpriseUser', 'industryName', 'contacts', 'phone', 'createTime', 'operat10'],
-            expertUserSearchForm: [],
+            expertUserSearchForm: [{
+                type: 'input', label: '关键字', prop: 'keyword',
+            }],
+            orgUserSearchForm: [{
+                type: 'input', label: '关键字', prop: 'keyword',
+            }],
             expertUserTable: ['expertUser', 'id', 'industryName', 'phone', 'createTime', 'operat10'],
-            superviseUserSearchForm: [],
+            superviseUserSearchForm: [{
+                type: 'input', label: '关键字', prop: 'keyword',
+            }],
             superviseUserTable: ['superviseUser', 'phone', 'industryName', 'department', 'fullAddr', 'createTime', 'operat10'],
             enterpriseUserDialog: false,
             enterpriseUserRow: {},
@@ -362,10 +371,10 @@ export default {
                 if (valid) {
                     let para = {...this.$refs.userEditForm1.queryForm};
                     // para.businessLicenseUrl = para.businessLicenseUrl.toString()
-                    this.$api.expertUpdate(para).then(() => {
+                    this.$api.expertUserUpdate(para).then(() => {
                         this.$message.success(`编辑专家/特征作业人员账户成功`);
-                        this.editDialog = false;
-                        this.$refs.enterpriseUser.getData();
+                        this.editDialog1 = false;
+                        this.$refs.expertUser.getData();
                     })
                 }
             });
@@ -385,14 +394,12 @@ export default {
         userEditSubmit2(){
             this.$refs.userEditForm2.$refs.queryForm.validate((valid) => {
                 if (valid) {
-                    // let para = {...this.$refs.userEditForm2.queryForm};
-                    // para.businessLicenseUrl = para.businessLicenseUrl.toString()
-                    this.$message.warning("暂不支持")
-                    // this.$api.orgUpdate(para).then(() => {
-                    //     this.$message.success(`编辑专家/特征作业人员账户成功`);
-                    //     this.editDialog = false;
-                    //     this.$refs.enterpriseUser.getData();
-                    // })
+                    let para = {...this.$refs.userEditForm2.queryForm};
+                    this.$api.orgUserUpdate(para).then(() => {
+                        this.$message.success(`编辑机构账户成功`);
+                        this.editDialog2 = false;
+                        this.$refs.orgUser.getData();
+                    })
                 }
             });
         },

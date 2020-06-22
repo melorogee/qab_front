@@ -16,7 +16,7 @@ export default {
             path: '/User/New/expertUserAdd', name: 'expertUserAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '新增', parentTitle: '专家/特殊工种', msg: 'form', isBack: true, backName: 'New', isHide: true,
-                form: ['expertUser', 'id', 'certificateUrl', 'districtCode_user', 'industryId', 'type', 'qualifications', 'fullAddr','phone', 'password', 'serviceItemsList', 'platformFee','certificateNumber','certificateValidityPeriod'], isRequired: 'all', api: 'expertUserAdd'
+                form: ['expertUser', 'id', 'certificateUrl', 'districtCode_user', 'type', 'qualifications', 'fullAddr','phone', 'password', 'serviceItemsList', 'platformFee','certificateNumber','certificateValidityPeriod'], isRequired: 'all', api: 'expertUserAdd'
             }
         },
         {

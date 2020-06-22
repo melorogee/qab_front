@@ -84,6 +84,8 @@
                 <i v-if="edit && editRow ==scope.row.idx"  @click="updateById(scope)">保存</i>
                 <!--                <el-divider direction="vertical" ></el-divider>-->
                 <i v-if="!edit"  @click="goEdit(scope)">编辑</i>
+                <el-divider direction="vertical" ></el-divider>
+                <i   @click="goDelete()">删除</i>
             </template>
 
 
@@ -176,6 +178,11 @@
                 this.edit=true
                 this.editRow=scope.row.idx
             },
+
+
+            goDelete(){
+                this.$message.warning("敬请期待")
+            }
 
 
         }

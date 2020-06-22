@@ -222,12 +222,17 @@ export default {
             for(let key in this.setValue){
                 this.$set(this.queryForm, key, this.setValue[key]);
             }
-            this.$set(this.queryForm, 'current', 1);
-            this.$set(this.queryForm, 'size', 10);
-            console.log(this.options)
-             if(this.options != null && this.options.length >0 && this.options[0] != null && this.options[0].api == 'getEnterpriseByExpertId'){
-                 console.log("1")
+            if(this.setValue != null && this.setValue["sp"] != null && this.setValue["sp"] == '1'){
+                this.$set(this.queryForm, 'size', 12);
 
+            }else{
+                this.$set(this.queryForm, 'size', 10);
+
+            }
+            this.$set(this.queryForm, 'current', 1);
+            // this.$set(this.queryForm, 'size', 10);
+             if(this.options != null && this.options.length >0 && this.options[0] != null && this.options[0].api == 'getEnterpriseByExpertId'){
+                 this.$set(this.queryForm, 'current', 1);
              }else{
                  this.getData();
              }
@@ -292,7 +297,6 @@ export default {
         },
         async getData() { // 获取列表数据
             let para = {};
-            console.log(this.tempCompanyId)
             for(let key in this.queryForm){
                 // console.log(key)
                 if(this.queryForm[key] || this.queryForm[key] === 0){
@@ -302,8 +306,15 @@ export default {
             }
             // console.log(para)
             let res = await this.$api[this.api](para);
-            this.total = res.total;
-            this.tableData = res.records;
+
+            if(res != null && res.records == null){
+                this.tableData = res;
+            }else if(res != null){
+                this.total = res.total;
+                this.tableData = res.records;
+
+            }
+
             // this.tableData = Object.prototype.toString.call(res) == '[object Object]' ? res.records : res;
         }
     }

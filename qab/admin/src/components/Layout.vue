@@ -26,7 +26,7 @@
                     <!-- <el-menu-item index="/Home"><i class="el-icon-menu"></i><router-link to="/Home">首页</router-link></el-menu-item> -->
                     <el-submenu v-for="(main, mainIndex) in nav" :key="mainIndex" :index="main.path" v-show="
                         (right==1 && ( main.path!='/Safety' && main.path!='/Employee' && main.path!='/Insurebx' ))
-                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' || main.path=='/Safetysystem'))
+                    || ( right == 100 && (main.path=='/Train' || main.path=='/System' || main.path=='/Safety' || main.path=='/Employee' || main.path=='/Safetysystem' || main.path=='/Trainnew'))
                     || ( right == 300 && (main.path=='/User' || main.path=='/Order' || main.path=='/Insurebx' || main.path=='/System' || main.path=='/Safetysystem'))
                     || ( right == 400 && (main.path=='/Safetysystem' ))
                     || ( right == 200 && (main.path=='/Insurebx' || main.path=='/System'  ))"
