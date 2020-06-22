@@ -108,6 +108,12 @@ const form = {
     expContacts:{ type: 'input', label: '联系人', prop: 'contacts', row: 1 },
     servedCompany:{ type: 'select', label: '服务过的企业', prop: 'enterpriseId', row: 1, api: 'getEnterpriseByExpertId',init: ["enterpriseId"]},
 
+    trainnewTitle:{ type: 'input', label: '培训主题', prop: 'title', row: 1 },
+    trainnewContent:{ type: 'textarea', label: '培训内容', prop: 'content', row: 1 },
+    trainnewResult:{ type: 'select', label: '效果检验方式 ', prop: 'effectInspectionMethod', row: 1,list:'trainnewResult' },
+    trainnewMonth:{ type: 'select', label: '月份 ', prop: 'month', row: 1,list:'trainnewMonth' },
+
+
 };
 /**
  * 参数说明 { key: <Object> }

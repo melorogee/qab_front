@@ -14,6 +14,11 @@ const planTypeMap =  { 1:'年度培训计划', 2:'日常培训计划'};
 const educationType40 = [ { idx: 1, name: '新员工培训' }, { idx: 2, name: '老员工培训' }, { idx: 3, name: '取证培训' }]
 const rightAnswer =   [ { idx: 'A', name: 'A' }, { idx: 'B', name: 'B' }, { idx: 'C', name: 'C' }, { idx: 'D', name: 'D' }];
 const superviseLevel =   [ { idx: 1, name: '镇/街道' }, { idx: 2, name: '县/区' }, { idx: 3, name: '市' }, { idx: 4, name: '省' }];
+const trainnewResult =   [ { idx: 1, name: '考核' }, { idx: 2, name: '考试' }];
+const trainnewType =   [ { idx: 1, name: '线上' }, { idx: 2, name: '线下' }];
+const trainnewMonth =   [ { idx: '01', name: '01' }, { idx: '02', name: '02' },{ idx: '03', name: '03' },{ idx: '04', name: '04' },
+    { idx: '05', name: '05' },{ idx: '06', name: '06' },{ idx: '07', name: '07' },{ idx: '08', name: '08' },{ idx: '09', name: '09' },
+    { idx: '10', name: '10' },{ idx: '11', name: '11' },{ idx: '12', name: '12' }];
 
 
-export default { superviseLevel,rightAnswer,type, educationTypesNew,positionTypeList, educationType20,educationType40, educationTypes, questionType, questionTypeList, msg, statusList, zjList,orderStatusMap ,planTypeMap}
+export default { trainnewMonth,trainnewResult,trainnewType,superviseLevel,rightAnswer,type, educationTypesNew,positionTypeList, educationType20,educationType40, educationTypes, questionType, questionTypeList, msg, statusList, zjList,orderStatusMap ,planTypeMap}

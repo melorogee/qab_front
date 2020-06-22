@@ -18,12 +18,18 @@ export default {
     component: () => import('@/components/Content'),
     children: [
         { path: '/Trainnew/Yearplan', name: 'Yearplan', component: () => import('@/views/trainnew/Yearplan'), meta: { title: '年度计划' } },
-        { path: '/Trainnew/YearplanAdd', name: 'YearplanAdd', component: () => import('@/views/trainnew/YearplanAdd'),
+        { path: '/Trainnew/YearplanAdd', name: 'YearplanAdd', component: () => import('@/components/SubmitForm'),
             meta: {
                 title: '新增计划', parentTitle: '年度培训计划', isBack: true, backName: 'Yearplan', isHide: true,
+                form: ['trainnewMonth','trainnewResult','trainnewTitle','trainnewContent'], isRequired: 'all', api: 'saveYearPlan'
             }
         },
         { path: '/Trainnew/Trainnewdetail', name: 'Trainnewdetail', component: () => import('@/views/trainnew/Trainnewdetail'), meta: { title: '实施培训' } },
+
+        { path: '/Trainnew/Trainnewdetail_sub', name: 'Trainnewdetail_sub', component: () => import('@/views/trainnew/Trainnewdetail_sub'),
+            meta: { title: '培训详情', parentTitle: '实施培训', isBack: true, backName: 'Trainnewdetail', isHide: true }
+        },
+
         { path: '/Trainnew/Examnew', name: 'Examnew', component: () => import('@/views/trainnew/Examnew'), meta: { title: '组织考试' } }
     ]
 }

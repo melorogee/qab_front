@@ -26,3 +26,6 @@ export const getEnterpriseByExpertId = data => { return instance({ url: `/riskAs
 
 
 export const exportList = '/manage/riskAssessment/export'
+
+export const normal = data => { return instance({ url: `/riskAssessment/v2/processStatus`, method: 'POST', data }) }
+
