@@ -50,6 +50,19 @@
                 </el-select>
             </el-form-item>
 
+
+            <el-form-item label="行业" class="submitForm__item">
+                <el-select  v-model="param.industryData"  :maxlength="60" :placeholder="`请选择`" @change="getCourse" >
+                    <el-option v-for="(option, index) in industryList"
+                               :key="index"
+                               :label="option.name"
+                               :value="option.idx">
+
+                    </el-option>
+                </el-select>
+            </el-form-item>
+
+
             <el-form-item label="培训课程" class="submitForm__item" style="width: 500px">
                 <el-select  v-model="param.courseIdList"  :maxlength="60" :placeholder="`请选择`" multiple  @change="caculateHours">
                     <el-option v-for="(option, index) in courseList"
@@ -110,18 +123,31 @@
             trainingTypeList:[{idx:1,name:"线上"},{idx:2,name:"线下"}],
             effectInspectionMethodList:[{idx:1,name:"考核"},{idx:2,name:"考试"}],
             courseList:[],
-            employeeList:[]
+            employeeList:[],
+            industryList:[],
+
         }
     },
     created() {
-        this.getCourseList();
+        this.getIndustryList();
+
+        // this.getCourseList();
         this.getEmployeeList();
     },
-    
+
     methods: {
+        getCourse:function(){
+            this.getCourseList();
+        },
+        getIndustryList:function(){
+            let this_ =this;
+            axios.get(`/manage/industry/city/industry/list`).then(function(res){
+                this_.industryList = res.data.data;
+            });
+        },
         getCourseList:function () {
             let this_ =this;
-            axios.get(`/manage/enterprise/year/plan/course/list?educationType=1`).then(function(res){
+            axios.get(`/manage/enterprise/year/plan/course/list?educationType=1&industryId=`+this.param.industryData).then(function(res){
                 this_.courseList = res.data.data;
             });
         },
