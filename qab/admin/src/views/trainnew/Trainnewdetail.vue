@@ -3,7 +3,7 @@
         <el-tabs>
             <el-tab-pane label="新员工培训">
                 <SearchPage ref="thisplan" :searchForm="newSearchForm" :table="newTable" :setValue="{sp: 1}"  :api="'newTrainList'">
-                    <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" >新增</el-button>
+                    <el-button type="primary" slot="mainButtons--left" icon="el-icon-plus" @click="goAddNew" >新增</el-button>
                         <template slot="operat" slot-scope="scope">
                             <el-button size="mini" type="primary" @click="goEdit(scope)" plain>详情</el-button>
                         </template>
@@ -22,6 +22,7 @@
             </el-tab-pane>
             <el-tab-pane label="全员培训">
                 <SearchPage ref="hisplan" :searchForm="allSearchForm" :table="allTable"  :api="'allTrainList'">
+
                     <template slot="effectInspectionMethod" slot-scope="scope">
                         {{effectInspectionMethodMap[scope.row.effectInspectionMethod]}}
                     </template>
@@ -32,6 +33,11 @@
 
                     <template slot="educationType" slot-scope="scope">
                         {{educationTypeMap[scope.row.educationType]}}
+                    </template>
+                    <template slot="operat1" slot-scope="scope">
+                        <el-button size="mini" type="primary" @click="goAddNew1(scope)" plain>新增</el-button>
+
+                        <el-button size="mini" type="primary" @click="goEdit1(scope)" plain>详情</el-button>
                     </template>
                 </SearchPage>
             </el-tab-pane>
@@ -60,7 +66,9 @@ export default {
                 { prop: 'month', label: '月份' },
                 { slot: 'trainingType', label: '培训方式' },
                 { prop: 'content', label: '培训内容' },
-                { slot: 'effectInspectionMethod', label: '效果检验方式' }
+                { slot: 'effectInspectionMethod', label: '效果检验方式' },
+                { slot:'operat1',label:'操作'}
+
             ],
             effectInspectionMethodMap:{1:"考核",2:"考试"},
             educationTypeMap:{1:"公司级",2:"车间级教育",3:"班组级教育"},
@@ -72,7 +80,22 @@ export default {
     methods: {
         goEdit:function (scope) {
             this.$router.push({name: 'Trainnewdetail_sub', query:scope.row})
+        },
+
+        goEdit1:function (scope) {
+            this.$router.push({name: 'Trainnewdetail_sub1', query:scope.row})
+        },
+
+        goAddNew:function () {
+            this.$router.push({name: 'Trainnewdetail_add'})
+
+        },
+
+        goAddNew1:function (scope) {
+            this.$router.push({name: 'Trainnewdetail_add1', query:scope.row})
+
         }
+
     }
 }
 </script>

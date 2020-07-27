@@ -20,5 +20,6 @@ export default {
             }
         },
         { path: '/System/AccountSetting', name: 'AccountSetting', component: () => import('@/views/system/AccountSetting'), meta: { title: '账户设置' } },
+        { path: '/System/SysData', name: 'SysData', component: () => import('@/views/system/SysData'), meta: { title: '平台数据' } },
     ]
 }

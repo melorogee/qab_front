@@ -82,12 +82,31 @@
                 </div>
             </template>
 
+
+            <template slot="controlLevel" slot-scope="scope">
+                <div style="display:flex; align-items: center;" v-if="edit && editRow ==scope.row.idx">
+
+                    <el-select  v-model="scope.row.controlLevel"  :maxlength="60" :placeholder="`请选择`"  >
+                        <el-option v-for="(option, index) in controlList"
+                                   :key="index"
+                                   :label="option.name"
+                                   :value="option.name">
+
+                        </el-option>
+                    </el-select>
+
+                </div>
+                <div style="display:flex; align-items: center;" v-if=" editRow !=scope.row.idx">
+                    {{scope.row.controlLevel}}
+                </div>
+            </template>
+
             <template slot="operat" slot-scope="scope">
                 <i v-if="edit && editRow ==scope.row.idx"  @click="updateById(scope)">保存</i>
 <!--                <el-divider direction="vertical" ></el-divider>-->
                 <i v-if="!edit"  @click="goEdit(scope)">编辑</i>
                 <el-divider direction="vertical" ></el-divider>
-                <i   @click="goDelete()">删除</i>
+                <i   @click="goDelete(scope)">删除</i>
 
 
             </template>
@@ -124,7 +143,7 @@
                     { slot: 'managementMeasures', label: '管理措施'  ,width:'200px' },
                     { slot: 'educationalMeasures', label: '教育措施'  ,width:'200px' },
                     { slot: 'protectiveMeasures', label: '个体防护措施'  ,width:'200px' },
-                    { prop: 'controlLevel', label: '管控层级' ,width:'150px' },
+                    { slot: 'controlLevel', label: '管控层级' ,width:'150px' },
                     { prop: 'hazardLevelStr', label: '隐患等级' ,width:'150px' },
 
 
@@ -135,8 +154,10 @@
                 deleteMap: [],
                 userId:"",
                 companyList:[],
-                selectedCompany:""
-            }
+                selectedCompany:"",
+                controlList : [ {  name: '岗位' }, {  name: '班组' }, {  name: '车间' }, {  name: '公司' }],
+
+        }
         },
 
         created() {
@@ -174,8 +195,12 @@
                 this.editRow=scope.row.idx
             },
 
-            goDelete(){
-                this.$message.warning("敬请期待")
+            goDelete(scope){
+                this.$api.deleteRisk({riskId: scope.row.idx}).then(() => {
+                    this.$message.success('删除成功');
+                    this.SearchPageInit();
+
+                })
             }
 
 

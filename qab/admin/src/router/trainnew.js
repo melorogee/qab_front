@@ -29,7 +29,16 @@ export default {
         { path: '/Trainnew/Trainnewdetail_sub', name: 'Trainnewdetail_sub', component: () => import('@/views/trainnew/Trainnewdetail_sub'),
             meta: { title: '培训详情', parentTitle: '实施培训', isBack: true, backName: 'Trainnewdetail', isHide: true }
         },
-
-        { path: '/Trainnew/Examnew', name: 'Examnew', component: () => import('@/views/trainnew/Examnew'), meta: { title: '组织考试' } }
+        { path: '/Trainnew/Trainnewdetail_sub1', name: 'Trainnewdetail_sub1', component: () => import('@/views/trainnew/Trainnewdetail_sub1'),
+            meta: { title: '培训详情', parentTitle: '实施培训', isBack: true, backName: 'Trainnewdetail', isHide: true }
+        },
+        { path: '/Trainnew/Examnew', name: 'Examnew', component: () => import('@/views/trainnew/Examnew'), meta: { title: '组织考试' } },
+        { path: '/Trainnew/TrainnewData', name: 'TrainnewData', component: () => import('@/views/trainnew/TrainnewData'), meta: { title: '培训统计' } },
+        { path: '/Trainnew/Trainnewdetail_add', name: 'Trainnewdetail_add', component: () => import('@/views/trainnew/Trainnewdetail_add'),
+            meta: { title: '新增新员工培训', parentTitle: '实施培训', isBack: true, backName: 'Trainnewdetail_add', isHide: true }
+        },
+        { path: '/Trainnew/Trainnewdetail_add1', name: 'Trainnewdetail_add1', component: () => import('@/views/trainnew/Trainnewdetail_add1'),
+            meta: { title: '新增全员工培训', parentTitle: '实施培训', isBack: true, backName: 'Trainnewdetail_add1', isHide: true }
+        },
     ]
 }

@@ -28,4 +28,8 @@ export const getEnterpriseByExpertId = data => { return instance({ url: `/riskAs
 export const exportList = '/manage/riskAssessment/export'
 
 export const normal = data => { return instance({ url: `/riskAssessment/v2/processStatus`, method: 'POST', data }) }
+export const deleteRisk = data => { return instance({ url: `/riskAssessment/deleteById`, method: 'GET', params: data }) }
+
+// export const exportOnetable = '/manage/riskAssessment/biaoExcel'
+
 

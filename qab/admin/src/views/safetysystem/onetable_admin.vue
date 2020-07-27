@@ -1,8 +1,10 @@
 <template>
     <div>
         <SearchPage ref="SearchPage" :searchForm="searchForm" :table="table" :api="'troubleshootList'" >
+<!--            <el-button type="success" slot="mainButtons&#45;&#45;left" icon="el-icon-download" @click="exportOnetable">导出</el-button>-->
 
-<!--            <template slot="operat" slot-scope="scope">-->
+
+            <!--            <template slot="operat" slot-scope="scope">-->
 <!--                <i v-if="scope.row.hazardLevel == '0'"  @click="processStatus(scope,'1')">正常</i>-->
 <!--                 <el-divider direction="vertical" v-if="scope.row.hazardLevel == '0'"></el-divider>-->
 <!--                <i v-if="scope.row.hazardLevel == '0'"  @click="processStatus(scope,'2')">异常</i>-->
@@ -139,7 +141,13 @@
                     this.$message.success('设置成功');
                     this.SearchPageInit();
                 })
-            }
+            },
+            //
+            // exportOnetable() {
+            //     window.open("/manage/riskAssessment/biaoExcel");
+            //
+            // },
+
 
 
         }

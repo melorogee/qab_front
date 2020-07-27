@@ -11,4 +11,8 @@ export const delYearPlan = data => { return instance({ url: `/enterprise/year/pl
 export const newExamList = data => { return instance({ url: `/enterprise/training/exam/employee/already/training?examType=1`, method: 'GET', params: data }) }
 export const allExamList = data => { return instance({ url: `/enterprise/training/exam/employee/already/training?examType=2`, method: 'GET', params: data }) }
 
+export const trainnewData1 = data => { return instance({ url: `/enterprise/training/stas/enterprise/data?type=1`, method: 'GET', params: data }) }
+export const trainnewData2 = data => { return instance({ url: `/enterprise/training/stas/enterprise/data?type=2`, method: 'GET', params: data }) }
+export const saveTrainNew = data => { return instance({ url: `/enterprise/year/plan/new/employee/training/save`, method: 'POST', data }) }
+export const saveTrainNew1 = data => { return instance({ url: `/enterprise/year/plan/old/employee/training/save`, method: 'POST', data }) }
 

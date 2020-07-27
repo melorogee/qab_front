@@ -2,11 +2,12 @@
     <div>
         <SearchPage ref="SearchPage" :searchForm="searchForm" :table="table" :api="'troubleshootList'" >
             <el-button type="success" slot="mainButtons--left" icon="el-icon-download" @click="makeExcel">生成文件</el-button>
+            <el-button type="success" slot="mainButtons--left" icon="el-icon-download" @click="exportOnetable">导出</el-button>
 
 <!--            <template slot="operat" slot-scope="scope">-->
-<!--                <i v-if="scope.row.hazardLevel == '0'"  @click="processStatus(scope,'1')">正常</i>-->
-<!--                 <el-divider direction="vertical" v-if="scope.row.hazardLevel == '0'"></el-divider>-->
-<!--                <i v-if="scope.row.hazardLevel == '0'"  @click="processStatus(scope,'2')">异常</i>-->
+<!--&lt;!&ndash;                <i v-if="scope.row.hazardLevel == '0'"  @click="processStatus(scope,'1')">正常</i>&ndash;&gt;-->
+<!--&lt;!&ndash;                 <el-divider direction="vertical" v-if="scope.row.hazardLevel == '0'"></el-divider>&ndash;&gt;-->
+<!--&lt;!&ndash;                <i v-if="scope.row.hazardLevel == '0'"  @click="processStatus(scope,'2')">异常</i>&ndash;&gt;-->
 
 <!--&lt;!&ndash;                <i  @click="processStatus(scope,'1')">正常</i>&ndash;&gt;-->
 <!--&lt;!&ndash;                <el-divider direction="vertical" ></el-divider>&ndash;&gt;-->
@@ -57,7 +58,9 @@
         name: 'Onetable_company',
         data() {
             return {
-
+                state:{
+                    "0":"未评估","1":"正常","2":"异常"
+                },
                 searchForm: [],
                 importDialog:false,
                 table: [
@@ -106,6 +109,12 @@
                     this.$message.success('生成成功');
                     this.SearchPageInit();
                 })
+
+            },
+
+
+            exportOnetable() {
+                window.open("/manage/riskAssessment/biaoExcel");
 
             },
 
