@@ -58,13 +58,23 @@
             </template>
 
             <template slot="operat" slot-scope="scope">
+                <el-button type="text" @click="goDetail(scope)">查看</el-button>
                 <el-button type="text" @click="goEdit(scope)">编辑</el-button>
                 <el-button type="text" @click="goDelete(scope)">删除</el-button>
 
                 <!--                <i class="el-icon-delete" @click="delData(scope)"></i>-->
             </template>
         </SearchPage>
+        <el-dialog title="详情" :visible.sync="disDialog1" width="60%">
+            <el-row v-for="(option, index) in orderList"
+                    :key="index">
+                <el-col :span="8" ><div class="grid-content bg-purple">订单号：{{option.orderCall.id}}</div></el-col>
+                <el-col :span="4"><div class="grid-content bg-purple-light">专家：{{option.expertUser.name}}</div></el-col>
+                <el-col :span="4" v-if="option.securityRiskOrderList != null && option.securityRiskOrderList.length > 0"><div class="grid-content bg-purple" >订单类型：安全隐患</div></el-col>
+                <el-col :span="4" v-if="option.hazardSourceOrderList != null && option.hazardSourceOrderList.length > 0"><div class="grid-content bg-purple" >订单类型：风险评估</div></el-col>
 
+            </el-row>
+        </el-dialog>
         <el-dialog title="编辑" :visible.sync="disDialog" width="40%">
             <el-form
                     :model="submitForm"
@@ -208,6 +218,7 @@
     import FileSaver from "file-saver";
 
     import XLSX from "xlsx";
+    import axios from 'axios'  //引入axios
     export default {
         name: "InsurebxList",
         data() {
@@ -219,6 +230,7 @@
                     { name: "重大风险", value: 4 }
                 ],
                 disDialog: false,
+                disDialog1: false,
                 detailDialog: false,
                 trainNumShow: false,
                 distributewValue: { expertId: "" },
@@ -265,7 +277,8 @@
                     bccidentList:[],
                     startDate1:'',
                     endDate1:'',
-                }
+                },
+                orderList:[]
             };
         },
         created() {
@@ -423,6 +436,14 @@
                     this.disDialog = false;
                     this.submitForm.bccidentList = []
                     this.SearchPageInit();
+                });
+            },
+
+            goDetail : function (data) {
+                    this.disDialog1=true;
+                let this_ =this;
+                axios.get(`/manage/insured/enterprise/serviceCondition?size=10000&enterpriseId=`+data.row.enterpriseId).then(function(res){
+                    this_.orderList = res.data.data;
                 });
             }
         }
